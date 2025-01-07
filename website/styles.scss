@@ -29,6 +29,7 @@ body {
   height: 100dvh;
   overflow-x: hidden;
   font-family: var(--font-family);
+  color: var(--text-color);
 }
 
 .container {
@@ -76,8 +77,8 @@ body {
       height: 3.125rem;
       border-radius: inherit;
 
-      a {
-        color: var(--text-color);
+      a,
+      #site-header {
         text-decoration: none;
         font-size: 1.125rem;
         display: flex;
@@ -100,6 +101,13 @@ body {
       }
     }
   }
+}
+
+#site-header {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 10%);
+  
+  
 }
 
 main {

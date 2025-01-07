@@ -28,6 +28,7 @@ body {
   height: 100dvh;
   overflow-x: hidden;
   font-family: var(--font-family);
+  color: var(--text-color);
 }
 
 .container {
@@ -73,8 +74,8 @@ body {
   height: 3.125rem;
   border-radius: inherit;
 }
-.sidebar nav ul li a {
-  color: var(--text-color);
+.sidebar nav ul li a,
+.sidebar nav ul li #site-header {
   text-decoration: none;
   font-size: 1.125rem;
   display: flex;
@@ -86,12 +87,18 @@ body {
   white-space: nowrap;
   border-radius: inherit;
 }
-.sidebar nav ul li a:hover {
+.sidebar nav ul li a:hover,
+.sidebar nav ul li #site-header:hover {
   background-color: var(--sidebar-hover-bg-color);
 }
 .sidebar nav ul li svg,
 .sidebar nav ul li img {
   margin: 10px;
+}
+
+#site-header {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 10%);
 }
 
 main {
