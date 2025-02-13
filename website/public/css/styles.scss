@@ -1,0 +1,221 @@
+/* ========== CSS-Variablen ===========  */
+
+:root {
+  --background-color: hsl(0, 0%, 10%);
+  --sidebar-bg-color: hsl(0, 45%, 45%);
+  --sidebar-hover-bg-color: hsl(0, 33%, 64%);
+  --text-color: hsl(0, 0%, 100%);
+  --font-family: "Poppins", sans-serif;
+  --sidebar-width: 15rem;
+  --collapsed-sidebar-width: 3.6rem;
+}
+
+/* =============== Reset =============== */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: inherit;
+  border: 0;
+  text-decoration: none;
+  // font-size: inherit;
+}
+
+/* ============ Base Styles ============= */
+
+body {
+  background-color: var(--background-color);
+  padding: clamp(2px, 0.4%, 16px);
+  display: flex;
+  height: 100dvh;
+  overflow-x: hidden;
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+.container {
+  display: flex;
+  height: 100dvh;
+  width: 100dvw;
+}
+
+/* ============== Sidebar ============== */
+
+.sidebar {
+  width: var(--sidebar-width);
+  background-color: var(--sidebar-bg-color);
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - 0.4rem);
+  position: fixed;
+  border-radius: 10px;
+  transition: width 0.3s;
+  padding: clamp(0.125rem, 0.4%, 0.3125rem);
+  will-change: transform;
+
+  nav {
+    ul {
+      list-style: none;
+      border-radius: 10px;
+
+      li {
+        margin-bottom: 4px;
+        // margin-bottom: clamp(2px, 2%, 5px);
+        display: flex;
+        flex-direction: row;
+        height: 3.125rem;
+        border-radius: inherit;
+
+        svg,
+        img {
+          margin: 14px;
+        }
+
+        header,
+        a {
+          text-decoration: none;
+          font-size: 1.125rem;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          width: 100%;
+          height: 100%;
+          transition: background 0.3s;
+          white-space: nowrap;
+          border-radius: inherit;
+
+          &:hover {
+            background-color: var(--sidebar-hover-bg-color);
+          }
+        }
+
+        header a {
+          background-color: hsl(0, 0%, 100%);
+          color: hsl(0, 0%, 10%);
+          // font-size: 22px;
+          // font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+/* ============ Icons % Logo ============ */
+
+.icon-size {
+  height: 24px;
+  width: 24px;
+}
+
+#site-logo {
+  height: 25px;
+  position: absolute;
+  right: 5px;
+  -webkit-user-drag: none;
+
+  /* transition: width 0.3s; */
+}
+
+/* ============ Main Content ============= */
+
+main {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  margin: 0.625rem;
+  margin-left: calc(var(--sidebar-width) + 20px);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  // font-size: 14px;
+}
+
+/* ============== Tab-Content ============== */
+
+.tab-content {
+  display: none; /* Hide all tab content */
+}
+
+.tab-content img {
+  max-width: 100%; // Ensures images never overflow
+  height: auto; // Keeps aspect ratio intact
+  display: block; // Removes bottom whitespace
+}
+
+:target {
+  display: block; /* Show the tab content that is targeted */
+}
+
+body:not(:has(:target)) #dashboard {
+  display: block; /* If no tab is selected, show the dashboard tab */
+}
+
+/* =========== Tab-Content : Monitor ============ */
+
+/* ============== Tab-Content : Agent priority ============== */
+
+#agent_priority button {
+  margin: 10px;
+  padding: 10px;
+  background: hsl(0, 37%, 50%);
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#agentList li {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 10px;
+  margin: 5px;
+  background: hsl(0, 37%, 50%);
+  cursor: grab;
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+}
+
+li.dragging {
+  opacity: 0.5;
+}
+
+.slider-icon {
+  width: 20px; // adjust size as needed
+  height: auto;
+  margin-right: 8px; // spacing between the icon and text
+  vertical-align: middle;
+}
+
+/* ========== Tab-Content : Log =========== */
+
+/* Style for the log window */
+#log-window {
+  background-color: hsl(0, 0%, 0%);
+  color: hsl(120, 100%, 50%);
+  font-family: "Cascadia Code", Courier, monospace;
+  padding: 1em;
+  border: 1px solid #333;
+  height: 80dvh;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+/* ========== Responsive Design ========== */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: var(--collapsed-sidebar-width);
+  }
+
+  main {
+    margin-left: calc(var(--collapsed-sidebar-width) + 20px);
+  }
+
+  .sidebar ul li a span,
+  #site-logo {
+    display: none;
+  }
+}

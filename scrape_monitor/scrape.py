@@ -1,5 +1,7 @@
 # ============= imports & variables ==============
 
+import time
+import logging
 from datetime import datetime
 
 log_time = datetime.now().strftime("%H:%M:%S") + " » "
@@ -17,7 +19,8 @@ takes_current = 0
 # get takes_fc at interval
 takes_fc = 0
 
-# ============= action functions ================
+
+# ============= action functions =================
 
 
 # skill inbound agents on inbound
@@ -37,6 +40,7 @@ def skill_outbound_on_inbound():
 
 # skill take inbound skills
 def skill_take_inbound_skills():
+    """Take inbound skills"""
     print(log_time + "Skill: Taking Inbound Skills")
 
 
