@@ -1,0 +1,66 @@
+<section id="search" class="tab-content">
+  <h1>Hello!</h1>
+  <p>Search page<br /><br /><br /></p>
+  <p>Agenten / Funktionen direkt suchen, später später</p>
+</section>
+
+<section id="dashboard" class="tab-content">
+  <h1>Dashboard</h1>
+  <p>Dashboard page<br /><br /><br /></p>
+</section>
+
+<section id="monitor" class="tab-content">
+  <h1>Monitor</h1>
+  <p>Monitor page<br /><br /><br /></p>
+  <img src="/images/monitor_example.webp" />
+</section>
+
+<section id="skills" class="tab-content">
+  <h1>Skills</h1>
+  <p>Skills page<br /><br /><br /></p>
+  <ul>
+    <li>agent1</li>
+    <li>agent2</li>
+    <li>agent3</li>
+  </ul>
+  <!-- <ol id="agentList"></ol> -->
+</section>
+
+<section id="agent_priority" class="tab-content">
+  <h1>Agent Priority</h1>
+  <p>Agent priority page<br /><br /><br /></p>
+  <button onclick="saveOrder()">Save Order</button>
+  <ol id="agentList">
+    <% if (agents && agents.length) { %> <% agents.forEach(function(agent) { %>
+    <li
+      data-name="<%= agent.name %>"
+      data-surname="<%= agent.surname %>"
+      data-inboundoutbound="<%= agent.inboundoutbound %>"
+      data-priority="<%= agent.priority %>"
+    >
+      <img
+        src="/images/icons/drag_indicator.svg"
+        alt="Slider Icon"
+        class="slider-icon"
+      />
+      <span
+        ><%= agent.name %>
+        <%= agent.surname %></span
+      >
+    </li>
+    <% }); %>
+    <% } else { %>
+    <li>No agents found</li>
+    <% } %>
+  </ol>
+  <p>
+    <br />(Am besten Websocket, damit alle Skillseiten synchron sind)<br />
+    (Initialisierung mit HTML und nur fürs Verschieben JavaScript später)
+  </p>
+</section>
+
+<section id="log" class="tab-content">
+  <h1>Log</h1>
+  <p>Log page<br /><br /><br /></p>
+  <div id="log-window">Loading logs...</div>
+</section>
