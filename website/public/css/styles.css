@@ -144,7 +144,7 @@ body:not(:has(:target)) #dashboard {
 .agent-list li {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 5px;
   margin: 5px;
   background: hsl(0, 37%, 50%);
   border: 1px solid hsl(0, 0%, 80%);
@@ -154,7 +154,7 @@ body:not(:has(:target)) #dashboard {
   /* Container for the skill checkboxes */
 }
 .agent-list li.dragging {
-  opacity: 0.5;
+  opacity: 1;
 }
 .agent-list li .slider-icon {
   width: 20px;
@@ -162,13 +162,13 @@ body:not(:has(:target)) #dashboard {
   margin-right: 8px;
   vertical-align: middle;
 }
-.agent-list li .checkboxes {
+.agent-list li .radios {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
   margin-left: auto;
 }
-.agent-list li .checkboxes label {
+.agent-list li .radios label {
   font-size: 0.9em;
   color: var(--text-color);
 }

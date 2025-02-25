@@ -68,8 +68,8 @@ function updateSkill(radio, name, surname) {
   if (!listItem) return;
 
   const isInbound = radio.value === "inbound";
-  listItem.dataset.skill_ib = isInbound ? 1 : 0;
-  listItem.dataset.skill_ob = isInbound ? 0 : 1;
+  listItem.dataset.skill_ib = isInbound ? "true" : "false";
+  listItem.dataset.skill_ob = isInbound ? "false" : "true";
 }
 
 /*******************************
@@ -95,8 +95,8 @@ async function saveSkills() {
         surname: li.dataset.surname,
         inboundoutbound: type,
         priority: type === "outbound" ? index + 1 + agentLists.inbound.length : index + 1,
-        skill_ib: li.dataset.skill_ib === "1" ? 1 : 0,
-        skill_ob: li.dataset.skill_ob === "1" ? 1 : 0,
+        skill_ib: li.dataset.skill_ib === "true",
+        skill_ob: li.dataset.skill_ob === "true",
       });
     });
   });

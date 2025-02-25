@@ -28,12 +28,8 @@ const app = express();
 // ----------------------
 // Express & Middleware Setup
 // ----------------------
-
-// Set up EJS as the templating engine and specify the views directory.
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
-// Enable CORS and JSON parsing middleware.
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
@@ -41,8 +37,9 @@ app.use(expressLayouts);
 app.set("layout", "layout");
 
 // ========= Helper Functions ===========
-const isValidNumber = (val) => Number.isInteger((val = +val)) && val >= 0;
-const isValidSkill = (val) => val === "0" || val === "1";
+// const isValidNumber = (val) => Number.isInteger((val = +val)) && val >= 0;
+// const isValidSkill = val => val === true || val === false;
+// const toBoolean = (val) => val === "true";
 
 /**
  * Liest die CSV-Datei und gibt ein Array von Agenten zurück.
@@ -73,57 +70,48 @@ async function parseAgents() {
   }
 }
 
-/**
- * Logs an error message and returns an invalid agent object.
- * @param {string} message - The error message to log.
- * @returns {object} - Returns an object with `invalid: true` to keep track of invalid entries.
- */
-const markAsInvalid = (message, agentData = {}) => {
-  console.warn(`⚠️ ${message}`);
-  return { ...agentData, valid: false }; // Return the agent with valid: false
-};
 
+const isValidNumber = (val) => Number.isInteger((val = +val)) && val >= 0;
+const isValidSkill = (val) => typeof val === "boolean";
+const toBoolean = (val) => val === true || val === "true" || val === 1;
 
 /**
- * Processes a single line of CSV data dynamically based on `CSV_HEADER`
+ * Wandelt eine CSV-Zeile in ein Agenten-Objekt um.
  */
 function processLine(line) {
   const values = line.split(",").map((col) => col.trim());
 
   // CSV-Werte zuordnen
-  const agent = Object.fromEntries(CSV_HEADER.map((key, index) => [key, values[index]]));
-
-  // Fehlermeldungen
-  const invalidLine = {
-    missingColumns: markAsInvalid(`${JSON.stringify(agent)} - Falsche Anzahl an Spalten: Erwartet ${CSV_HEADER.length}, erhalten ${values.length}`, agent),
-    missingName: markAsInvalid("Name oder Nachname fehlt", agent),
-    invalidInboundOutbound: markAsInvalid("Ungültiger inboundoutbound-Wert", agent),
-    invalidPriority: markAsInvalid("Ungültige Priorität", agent),
-    invalidSkill: markAsInvalid("Ungültige Skill-Werte", agent),
+  let agent = {...Object.fromEntries(CSV_HEADER.map((key, index) => [key, values[index]])),
+    valid: true,  // Standardmäßig als gültig markieren
   };
 
-  if (values.length !== CSV_HEADER.length) {
-    return invalidLine.missingColumns;
-  }
+  //console.log("BEFORE CONVERSION:", agent); // Debugging: Zeigt Werte vor der Umwandlung
+
+  // Umwandlung der Strings in echte Zahlen / Booleans
+  agent.priority = Number(agent.priority);
+  agent.skill_ib = toBoolean(agent.skill_ib);
+  agent.skill_ob = toBoolean(agent.skill_ob);
+  agent.valid = toBoolean(agent.valid); 
+
+  //console.log("AFTER CONVERSION:", agent); // Debugging: Zeigt Werte nach der Umwandlung
 
   // Fehlervalidierung
-  if (values.length !== CSV_HEADER.length) {
-    return invalidLine.missingColumns;
-  }
-  if (!agent.name || !agent.surname) return invalidLine.missingName;
-  if (!["inbound", "outbound"].includes(agent.inboundoutbound)) return invalidLine.invalidInboundOutbound;
-  if (!isValidNumber(agent.priority)) return invalidLine.invalidPriority;
-  if (!isValidSkill(agent.skill_ib) || !isValidSkill(agent.skill_ob)) return invalidLine.invalidSkill;
+  const errors = [];
+  if (values.length !== CSV_HEADER.length) errors.push(`Falsche Anzahl an Spalten: ${values.length} / ${CSV_HEADER.length}`);
+  if (!agent.surname || !agent.name) errors.push("Name oder Nachname fehlt");
+  if (!["inbound", "outbound"].includes(agent.inboundoutbound)) errors.push(`Ungültiger inboundoutbound-Wert: "${values[CSV_HEADER.indexOf("inboundoutbound")]}"`);
+  if (!isValidNumber(agent.priority)) errors.push(`Ungültige Priorität: "${values[CSV_HEADER.indexOf("priority")]}"`);
+  if (!isValidSkill(agent.skill_ib) || !isValidSkill(agent.skill_ob)) errors.push("Ungültige Skill-Werte");
 
-  // Falls alles passt, Agenten-Daten zurückgeben
-  return {
-    ...agent,
-    priority: +agent.priority,
-    skill_ib: +agent.skill_ib,
-    skill_ob: +agent.skill_ob,
-    valid: true, // ✅ Dieser Agent ist gültig!
-  };
+  if (errors.length) {
+    console.warn(`⚠️  Fehler in agents.csv: ${agent.surname}, ${agent.name} - ${errors.join(", ")}`);
+    agent.valid = false; // Fehlerhafte Agenten flaggen
+  }
+
+  return agent;
 }
+
 
 /**
  * Saves agents to the CSV file.

@@ -166,7 +166,7 @@ body:not(:has(:target)) #dashboard {
   li {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
     margin: 5px;
     background: hsl(0, 37%, 50%);
     border: 1px solid hsl(0, 0%, 80%);
@@ -174,7 +174,7 @@ body:not(:has(:target)) #dashboard {
     cursor: grab;
 
     &.dragging {
-      opacity: 0.5;
+      opacity: 1;
     }
 
     /* Drag handle icon */
@@ -186,7 +186,7 @@ body:not(:has(:target)) #dashboard {
     }
 
     /* Container for the skill checkboxes */
-    .checkboxes {
+    .radios {
       display: flex;
       flex-direction: column;
       gap: 0.5em;
@@ -212,52 +212,7 @@ body:not(:has(:target)) #dashboard {
 
 /* ============== Tab-Content : Skills ============== */
 
-// /* Container for the checkboxes */
-// .checkboxes {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 0.5em;
-// }
-
-// /* Optionally, adjust the labels or input sizes */
-// .checkboxes label {
-//   font-size: 0.9em;
-//   color: var(--text-color);
-// }
-
 /* ============== Tab-Content : Agent priority ============== */
-
-// #agent_priority button {
-//   margin: 10px;
-//   padding: 10px;
-//   background: hsl(0, 37%, 50%);
-//   border: 1px solid hsl(0, 0%, 80%);
-//   border-radius: 10px;
-//   cursor: pointer;
-// }
-
-// #agentList li {
-//   display: flex;
-//   align-items: center;
-//   list-style: none;
-//   padding: 10px;
-//   margin: 5px;
-//   background: hsl(0, 37%, 50%);
-//   cursor: grab;
-//   border: 1px solid hsl(0, 0%, 80%);
-//   border-radius: 10px;
-// }
-
-// li.dragging {
-//   opacity: 0.5;
-// }
-
-// .slider-icon {
-//   width: 20px; // adjust size as needed
-//   height: auto;
-//   margin-right: 8px; // spacing between the icon and text
-//   vertical-align: middle;
-// }
 
 /* ========== Tab-Content : Log =========== */
 

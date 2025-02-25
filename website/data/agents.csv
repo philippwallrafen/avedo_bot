@@ -1,8 +1,8 @@
 name,surname,inboundoutbound,priority,skill_ib,skill_ob,valid
-hans,meier,inbound,1,1,0,true
-melissa,musterfrau,inbound,2,1,0,true
-giovanni,type,inbound,3,1,0,true
-michael,schmidt,inbound,4,1,0,true
-max,mustermann,inbound,5,1,0,true
-sabine,schmidt,inbound,6,1,0,true
-random,outbounder,outbound,7,0,1,true
+hose,melissa,inbound,1,true,false,true
+mustermann,max,inbound,2,true,false,true
+kuckucksmilch,jan,inbound,3,true,false,true
+schmidt,michael,inbound,4,false,true,true
+schmidt,sabine,inbound,5,true,false,true
+armstrong,henry,outbound,6,false,true,true
+meier,hans,outbound,7,true,false,true

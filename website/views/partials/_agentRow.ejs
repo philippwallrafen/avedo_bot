@@ -5,8 +5,8 @@
   data-name="<%= agent.name %>"
   data-surname="<%= agent.surname %>"
   data-priority="<%= agent.priority %>"
-  data-skill_ib="<%= agent.skill_ib %>"
-  data-skill_ob="<%= agent.skill_ob %>"
+  data-skill_ib="<%= !!agent.skill_ib %>"
+  data-skill_ob="<%= !!agent.skill_ob %>"
   class="<%= agent.invalid ? 'error-agent' : '' %>"
 >
   <!-- Drag-handle icon (shown if you want to drag the row) -->
@@ -18,7 +18,7 @@
     <%= agent.name %>
   </span>
 
-  <!-- Skill checkboxes (both inbound and outbound, whichever is checked) -->
+  <!-- Skill radios (both inbound and outbound, whichever is checked) -->
   <div class="radios">
     <label>
       <!-- prettier-ignore -->
