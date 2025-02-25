@@ -36,7 +36,7 @@ body {
   color: var(--text-color);
 }
 
-.container {
+.wrapper {
   display: flex;
   height: 100dvh;
   width: 100dvw;
@@ -155,39 +155,109 @@ body:not(:has(:target)) #dashboard {
 
 /* =========== Tab-Content : Monitor ============ */
 
+/* ============== Tab-Content : Dashboard ============== */
+
+/* Global Agent List Styles */
+.agent-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+    background: hsl(0, 37%, 50%);
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 10px;
+    cursor: grab;
+
+    &.dragging {
+      opacity: 0.5;
+    }
+
+    /* Drag handle icon */
+    .slider-icon {
+      width: 20px; // adjust size as needed
+      height: auto;
+      margin-right: 8px; // spacing between icon and text
+      vertical-align: middle;
+    }
+
+    /* Container for the skill checkboxes */
+    .checkboxes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      margin-left: auto; // optionally push checkboxes to the far side
+
+      label {
+        font-size: 0.9em;
+        color: var(--text-color);
+      }
+    }
+  }
+}
+
+.error-agent {
+  background-color: #ffdddd;
+  border: 1px solid #ff4444;
+}
+
+.error-message {
+  color: #ff4444;
+  font-weight: bold;
+}
+
+/* ============== Tab-Content : Skills ============== */
+
+// /* Container for the checkboxes */
+// .checkboxes {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 0.5em;
+// }
+
+// /* Optionally, adjust the labels or input sizes */
+// .checkboxes label {
+//   font-size: 0.9em;
+//   color: var(--text-color);
+// }
+
 /* ============== Tab-Content : Agent priority ============== */
 
-#agent_priority button {
-  margin: 10px;
-  padding: 10px;
-  background: hsl(0, 37%, 50%);
-  border: 1px solid hsl(0, 0%, 80%);
-  border-radius: 10px;
-  cursor: pointer;
-}
+// #agent_priority button {
+//   margin: 10px;
+//   padding: 10px;
+//   background: hsl(0, 37%, 50%);
+//   border: 1px solid hsl(0, 0%, 80%);
+//   border-radius: 10px;
+//   cursor: pointer;
+// }
 
-#agentList li {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  padding: 10px;
-  margin: 5px;
-  background: hsl(0, 37%, 50%);
-  cursor: grab;
-  border: 1px solid hsl(0, 0%, 80%);
-  border-radius: 10px;
-}
+// #agentList li {
+//   display: flex;
+//   align-items: center;
+//   list-style: none;
+//   padding: 10px;
+//   margin: 5px;
+//   background: hsl(0, 37%, 50%);
+//   cursor: grab;
+//   border: 1px solid hsl(0, 0%, 80%);
+//   border-radius: 10px;
+// }
 
-li.dragging {
-  opacity: 0.5;
-}
+// li.dragging {
+//   opacity: 0.5;
+// }
 
-.slider-icon {
-  width: 20px; // adjust size as needed
-  height: auto;
-  margin-right: 8px; // spacing between the icon and text
-  vertical-align: middle;
-}
+// .slider-icon {
+//   width: 20px; // adjust size as needed
+//   height: auto;
+//   margin-right: 8px; // spacing between the icon and text
+//   vertical-align: middle;
+// }
 
 /* ========== Tab-Content : Log =========== */
 

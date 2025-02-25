@@ -10,7 +10,11 @@ export default [
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
+      env: {
+        browser: true,
+      },
       globals: {
+        console: "readonly",
         window: "readonly",
         document: "readonly",
       },
@@ -20,11 +24,6 @@ export default [
       "prettier/prettier": "error", // Shows Prettier issues as ESLint errors
       "no-unused-vars": "warn", // Warns for unused variables
       "no-undef": "error", // Flags undeclared variables as errors
-    },
-    settings: {
-      environment: {
-        browser: true, // This is to indicate browser environment
-      },
     },
   },
 ];

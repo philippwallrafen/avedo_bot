@@ -1,0 +1,9 @@
+<!-- _agentList.ejs -->
+<!-- Renders a section with a heading + an <ol> of agent rows -->
+
+<h2><%= title %></h2>
+<ol id="<%= listId %>" class="agent-list">
+  <% agents.forEach(agent => { %>
+  <%- include('_agentRow', { agent }) %>
+  <% }) %>
+</ol>

@@ -1,95 +1,120 @@
-// --- Reusable debounceRaf function ---
-function debounceRaf(fn) {
-  if (typeof fn !== "function") {
-    throw new TypeError("Expected a function");
-  }
-  let rafId;
-  return function (...args) {
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(() => fn.apply(this, args));
-  };
-}
-
-// --- Fetch Agents from the Server ---
-async function fetchAgents() {
-  const response = await fetch("http://localhost:3000/agents");
-  return response.json();
-}
-
-// --- Create the Agent List in the DOM ---
-function createList(items) {
-  const list = document.getElementById("agentList");
-  if (!list) return;
-  list.innerHTML = "";
-  items.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.dataset.priority = index + 1;
-    li.dataset.name = item.name;
-    li.dataset.surname = item.surname;
-    li.dataset.inboundoutbound = item.inboundoutbound;
-
-    // Create the slider icon image
-    const sliderIcon = document.createElement("img");
-    sliderIcon.src = "/images/icons/drag_indicator.svg"; // Use absolute path
-    sliderIcon.alt = "Slider Icon";
-    sliderIcon.className = "slider-icon";
-    li.appendChild(sliderIcon);
-
-    // Append a span with the agent's name and surname
-    const textSpan = document.createElement("span");
-    textSpan.textContent = ` ${item.name} ${item.surname}`;
-    li.appendChild(textSpan);
-
-    list.appendChild(li);
+/*******************************
+ * Initialize the List (Drag-and-Drop)
+ *******************************/
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".agent-list").forEach((list) => {
+    if (list.querySelector("img.slider-icon")) {
+      Sortable.create(list, {
+        animation: 150,
+        handle: ".slider-icon",
+        onEnd: () => updatePriorities(list),
+      });
+    }
   });
-}
-
-// --- Initialize SortableJS and Build the List ---
-document.addEventListener("DOMContentLoaded", async function () {
-  // Optionally, check if the list is empty before fetching
-  const list = document.getElementById("agentList");
-  if (!list.innerHTML.trim()) {
-    const agents = await fetchAgents();
-    createList(agents);
-  }
-  // Initialize SortableJS on the agent list
-  if (list) {
-    Sortable.create(list, {
-      animation: 150, // Smooth animation during drag
-      onEnd: function () {
-        updatePriorities();
-        // Optionally, auto-save the new order by calling saveOrder();
-      },
-    });
-  }
 });
 
-// --- Update Priorities After Reordering ---
-function updatePriorities() {
-  const listItems = document.querySelectorAll("#agentList li");
-  listItems.forEach((li, index) => {
-    li.dataset.priority = index + 1;
+/**
+ * Aktualisiert die Priorität der Agenten und sendet die Änderungen an den Server.
+ * @param {HTMLElement} list - Die Liste, die aktualisiert wurde.
+ */
+async function updatePriorities(list) {
+  const allLists = {
+    inbound: document.querySelectorAll("#inboundList li"),
+    outbound: document.querySelectorAll("#outboundList li"),
+  };
+
+  // Bestimmen, ob die aktualisierte Liste inbound oder outbound ist
+  const listType = list.id === "outboundList" ? "outbound" : "inbound";
+  const offset = listType === "outbound" ? allLists.inbound.length : 0;
+
+  const updatedPriorities = [];
+
+  list.querySelectorAll("li").forEach((li, index) => {
+    const newPriority = index + 1 + offset;
+    li.dataset.priority = newPriority;
+
+    updatedPriorities.push({
+      name: li.dataset.name,
+      surname: li.dataset.surname,
+      priority: newPriority,
+    });
   });
+
+  try {
+    const response = await fetch("/update-agent-priority", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedPriorities),
+    });
+
+    if (!response.ok) throw new Error("Server-Antwort fehlgeschlagen");
+    console.log("Agenten-Prioritäten erfolgreich aktualisiert!");
+  } catch (error) {
+    console.error("Fehler beim Speichern der Prioritäten:", error);
+  }
 }
 
-// --- Save the New Order to the Server ---
-async function saveOrder() {
-  const listItems = [...document.querySelectorAll("#agentList li")];
-  const updatedAgents = listItems.map((li, index) => ({
-    name: li.dataset.name,
-    surname: li.dataset.surname,
-    inboundoutbound: li.dataset.inboundoutbound,
-    priority: index + 1,
-  }));
+/*******************************
+ * Skill-Änderungen Handhaben
+ *******************************/
+/**
+ * Aktualisiert die Skill-Daten eines Agenten im UI.
+ * @param {HTMLElement} radio - Das angeklickte Radio-Element.
+ * @param {string} name - Vorname des Agenten.
+ * @param {string} surname - Nachname des Agenten.
+ */
+function updateSkill(radio, name, surname) {
+  const listItem = document.querySelector(`li[data-name="${name}"][data-surname="${surname}"]`);
+  if (!listItem) return;
 
-  await fetch("http://localhost:3000/update-agents", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(updatedAgents),
-  });
-
-  alert("CSV file updated!");
+  const isInbound = radio.value === "inbound";
+  listItem.dataset.skill_ib = isInbound ? 1 : 0;
+  listItem.dataset.skill_ob = isInbound ? 0 : 1;
 }
 
-// --- (Optional) Location Text Update Code ---
-// ... (your location text code remains here) ...
+/*******************************
+ * Agenten-Daten speichern
+ *******************************/
+async function saveSkills() {
+  const agentLists = {
+    inbound: [...document.querySelectorAll("#inboundList li:not(.error-agent)")],
+    outbound: [...document.querySelectorAll("#outboundList li:not(.error-agent)")],
+  };
+
+  if (!agentLists.inbound.length && !agentLists.outbound.length) {
+    alert("❌ Keine gültigen Agenten gefunden!");
+    return;
+  }
+
+  const updatedAgents = [];
+
+  Object.entries(agentLists).forEach(([type, list]) => {
+    list.forEach((li, index) => {
+      updatedAgents.push({
+        name: li.dataset.name,
+        surname: li.dataset.surname,
+        inboundoutbound: type,
+        priority: type === "outbound" ? index + 1 + agentLists.inbound.length : index + 1,
+        skill_ib: li.dataset.skill_ib === "1" ? 1 : 0,
+        skill_ob: li.dataset.skill_ob === "1" ? 1 : 0,
+      });
+    });
+  });
+
+  console.log("📤 Sende folgende Daten:", updatedAgents);
+
+  try {
+    const response = await fetch("/update-agent-skills", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedAgents),
+    });
+
+    if (!response.ok) throw new Error("Fehlerhafte Server-Antwort");
+
+    alert("Agentendaten erfolgreich aktualisiert!");
+  } catch (error) {
+    console.error("Fehler beim Aktualisieren der Agentendaten:", error);
+    alert("Fehler beim Aktualisieren der Agentendaten.");
+  }
+}

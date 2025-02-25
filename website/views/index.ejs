@@ -7,6 +7,33 @@
 <section id="dashboard" class="tab-content">
   <h1>Dashboard</h1>
   <p>Dashboard page<br /><br /><br /></p>
+  <!-- Separate inbound vs. outbound properly inside a single code block: -->
+
+  <button onclick="saveSkills()">Save Skills</button>
+  <!-- prettier-ignore -->
+  <% 
+    const inboundAgents = agents
+      .filter(a => !a.inboundoutbound || a.inboundoutbound === 'inbound')
+      .sort((a, b) => a.priority - b.priority);
+
+    const outboundAgents = agents
+      .filter(a => a.inboundoutbound === 'outbound')
+      .sort((a, b) => a.priority - b.priority);
+  %>
+
+  <!-- Render outbound list partial -->
+  <%- include('partials/_agentList', {
+    title: 'Inbound Agents',
+    listId: 'inboundList',
+    agents: inboundAgents
+  })
+  %>
+  <%- include('partials/_agentList', {
+    title: 'Outbound Agents',
+    listId: 'outboundList',
+    agents: outboundAgents
+  })
+  %>
 </section>
 
 <section id="monitor" class="tab-content">
@@ -18,44 +45,14 @@
 <section id="skills" class="tab-content">
   <h1>Skills</h1>
   <p>Skills page<br /><br /><br /></p>
-  <ul>
-    <li>agent1</li>
-    <li>agent2</li>
-    <li>agent3</li>
-  </ul>
-  <!-- <ol id="agentList"></ol> -->
 </section>
 
 <section id="agent_priority" class="tab-content">
   <h1>Agent Priority</h1>
   <p>Agent priority page<br /><br /><br /></p>
-  <button onclick="saveOrder()">Save Order</button>
-  <ol id="agentList">
-    <% if (agents && agents.length) { %> <% agents.forEach(function(agent) { %>
-    <li
-      data-name="<%= agent.name %>"
-      data-surname="<%= agent.surname %>"
-      data-inboundoutbound="<%= agent.inboundoutbound %>"
-      data-priority="<%= agent.priority %>"
-    >
-      <img
-        src="/images/icons/drag_indicator.svg"
-        alt="Slider Icon"
-        class="slider-icon"
-      />
-      <span
-        ><%= agent.name %>
-        <%= agent.surname %></span
-      >
-    </li>
-    <% }); %>
-    <% } else { %>
-    <li>No agents found</li>
-    <% } %>
-  </ol>
   <p>
-    <br />(Am besten Websocket, damit alle Skillseiten synchron sind)<br />
-    (Initialisierung mit HTML und nur fürs Verschieben JavaScript später)
+    <br />(Initialisierung mit HTML und nur fürs Verschieben JavaScript)<br />
+    (Am besten Websocket, damit alle Skillseiten synchron sind)
   </p>
 </section>
 

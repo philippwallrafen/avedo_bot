@@ -1,0 +1,46 @@
+<!-- _agentRow.ejs -->
+<!-- Renders a single <li> for an agent -->
+
+<li
+  data-name="<%= agent.name %>"
+  data-surname="<%= agent.surname %>"
+  data-priority="<%= agent.priority %>"
+  data-skill_ib="<%= agent.skill_ib %>"
+  data-skill_ob="<%= agent.skill_ob %>"
+  class="<%= agent.invalid ? 'error-agent' : '' %>"
+>
+  <!-- Drag-handle icon (shown if you want to drag the row) -->
+  <img src="/images/icons/drag_indicator.svg" alt="Drag Icon" class="slider-icon" />
+
+  <!-- Display the agent's name -->
+  <span>
+    <%= agent.surname %>,
+    <%= agent.name %>
+  </span>
+
+  <!-- Skill checkboxes (both inbound and outbound, whichever is checked) -->
+  <div class="radios">
+    <label>
+      <!-- prettier-ignore -->
+      <input
+        type="radio"
+        name="skill-<%= agent.name %>-<%= agent.surname %>"
+        value="inbound"
+        <%= agent.skill_ib ? 'checked' : '' %>
+        onchange="updateSkill(this, '<%= agent.name %>', '<%= agent.surname %>')"
+      />
+      Inbound
+    </label>
+    <label>
+      <!-- prettier-ignore -->
+      <input
+        type="radio"
+        name="skill-<%= agent.name %>-<%= agent.surname %>"
+        value="outbound"
+        <%= agent.skill_ob ? 'checked' : '' %>
+        onchange="updateSkill(this, '<%= agent.name %>', '<%= agent.surname %>')"
+      />
+      Outbound
+    </label>
+  </div>
+</li>

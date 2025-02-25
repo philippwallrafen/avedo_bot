@@ -32,7 +32,7 @@ body {
   color: var(--text-color);
 }
 
-.container {
+.wrapper {
   display: flex;
   height: 100dvh;
   width: 100dvw;
@@ -134,39 +134,57 @@ body:not(:has(:target)) #dashboard {
 }
 
 /* =========== Tab-Content : Monitor ============ */
-/* ============== Tab-Content : Agent priority ============== */
-#agent_priority button {
-  margin: 10px;
-  padding: 10px;
-  background: hsl(0, 37%, 50%);
-  border: 1px solid hsl(0, 0%, 80%);
-  border-radius: 10px;
-  cursor: pointer;
+/* ============== Tab-Content : Dashboard ============== */
+/* Global Agent List Styles */
+.agent-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-
-#agentList li {
+.agent-list li {
   display: flex;
   align-items: center;
-  list-style: none;
   padding: 10px;
   margin: 5px;
   background: hsl(0, 37%, 50%);
-  cursor: grab;
   border: 1px solid hsl(0, 0%, 80%);
   border-radius: 10px;
+  cursor: grab;
+  /* Drag handle icon */
+  /* Container for the skill checkboxes */
 }
-
-li.dragging {
+.agent-list li.dragging {
   opacity: 0.5;
 }
-
-.slider-icon {
+.agent-list li .slider-icon {
   width: 20px;
   height: auto;
   margin-right: 8px;
   vertical-align: middle;
 }
+.agent-list li .checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-left: auto;
+}
+.agent-list li .checkboxes label {
+  font-size: 0.9em;
+  color: var(--text-color);
+}
 
+.error-agent {
+  background-color: #ffdddd;
+  border: 1px solid #ff4444;
+}
+
+.error-message {
+  color: #ff4444;
+  font-weight: bold;
+}
+
+/* ============== Tab-Content : Skills ============== */
+/* ============== Tab-Content : Agent priority ============== */
 /* ========== Tab-Content : Log =========== */
 /* Style for the log window */
 #log-window {
@@ -192,4 +210,4 @@ li.dragging {
   #site-logo {
     display: none;
   }
-} /*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */
