@@ -9,15 +9,15 @@
   "license": "ISC",
   "prettier": "config/prettier.config.js",
   "eslint.options": {
-    "configFile": "config/eslint.config.js"
+    "configFile": "config/eslint.config.mjs"
   },
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "ts-node src/server.ts",
-    "build": "tsc",
+    "dev": "ts-node --project config/tsconfig.json src/server.ts",
+    "build": "tsc --project config/tsconfig.json",
     "lint": "eslint . --config config/eslint.config.mjs --fix",
     "format": "prettier --config config/prettier.config.js --write .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified, later jest or vitest\" && exit 1"
   },
   "dependencies": {
     "cors": "^2.8.5",

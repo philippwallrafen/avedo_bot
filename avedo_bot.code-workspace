@@ -1,0 +1,50 @@
+{
+	"folders": [
+	  {
+		"path": "."
+	  },
+	  {
+		"path": "scrape_monitor"
+	  },
+	  {
+		"path": "website"
+	  }
+	],
+	"settings": {
+	  "files.autoSave": "afterDelay",
+	  "editor.defaultFormatter": "esbenp.prettier-vscode",
+	  "prettier.requireConfig": true,
+	  "prettier.useWorkspaceVersion": true,
+	  "prettier.plugins": ["./node_modules/prettier-plugin-ejs"],
+	  "prettier.pluginSearchDirs": ["."],
+	  "[ejs]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	  },
+	  "editor.formatOnSave": true,
+	  "stylelint.configBasedir": "./config",
+	  "stylelint.configFile": "./config/stylelint.config.mjs",
+	  "stylelint.enable": true,
+	  "css.validate": false,
+	  "scss.validate": false,
+	  "stylelint.validate": ["css", "scss"],
+	  "eslint.workingDirectories": [
+		{ "directory": "./config", "changeProcessCWD": true }
+	  ],
+	  "editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	  },
+	  "eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact"
+	  ],
+	  "[javascript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	  },
+	  "[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	  }
+	}
+  }
+  
