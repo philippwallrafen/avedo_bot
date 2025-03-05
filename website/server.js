@@ -18,6 +18,7 @@ import fs from "fs/promises";
 import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
+import { logInfo, logError, logWarning } from "./logger.js"; // Import logging functions
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FILE_PATH = path.join(__dirname, "data", "agents.csv");
@@ -171,6 +172,7 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
 
 // Route: Render Index Page
 app.get("/", async (req, res) => {
+  await logInfo("Root route accessed");
   try {
     const agents = await parseAgents();
     res.render("index", { agents });
@@ -220,6 +222,30 @@ app.post("/update-agent-skills", (req, res) => {
   );
 });
 
+// Graceful shutdown handler
+async function handleShutdown(signal) {
+  console.log(`\n⚠️  Received ${signal}, shutting down gracefully...`);
+  await logInfo(`Server is shutting down due to ${signal}`);
+
+  server.close(() => {
+    console.log("✅ Server shut down successfully.");
+    process.exit(0);
+  });
+
+  // Force exit if server takes too long to close
+  setTimeout(() => {
+    console.error("❌ Forced shutdown due to timeout.");
+    process.exit(1);
+  }, 5000);
+}
+
+// Handle termination signals
+process.on("SIGINT", handleShutdown); // CTRL+C (local)
+process.on("SIGTERM", handleShutdown); // Cloud/Docker shutdown
+
 // Start Server
 const PORT = 3000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+const server = app.listen(PORT, async () => {
+  await logInfo(`Server started on port ${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+});

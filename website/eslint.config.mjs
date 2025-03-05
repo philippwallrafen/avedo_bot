@@ -2,7 +2,7 @@
 import eslint from "@eslint/js";
 import prettier from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
-import globals from "globals";  // ✅ Automatische Browser-Globals
+import globals from "globals";
 
 export default [
   eslint.configs.recommended,
@@ -13,6 +13,7 @@ export default [
       sourceType: "module",
       globals: {
         ...globals.browser, // ✅ Alle Browser-Globals automatisch setzen!
+        ...globals.node,
         Sortable: "readonly", // ✅ Externe Library als Global setzen
       },
     },
@@ -23,6 +24,7 @@ export default [
       "prettier/prettier": "error",
       "no-unused-vars": "warn",
       "no-undef": "error",
+      "linebreak-style": ["error", "unix"],
     },
   },
 ];
