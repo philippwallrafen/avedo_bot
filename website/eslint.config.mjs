@@ -2,6 +2,7 @@
 import eslint from "@eslint/js";
 import prettier from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
+import globals from "globals";  // ✅ Automatische Browser-Globals
 
 export default [
   eslint.configs.recommended,
@@ -11,16 +12,17 @@ export default [
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
-        console: "readonly",
-        window: "readonly",
-        document: "readonly",
+        ...globals.browser, // ✅ Alle Browser-Globals automatisch setzen!
+        Sortable: "readonly", // ✅ Externe Library als Global setzen
       },
     },
-    plugins: { prettier: prettierPlugin },
+    plugins: {
+      prettier: prettierPlugin,
+    },
     rules: {
-      "prettier/prettier": "error", // Shows Prettier issues as ESLint errors
-      "no-unused-vars": "warn", // Warns for unused variables
-      "no-undef": "error", // Flags undeclared variables as errors
+      "prettier/prettier": "error",
+      "no-unused-vars": "warn",
+      "no-undef": "error",
     },
   },
 ];

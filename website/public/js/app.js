@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .push([
           `%c🔄 Detected Skill Change:%c\n👤 Agent: %c${capitalize(surname)}, ${capitalize(
             name
-          )}%c\n📞 New Skill: %c${capitalize(event.target.value)}`,
+          )}%c\n📞 Neuer Skill: %c${capitalize(event.target.value)}`,
           "color: #2196f3; font-weight: bold;",
           "",
           "color: #9c27b0; font-weight: bold;",
@@ -83,9 +83,29 @@ async function updatePriorities(list) {
     const newPriority = index + 1 + offset;
     li.dataset.priority = newPriority;
 
+    const surname = li.dataset.surname;
+    const name = li.dataset.name;
+    const key = `${surname}-${name}`; // 🔑 Unique key per agent
+
+    // 📝 Ensure an array exists before pushing
+    if (!debugLogPriorities.has(key)) {
+      debugLogPriorities.set(key, []);
+    }
+
+    debugLogPriorities.get(key).push([
+      `%c🔄 Detected Priority Change:%c\n👤 Agent: %c${capitalize(surname)}, ${capitalize(
+        name
+      )}%c\n🏆 New Priority: %c${newPriority}`,
+      "color: #2196f3; font-weight: bold;", // 🔵 Blue for detection
+      "",
+      "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
+      "",
+      "color: #ff9800; font-weight: bold;", // 🟠 Orange for priority update
+    ]);
+
     updatedPriorities.push({
-      surname: li.dataset.surname,
-      name: li.dataset.name,
+      surname,
+      name,
       priority: newPriority,
     });
   });
@@ -97,10 +117,56 @@ async function updatePriorities(list) {
       body: JSON.stringify(updatedPriorities),
     });
 
-    if (!response.ok) throw new Error("Server-Antwort fehlgeschlagen");
-    console.log("Agenten-Prioritäten erfolgreich aktualisiert!");
+    if (!response.ok) {
+      const errorResponse = await response.json().catch(() => ({ error: "Unknown server error" }));
+      throw new Error(`${errorResponse.error}: ${errorResponse.details || "No additional details"}`);
+    }
+
+    const maxNameLength = Math.max(
+      ...updatedPriorities.map(({ surname, name }) => surname.length + name.length + 3) // +2 für ", "
+    );
+
+    const logMessage = [
+      `✅ %cServer: Prioritäten erfolgreich aktualisiert\n\n`,
+      "color: #4caf50; font-weight: bold;", // 🟢 Grün für Erfolg
+    ];
+
+    updatedPriorities.forEach(({ surname, name, priority }) => {
+      const nameBlock = `${capitalize(surname)}, ${capitalize(name)}`.padEnd(maxNameLength);
+
+      logMessage[0] += `%c  👤 Agent: %c${nameBlock}%c 📜 Neue Prio: %c${priority}%c\n`;
+      logMessage.push(
+        "",
+        "color: #9c27b0; font-weight: bold;", // 🟣 Lila für Namen
+        "", // Reset after Namen
+        "color: #ff9800; font-weight: bold;", // 🟠 Orange für Priorität
+        "" // Reset formatting after priority
+      );
+    });
+
+    console.log(...logMessage);
+
+    // 🧹 Remove logs after success
+    updatedPriorities.forEach(({ surname, name }) => {
+      const key = `${surname}-${name}`;
+      debugLogPriorities.delete(key);
+    });
   } catch (error) {
-    console.error("Fehler beim Speichern der Prioritäten:", error);
+    console.error(
+      `%c❌ Error updating agent priorities:%c\n${error.message}`,
+      "color: #ff3333; font-weight: bold;", // 🔴 Red for errors
+      ""
+    );
+
+    // 🔥 Print all stored logs for this failed request
+    updatedPriorities.forEach(({ surname, name }) => {
+      const key = `${surname}-${name}`;
+      if (debugLogPriorities.has(key)) {
+        debugLogPriorities.get(key).forEach((log) => console.log(...log));
+      }
+    });
+
+    alert("Fehler beim Aktualisieren der Agenten-Prioritäten.");
   }
 }
 
@@ -155,9 +221,9 @@ async function updateSkills(radio, surname, name) {
     const skillType = updatedSkills.skill_ib ? "Inbound" : "Outbound";
 
     console.log(
-      `%c✅ Skill Successfully Updated:%c\n👤 Agent: %c${capitalize(surname)}, ${capitalize(
+      `%c✅ Server: Skill erfolgreich aktualisiert%c\n\n  👤 Agent: %c${capitalize(surname)}, ${capitalize(
         name
-      )}%c\n📞 New Skill: %c${skillType}`,
+      )}%c\n  📞 Neuer Skill: %c${skillType}`,
       "color: #4caf50; font-weight: bold;", // 🟢 Green for final success
       "",
       "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
@@ -174,10 +240,6 @@ async function updateSkills(radio, surname, name) {
       "color: #ff3333; font-weight: bold;", // 🔴 Red for errors
       ""
     );
-
-    // 🛑 Only log previous messages from the queue if an error occurs
-    // debugLogQueue.forEach(log => console.log(...log));
-    // debugLogQueue.length = 0;
 
     alert("Fehler beim Aktualisieren der Agentendaten.");
     debugLogSkills.delete(key); // 🧹 Remove log after success

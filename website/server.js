@@ -37,9 +37,9 @@ app.use(expressLayouts);
 app.set("layout", "layout");
 
 // ========= Helper Functions ===========
-// const isValidNumber = (val) => Number.isInteger((val = +val)) && val >= 0;
-// const isValidSkill = val => val === true || val === false;
-// const toBoolean = (val) => val === "true";
+const isValidNumber = (val) => Number.isInteger((val = +val)) && val >= 0;
+const isValidSkill = (val) => typeof val === "boolean";
+const toBoolean = (val) => val === true || val === "true" || val === 1;
 
 /**
  * Liest die CSV-Datei und gibt ein Array von Agenten zurück.
@@ -56,8 +56,8 @@ async function parseAgents() {
     const lines = data
       .trim()
       .split("\n")
-      .filter(line => line.trim() !== ""); //filter empty lines
-    
+      .filter((line) => line.trim() !== ""); //filter empty lines
+
     if (lines.length < 2) {
       console.warn("⚠️ CSV-Datei ist leer oder enthält nur den Header.");
       return [];
@@ -70,11 +70,6 @@ async function parseAgents() {
   }
 }
 
-
-const isValidNumber = (val) => Number.isInteger((val = +val)) && val >= 0;
-const isValidSkill = (val) => typeof val === "boolean";
-const toBoolean = (val) => val === true || val === "true" || val === 1;
-
 /**
  * Wandelt eine CSV-Zeile in ein Agenten-Objekt um.
  */
@@ -82,8 +77,9 @@ function processLine(line) {
   const values = line.split(",").map((col) => col.trim());
 
   // CSV-Werte zuordnen
-  let agent = {...Object.fromEntries(CSV_HEADER.map((key, index) => [key, values[index]])),
-    valid: true,  // Standardmäßig als gültig markieren
+  let agent = {
+    ...Object.fromEntries(CSV_HEADER.map((key, index) => [key, values[index]])),
+    valid: true, // Standardmäßig als gültig markieren
   };
 
   //console.log("BEFORE CONVERSION:", agent); // Debugging: Zeigt Werte vor der Umwandlung
@@ -92,15 +88,17 @@ function processLine(line) {
   agent.priority = Number(agent.priority);
   agent.skill_ib = toBoolean(agent.skill_ib);
   agent.skill_ob = toBoolean(agent.skill_ob);
-  agent.valid = toBoolean(agent.valid); 
+  agent.valid = toBoolean(agent.valid);
 
   //console.log("AFTER CONVERSION:", agent); // Debugging: Zeigt Werte nach der Umwandlung
 
   // Fehlervalidierung
   const errors = [];
-  if (values.length !== CSV_HEADER.length) errors.push(`Falsche Anzahl an Spalten: ${values.length} / ${CSV_HEADER.length}`);
+  if (values.length !== CSV_HEADER.length)
+    errors.push(`Falsche Anzahl an Spalten: ${values.length} / ${CSV_HEADER.length}`);
   if (!agent.surname || !agent.name) errors.push("Vor- oder Nachname fehlt");
-  if (!["inbound", "outbound"].includes(agent.inboundoutbound)) errors.push(`Ungültiger inboundoutbound-Wert: "${values[CSV_HEADER.indexOf("inboundoutbound")]}"`);
+  if (!["inbound", "outbound"].includes(agent.inboundoutbound))
+    errors.push(`Ungültiger inboundoutbound-Wert: "${values[CSV_HEADER.indexOf("inboundoutbound")]}"`);
   if (!isValidNumber(agent.priority)) errors.push(`Ungültige Priorität: "${values[CSV_HEADER.indexOf("priority")]}"`);
   if (!isValidSkill(agent.skill_ib) || !isValidSkill(agent.skill_ob)) errors.push("Ungültige Skill-Werte");
 
@@ -111,7 +109,6 @@ function processLine(line) {
 
   return agent;
 }
-
 
 /**
  * Saves agents to the CSV file.
@@ -201,39 +198,27 @@ app.post("/update-agent-priority", (req, res) =>
 );
 
 // Neue Route: Aktualisiert die Agenten-Skills
-
 app.post("/update-agent-skills", (req, res) => {
-  if (Math.random() < 0.5) {  // 50% chance to fail
-    console.log("🔴 Simulated Server Failure");
-    return res.status(500).json({ error: "❌ Random Failure Triggered" });
-  }
+  updateAgents(
+    req,
+    res,
+    (agent, { skill_ib, skill_ob }) => {
+      console.log(`🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
+      console.log(`   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);
+      console.log(`   ➝ Neu:     skill_ib=${skill_ib}, skill_ob=${skill_ob}`);
 
-  console.log("✅ Server processed request successfully!");
-  res.json({ message: "✅ Skills updated successfully!" });
+      if (agent.skill_ib !== skill_ib || agent.skill_ob !== skill_ob) {
+        console.log(`✅ Aktualisiert: ${agent.surname}, ${agent.name}`);
+        Object.assign(agent, { skill_ib, skill_ob });
+        return true;
+      } else {
+        console.log(`❌ Keine Änderung nötig: ${agent.surname}, ${agent.name}`);
+        return false;
+      }
+    },
+    "Agenten-Skills erfolgreich aktualisiert!"
+  );
 });
-
-
-// app.post("/update-agent-skills", (req, res) => {
-//   updateAgents(
-//     req,
-//     res,
-//     (agent, { skill_ib, skill_ob }) => {
-//       console.log(`🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
-//       console.log(`   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);
-//       console.log(`   ➝ Neu:     skill_ib=${skill_ib}, skill_ob=${skill_ob}`);
-
-//       if (agent.skill_ib !== skill_ib || agent.skill_ob !== skill_ob) {
-//         console.log(`✅ Aktualisiert: ${agent.surname}, ${agent.name}`);
-//         Object.assign(agent, { skill_ib, skill_ob });
-//         return true;
-//       } else {
-//         console.log(`❌ Keine Änderung nötig: ${agent.surname}, ${agent.name}`);
-//         return false;
-//       }
-//     },
-//     "Agenten-Skills erfolgreich aktualisiert!"
-//   );
-// });
 
 // Start Server
 const PORT = 3000;
