@@ -2,6 +2,7 @@
 
 :root {
   --background-color: hsl(0, 0%, 10%);
+  --main-color: hsl(0, 37%, 50%);
   --sidebar-bg-color: hsl(0, 45%, 45%);
   --sidebar-hover-bg-color: hsl(0, 33%, 64%);
   --text-color: hsl(0, 0%, 100%);
@@ -157,6 +158,21 @@ body:not(:has(:target)) #dashboard {
 
 /* ============== Tab-Content : Dashboard ============== */
 
+[role="toolbar"] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: var(--main-color);
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
 /* Global Agent List Styles */
 .agent-list {
   list-style: none;
@@ -168,35 +184,44 @@ body:not(:has(:target)) #dashboard {
     align-items: center;
     padding: 5px;
     margin: 5px;
-    background: hsl(0, 37%, 50%);
+    background: var(--main-color);
     border: 1px solid hsl(0, 0%, 80%);
     border-radius: 10px;
-    cursor: grab;
+    text-transform: capitalize;
 
     &.dragging {
-      opacity: 1;
+      opacity: 0;
+      box-shadow: 2px 2px 4px hsla(0, 0%, 0%); /* Optional: Visuelle Erhöhung */
+      background: hsl(0, 37%, 45%);
     }
 
     /* Drag handle icon */
     .slider-icon {
-      width: 20px; // adjust size as needed
+      color: hsl(0, 0%, 100%) !important;
+      // width: 30px; // adjust size as needed
       height: auto;
-      margin-right: 8px; // spacing between icon and text
+      // margin-right: 15px; // spacing between icon and text
       vertical-align: middle;
+      cursor: grab;
     }
 
     /* Container for the skill checkboxes */
     .radios {
+      cursor: pointer;
       display: flex;
-      flex-direction: column;
+      // flex-direction: column;
       gap: 0.5em;
       margin-left: auto; // optionally push checkboxes to the far side
 
       label {
         font-size: 0.9em;
         color: var(--text-color);
+        cursor: pointer;
       }
     }
+  }
+  li[data-valid="false"] {
+    background: hsl(0, 58%, 18%);
   }
 }
 

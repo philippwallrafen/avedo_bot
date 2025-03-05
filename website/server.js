@@ -21,7 +21,7 @@ import cors from "cors";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FILE_PATH = path.join(__dirname, "data", "agents.csv");
-const CSV_HEADER = ["name", "surname", "inboundoutbound", "priority", "skill_ib", "skill_ob", "valid"];
+const CSV_HEADER = ["surname", "name", "inboundoutbound", "priority", "skill_ib", "skill_ob", "valid"];
 
 const app = express();
 
@@ -99,7 +99,7 @@ function processLine(line) {
   // Fehlervalidierung
   const errors = [];
   if (values.length !== CSV_HEADER.length) errors.push(`Falsche Anzahl an Spalten: ${values.length} / ${CSV_HEADER.length}`);
-  if (!agent.surname || !agent.name) errors.push("Name oder Nachname fehlt");
+  if (!agent.surname || !agent.name) errors.push("Vor- oder Nachname fehlt");
   if (!["inbound", "outbound"].includes(agent.inboundoutbound)) errors.push(`Ungültiger inboundoutbound-Wert: "${values[CSV_HEADER.indexOf("inboundoutbound")]}"`);
   if (!isValidNumber(agent.priority)) errors.push(`Ungültige Priorität: "${values[CSV_HEADER.indexOf("priority")]}"`);
   if (!isValidSkill(agent.skill_ib) || !isValidSkill(agent.skill_ob)) errors.push("Ungültige Skill-Werte");
@@ -138,13 +138,25 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
 
   try {
     const agents = await parseAgents();
-    // ✅ More efficient `.reduce()` implementation
-    const updatedCount = req.body.reduce((count, { name, surname, ...updates }) => {
-      const agent = agents.find((a) => a.name === name && a.surname === surname);
-      return agent && updateCallback(agent, updates) ? count + 1 : count;
+
+    console.log("🔍 Erhaltene Agenten zur Aktualisierung:", req.body);
+
+    const updatedCount = req.body.reduce((count, { surname, name, ...updates }) => {
+      console.log(`🔎 Suche nach Agent: ${surname}, ${name}`);
+
+      const agent = agents.find((a) => a.surname === surname && a.name === name);
+
+      if (agent) {
+        console.log(`✅ Gefundener Agent: ${agent.surname}, ${agent.name}`);
+        return updateCallback(agent, updates) ? count + 1 : count;
+      } else {
+        console.warn(`⚠️ Kein Match gefunden für: ${surname}, ${name}`);
+        return count;
+      }
     }, 0);
 
     if (!updatedCount) {
+      console.error("❌ Fehler: Kein einziger Agent konnte aktualisiert werden.");
       return res.status(400).json({ error: "⚠️ Keine passenden Agenten gefunden." });
     }
 
@@ -152,6 +164,7 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
       agents.sort((a, b) => a.priority - b.priority); // ✅ Sort agents by priority
     }
 
+    console.log(`✅ Erfolgreich aktualisierte Agenten: ${updatedCount}`);
     saveAgents(agents, res, `✅ ${updatedCount} ${successMessage}`);
   } catch (error) {
     console.error("❌ Fehler beim Verarbeiten der Agenten:", error);
@@ -189,20 +202,38 @@ app.post("/update-agent-priority", (req, res) =>
 
 // Neue Route: Aktualisiert die Agenten-Skills
 
-app.post("/update-agent-skills", (req, res) =>
-  updateAgents(
-    req,
-    res,
-    (agent, { skill_ib, skill_ob }) => {
-      if (agent.skill_ib !== skill_ib || agent.skill_ob !== skill_ob) {
-        Object.assign(agent, { skill_ib, skill_ob });
-        return true;
-      }
-      return false;
-    },
-    "Agenten-Skills erfolgreich aktualisiert!"
-  )
-);
+app.post("/update-agent-skills", (req, res) => {
+  if (Math.random() < 0.5) {  // 50% chance to fail
+    console.log("🔴 Simulated Server Failure");
+    return res.status(500).json({ error: "❌ Random Failure Triggered" });
+  }
+
+  console.log("✅ Server processed request successfully!");
+  res.json({ message: "✅ Skills updated successfully!" });
+});
+
+
+// app.post("/update-agent-skills", (req, res) => {
+//   updateAgents(
+//     req,
+//     res,
+//     (agent, { skill_ib, skill_ob }) => {
+//       console.log(`🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
+//       console.log(`   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);
+//       console.log(`   ➝ Neu:     skill_ib=${skill_ib}, skill_ob=${skill_ob}`);
+
+//       if (agent.skill_ib !== skill_ib || agent.skill_ob !== skill_ob) {
+//         console.log(`✅ Aktualisiert: ${agent.surname}, ${agent.name}`);
+//         Object.assign(agent, { skill_ib, skill_ob });
+//         return true;
+//       } else {
+//         console.log(`❌ Keine Änderung nötig: ${agent.surname}, ${agent.name}`);
+//         return false;
+//       }
+//     },
+//     "Agenten-Skills erfolgreich aktualisiert!"
+//   );
+// });
 
 // Start Server
 const PORT = 3000;

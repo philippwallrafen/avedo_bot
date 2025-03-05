@@ -1,15 +1,65 @@
+/* Helper functions */
+function capitalize(word) {
+  return word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase();
+}
+
+const debugLogSkills = new Map(); // 📝 Stores logs for skill updates
+const debugLogPriorities = new Map(); // 📝 Stores logs for priority updates
+
 /*******************************
  * Initialize the List (Drag-and-Drop)
  *******************************/
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".agent-list").forEach((list) => {
-    if (list.querySelector("img.slider-icon")) {
-      Sortable.create(list, {
-        animation: 150,
-        handle: ".slider-icon",
-        onEnd: () => updatePriorities(list),
-      });
-    }
+    Sortable.create(list, {
+      direction: "vertical",
+      animation: 300,
+      handle: ".slider-icon",
+      forceFallback: true,
+      fallbackClass: "dragging",
+      onStart: (evt) => {
+        evt.item.classList.add("dragging"); // Fügt die Klasse hinzu
+      },
+      onEnd: (evt) => {
+        evt.item.classList.remove("dragging"); // Entfernt die Klasse nach dem Drag
+        updatePriorities(list); // Update priorities after dragging
+      },
+    });
+  });
+});
+
+/***********************
+ * Radio Event Listener
+ ***********************/
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('input[name^="skill_"]').forEach((radio) => {
+    radio.addEventListener("change", (event) => {
+      const parentLi = event.target.closest("li");
+      if (!parentLi) return;
+
+      const surname = parentLi.dataset.surname;
+      const name = parentLi.dataset.name;
+      const key = `${surname}-${name}`; // 🔑 Unique key per agent
+
+      if (!debugLogSkills.has(key)) {
+        debugLogSkills.set(key, []);
+      }
+
+      debugLogSkills
+        .get(key)
+        .push([
+          `%c🔄 Detected Skill Change:%c\n👤 Agent: %c${capitalize(surname)}, ${capitalize(
+            name
+          )}%c\n📞 New Skill: %c${capitalize(event.target.value)}`,
+          "color: #2196f3; font-weight: bold;",
+          "",
+          "color: #9c27b0; font-weight: bold;",
+          "",
+          "color: #ff9800; font-weight: bold;",
+        ]);
+
+      updateSkills(event.target, surname, name);
+    });
   });
 });
 
@@ -34,8 +84,8 @@ async function updatePriorities(list) {
     li.dataset.priority = newPriority;
 
     updatedPriorities.push({
-      name: li.dataset.name,
       surname: li.dataset.surname,
+      name: li.dataset.name,
       priority: newPriority,
     });
   });
@@ -60,61 +110,76 @@ async function updatePriorities(list) {
 /**
  * Aktualisiert die Skill-Daten eines Agenten im UI.
  * @param {HTMLElement} radio - Das angeklickte Radio-Element.
- * @param {string} name - Vorname des Agenten.
  * @param {string} surname - Nachname des Agenten.
+ * @param {string} name - Vorname des Agenten.
  */
-function updateSkill(radio, name, surname) {
-  const listItem = document.querySelector(`li[data-name="${name}"][data-surname="${surname}"]`);
+async function updateSkills(radio, surname, name) {
+  const listItem = document.querySelector(`li[data-surname="${surname}"][data-name="${name}"]`);
   if (!listItem) return;
 
   const isInbound = radio.value === "inbound";
   listItem.dataset.skill_ib = isInbound ? "true" : "false";
   listItem.dataset.skill_ob = isInbound ? "false" : "true";
-}
 
-/*******************************
- * Agenten-Daten speichern
- *******************************/
-async function saveSkills() {
-  const agentLists = {
-    inbound: [...document.querySelectorAll("#inboundList li:not(.error-agent)")],
-    outbound: [...document.querySelectorAll("#outboundList li:not(.error-agent)")],
+  const updatedSkills = {
+    surname: listItem.dataset.surname,
+    name: listItem.dataset.name,
+    skill_ib: listItem.dataset.skill_ib === "true",
+    skill_ob: listItem.dataset.skill_ob === "true",
   };
 
-  if (!agentLists.inbound.length && !agentLists.outbound.length) {
-    alert("❌ Keine gültigen Agenten gefunden!");
-    return;
+  const key = `${surname}-${name}`; // 🔑 Unique key per agent
+
+  // 📝 Ensure an array exists before pushing
+  if (!debugLogSkills.has(key)) {
+    debugLogSkills.set(key, []);
   }
 
-  const updatedAgents = [];
+  // 📝 Store another debug message in the queue for data sending
+  debugLogSkills.get(key).push([
+    `%c📤 Sending Data to Server:%c\n${JSON.stringify(updatedSkills, null, 2)}`,
+    "color: #2196f3; font-weight: bold;", // 🔵 Blue for sending data
+    "",
+  ]);
 
-  Object.entries(agentLists).forEach(([type, list]) => {
-    list.forEach((li, index) => {
-      updatedAgents.push({
-        name: li.dataset.name,
-        surname: li.dataset.surname,
-        inboundoutbound: type,
-        priority: type === "outbound" ? index + 1 + agentLists.inbound.length : index + 1,
-        skill_ib: li.dataset.skill_ib === "true",
-        skill_ob: li.dataset.skill_ob === "true",
-      });
-    });
-  });
-
-  console.log("📤 Sende folgende Daten:", updatedAgents);
-
+  // 3. Sende die gesammelten Daten an den Server
   try {
     const response = await fetch("/update-agent-skills", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedAgents),
+      body: JSON.stringify([updatedSkills]),
     });
 
     if (!response.ok) throw new Error("Fehlerhafte Server-Antwort");
 
-    alert("Agentendaten erfolgreich aktualisiert!");
+    const skillType = updatedSkills.skill_ib ? "Inbound" : "Outbound";
+
+    console.log(
+      `%c✅ Skill Successfully Updated:%c\n👤 Agent: %c${capitalize(surname)}, ${capitalize(
+        name
+      )}%c\n📞 New Skill: %c${skillType}`,
+      "color: #4caf50; font-weight: bold;", // 🟢 Green for final success
+      "",
+      "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
+      "",
+      "color: #ff9800; font-weight: bold;" // 🟠 Orange for skill update
+    );
+
+    debugLogSkills.delete(key); // 🧹 Remove log after success
   } catch (error) {
-    console.error("Fehler beim Aktualisieren der Agentendaten:", error);
+    debugLogSkills.get(key).forEach((log) => console.log(...log));
+
+    console.error(
+      `%c❌ Error updating agent skills:%c\n${error.message}`,
+      "color: #ff3333; font-weight: bold;", // 🔴 Red for errors
+      ""
+    );
+
+    // 🛑 Only log previous messages from the queue if an error occurs
+    // debugLogQueue.forEach(log => console.log(...log));
+    // debugLogQueue.length = 0;
+
     alert("Fehler beim Aktualisieren der Agentendaten.");
+    debugLogSkills.delete(key); // 🧹 Remove log after success
   }
 }

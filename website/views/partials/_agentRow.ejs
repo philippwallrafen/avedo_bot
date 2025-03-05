@@ -2,15 +2,28 @@
 <!-- Renders a single <li> for an agent -->
 
 <li
-  data-name="<%= agent.name %>"
   data-surname="<%= agent.surname %>"
+  data-name="<%= agent.name %>"
   data-priority="<%= agent.priority %>"
   data-skill_ib="<%= !!agent.skill_ib %>"
   data-skill_ob="<%= !!agent.skill_ob %>"
-  class="<%= agent.invalid ? 'error-agent' : '' %>"
+  data-valid="<%= !!agent.valid %>"
 >
   <!-- Drag-handle icon (shown if you want to drag the row) -->
-  <img src="/images/icons/drag_indicator.svg" alt="Drag Icon" class="slider-icon" />
+  <!-- <img src="/images/icons/drag_indicator.svg" alt="Drag Icon" class="slider-icon" /> -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="24px"
+    viewBox="0 -960 960 960"
+    width="24px"
+    fill="currentColor"
+    alt="Drag Icon"
+    class="slider-icon"
+  >
+    <path
+      d="M360-175.39q-26.65 0-45.63-18.98-18.98-18.98-18.98-45.63 0-26.65 18.98-45.63 18.98-18.98 45.63-18.98 26.65 0 45.63 18.98 18.98 18.98 18.98 45.63 0 26.65-18.98 45.63-18.98 18.98-45.63 18.98Zm240 0q-26.65 0-45.63-18.98-18.98-18.98-18.98-45.63 0-26.65 18.98-45.63 18.98-18.98 45.63-18.98 26.65 0 45.63 18.98 18.98 18.98 18.98 45.63 0 26.65-18.98 45.63-18.98 18.98-45.63 18.98Zm-240-240q-26.65 0-45.63-18.98-18.98-18.98-18.98-45.63 0-26.65 18.98-45.63 18.98-18.98 45.63-18.98 26.65 0 45.63 18.98 18.98 18.98 18.98 45.63 0 26.65-18.98 45.63-18.98 18.98-45.63 18.98Zm240 0q-26.65 0-45.63-18.98-18.98-18.98-18.98-45.63 0-26.65 18.98-45.63 18.98-18.98 45.63-18.98 26.65 0 45.63 18.98 18.98 18.98 18.98 45.63 0 26.65-18.98 45.63-18.98 18.98-45.63 18.98Zm-240-240q-26.65 0-45.63-18.98-18.98-18.98-18.98-45.63 0-26.65 18.98-45.63 18.98-18.98 45.63-18.98 26.65 0 45.63 18.98 18.98 18.98 18.98 45.63 0 26.65-18.98 45.63-18.98 18.98-45.63 18.98Zm240 0q-26.65 0-45.63-18.98-18.98-18.98-18.98-45.63 0-26.65 18.98-45.63 18.98-18.98 45.63-18.98 26.65 0 45.63 18.98 18.98 18.98 18.98 45.63 0 26.65-18.98 45.63-18.98 18.98-45.63 18.98Z"
+    />
+  </svg>
 
   <!-- Display the agent's name -->
   <span>
@@ -24,10 +37,9 @@
       <!-- prettier-ignore -->
       <input
         type="radio"
-        name="skill-<%= agent.name %>-<%= agent.surname %>"
+        name="skill_<%= agent.surname %>_<%= agent.name %>"
         value="inbound"
         <%= agent.skill_ib ? 'checked' : '' %>
-        onchange="updateSkill(this, '<%= agent.name %>', '<%= agent.surname %>')"
       />
       Inbound
     </label>
@@ -35,10 +47,9 @@
       <!-- prettier-ignore -->
       <input
         type="radio"
-        name="skill-<%= agent.name %>-<%= agent.surname %>"
+        name="skill_<%= agent.surname %>_<%= agent.name %>"
         value="outbound"
         <%= agent.skill_ob ? 'checked' : '' %>
-        onchange="updateSkill(this, '<%= agent.name %>', '<%= agent.surname %>')"
       />
       Outbound
     </label>

@@ -1,6 +1,8 @@
+@charset "UTF-8";
 /* ========== CSS-Variablen ===========  */
 :root {
   --background-color: hsl(0, 0%, 10%);
+  --main-color: hsl(0, 37%, 50%);
   --sidebar-bg-color: hsl(0, 45%, 45%);
   --sidebar-hover-bg-color: hsl(0, 33%, 64%);
   --text-color: hsl(0, 0%, 100%);
@@ -135,6 +137,21 @@ body:not(:has(:target)) #dashboard {
 
 /* =========== Tab-Content : Monitor ============ */
 /* ============== Tab-Content : Dashboard ============== */
+[role=toolbar] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: var(--main-color);
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
 /* Global Agent List Styles */
 .agent-list {
   list-style: none;
@@ -146,31 +163,37 @@ body:not(:has(:target)) #dashboard {
   align-items: center;
   padding: 5px;
   margin: 5px;
-  background: hsl(0, 37%, 50%);
+  background: var(--main-color);
   border: 1px solid hsl(0, 0%, 80%);
   border-radius: 10px;
-  cursor: grab;
+  text-transform: capitalize;
   /* Drag handle icon */
   /* Container for the skill checkboxes */
 }
 .agent-list li.dragging {
-  opacity: 1;
+  opacity: 0;
+  box-shadow: 2px 2px 4px hsl(0, 0%, 0%); /* Optional: Visuelle Erhöhung */
+  background: hsl(0, 37%, 45%);
 }
 .agent-list li .slider-icon {
-  width: 20px;
+  color: hsl(0, 0%, 100%) !important;
   height: auto;
-  margin-right: 8px;
   vertical-align: middle;
+  cursor: grab;
 }
 .agent-list li .radios {
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
   gap: 0.5em;
   margin-left: auto;
 }
 .agent-list li .radios label {
   font-size: 0.9em;
   color: var(--text-color);
+  cursor: pointer;
+}
+.agent-list li[data-valid=false] {
+  background: hsl(0, 58%, 18%);
 }
 
 .error-agent {
