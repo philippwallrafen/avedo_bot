@@ -22,7 +22,15 @@ import { logInfo, logError, logWarning } from "./logger.js"; // Import logging f
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FILE_PATH = path.join(__dirname, "data", "agents.csv");
-const CSV_HEADER = ["surname", "name", "inboundoutbound", "priority", "skill_ib", "skill_ob", "valid"];
+const CSV_HEADER = [
+  "surname",
+  "name",
+  "inboundoutbound",
+  "priority",
+  "skill_ib",
+  "skill_ob",
+  "valid",
+];
 
 const app = express();
 
@@ -96,15 +104,29 @@ function processLine(line) {
   // Fehlervalidierung
   const errors = [];
   if (values.length !== CSV_HEADER.length)
-    errors.push(`Falsche Anzahl an Spalten: ${values.length} / ${CSV_HEADER.length}`);
+    errors.push(
+      `Falsche Anzahl an Spalten: ${values.length} / ${CSV_HEADER.length}`
+    );
   if (!agent.surname || !agent.name) errors.push("Vor- oder Nachname fehlt");
   if (!["inbound", "outbound"].includes(agent.inboundoutbound))
-    errors.push(`Ungültiger inboundoutbound-Wert: "${values[CSV_HEADER.indexOf("inboundoutbound")]}"`);
-  if (!isValidNumber(agent.priority)) errors.push(`Ungültige Priorität: "${values[CSV_HEADER.indexOf("priority")]}"`);
-  if (!isValidSkill(agent.skill_ib) || !isValidSkill(agent.skill_ob)) errors.push("Ungültige Skill-Werte");
+    errors.push(
+      `Ungültiger inboundoutbound-Wert: "${
+        values[CSV_HEADER.indexOf("inboundoutbound")]
+      }"`
+    );
+  if (!isValidNumber(agent.priority))
+    errors.push(
+      `Ungültige Priorität: "${values[CSV_HEADER.indexOf("priority")]}"`
+    );
+  if (!isValidSkill(agent.skill_ib) || !isValidSkill(agent.skill_ob))
+    errors.push("Ungültige Skill-Werte");
 
   if (errors.length) {
-    console.warn(`⚠️  Fehler in agents.csv: ${agent.surname}, ${agent.name} - ${errors.join(", ")}`);
+    console.warn(
+      `⚠️  Fehler in agents.csv: ${agent.surname}, ${
+        agent.name
+      } - ${errors.join(", ")}`
+    );
     agent.valid = false; // Fehlerhafte Agenten flaggen
   }
 
@@ -116,7 +138,10 @@ function processLine(line) {
  */
 async function saveAgents(agents, res, successMessage) {
   try {
-    const csvContent = [CSV_HEADER.join(","), ...agents.map((agent) => Object.values(agent).join(","))].join("\n");
+    const csvContent = [
+      CSV_HEADER.join(","),
+      ...agents.map((agent) => Object.values(agent).join(",")),
+    ].join("\n");
 
     await fs.writeFile(FILE_PATH, csvContent, "utf8");
     res.json({ message: successMessage });
@@ -129,7 +154,13 @@ async function saveAgents(agents, res, successMessage) {
 /**
  * Generic function to update agent data.
  */
-async function updateAgents(req, res, updateCallback, successMessage, shouldSort = false) {
+async function updateAgents(
+  req,
+  res,
+  updateCallback,
+  successMessage,
+  shouldSort = false
+) {
   if (!Array.isArray(req.body)) {
     return res.status(400).json({ error: "Invalid data format" });
   }
@@ -139,23 +170,32 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
 
     console.log("🔍 Erhaltene Agenten zur Aktualisierung:", req.body);
 
-    const updatedCount = req.body.reduce((count, { surname, name, ...updates }) => {
-      console.log(`🔎 Suche nach Agent: ${surname}, ${name}`);
+    const updatedCount = req.body.reduce(
+      (count, { surname, name, ...updates }) => {
+        console.log(`🔎 Suche nach Agent: ${surname}, ${name}`);
 
-      const agent = agents.find((a) => a.surname === surname && a.name === name);
+        const agent = agents.find(
+          (a) => a.surname === surname && a.name === name
+        );
 
-      if (agent) {
-        console.log(`✅ Gefundener Agent: ${agent.surname}, ${agent.name}`);
-        return updateCallback(agent, updates) ? count + 1 : count;
-      } else {
-        console.warn(`⚠️ Kein Match gefunden für: ${surname}, ${name}`);
-        return count;
-      }
-    }, 0);
+        if (agent) {
+          console.log(`✅ Gefundener Agent: ${agent.surname}, ${agent.name}`);
+          return updateCallback(agent, updates) ? count + 1 : count;
+        } else {
+          console.warn(`⚠️ Kein Match gefunden für: ${surname}, ${name}`);
+          return count;
+        }
+      },
+      0
+    );
 
     if (!updatedCount) {
-      console.error("❌ Fehler: Kein einziger Agent konnte aktualisiert werden.");
-      return res.status(400).json({ error: "⚠️ Keine passenden Agenten gefunden." });
+      console.error(
+        "❌ Fehler: Kein einziger Agent konnte aktualisiert werden."
+      );
+      return res
+        .status(400)
+        .json({ error: "⚠️ Keine passenden Agenten gefunden." });
     }
 
     if (shouldSort) {
@@ -166,7 +206,9 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
     saveAgents(agents, res, `✅ ${updatedCount} ${successMessage}`);
   } catch (error) {
     console.error("❌ Fehler beim Verarbeiten der Agenten:", error);
-    res.status(500).json({ error: "Interner Serverfehler beim Aktualisieren der Agenten." });
+    res
+      .status(500)
+      .json({ error: "Interner Serverfehler beim Aktualisieren der Agenten." });
   }
 }
 
@@ -206,7 +248,9 @@ app.post("/update-agent-skills", (req, res) => {
     res,
     (agent, { skill_ib, skill_ob }) => {
       console.log(`🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
-      console.log(`   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);
+      console.log(
+        `   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`
+      );
       console.log(`   ➝ Neu:     skill_ib=${skill_ib}, skill_ob=${skill_ob}`);
 
       if (agent.skill_ib !== skill_ib || agent.skill_ob !== skill_ob) {

@@ -48,9 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
       debugLogSkills
         .get(key)
         .push([
-          `%c🔄 Detected Skill Change%c\n\n  👤 Agent: %c${capitalize(surname)}, ${capitalize(
-            name
-          )}%c\n  📞 Neuer Skill: %c${capitalize(event.target.value)}`,
+          `%c🔄 Detected Skill Change%c\n\n  👤 Agent: %c${capitalize(
+            surname
+          )}, ${capitalize(name)}%c\n  📞 Neuer Skill: %c${capitalize(
+            event.target.value
+          )}`,
           "color: #2196f3; font-weight: bold;",
           "",
           "color: #9c27b0; font-weight: bold;",
@@ -93,9 +95,9 @@ async function updatePriorities(list) {
     }
 
     debugLogPriorities.get(key).push([
-      `%c🔄 Detected Priority Change:%c\n👤 Agent: %c${capitalize(surname)}, ${capitalize(
-        name
-      )}%c\n🏆 New Priority: %c${newPriority}`,
+      `%c🔄 Detected Priority Change:%c\n👤 Agent: %c${capitalize(
+        surname
+      )}, ${capitalize(name)}%c\n🏆 New Priority: %c${newPriority}`,
       "color: #2196f3; font-weight: bold;", // 🔵 Blue for detection
       "",
       "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
@@ -118,12 +120,20 @@ async function updatePriorities(list) {
     });
 
     if (!response.ok) {
-      const errorResponse = await response.json().catch(() => ({ error: "Unknown server error" }));
-      throw new Error(`${errorResponse.error}: ${errorResponse.details || "No additional details"}`);
+      const errorResponse = await response
+        .json()
+        .catch(() => ({ error: "Unknown server error" }));
+      throw new Error(
+        `${errorResponse.error}: ${
+          errorResponse.details || "No additional details"
+        }`
+      );
     }
 
     const maxNameLength = Math.max(
-      ...updatedPriorities.map(({ surname, name }) => surname.length + name.length + 3) // +2 für ", "
+      ...updatedPriorities.map(
+        ({ surname, name }) => surname.length + name.length + 3
+      ) // +2 für ", "
     );
 
     const logMessage = [
@@ -132,7 +142,9 @@ async function updatePriorities(list) {
     ];
 
     updatedPriorities.forEach(({ surname, name, priority }) => {
-      const nameBlock = `${capitalize(surname)}, ${capitalize(name)}`.padEnd(maxNameLength);
+      const nameBlock = `${capitalize(surname)}, ${capitalize(name)}`.padEnd(
+        maxNameLength
+      );
 
       logMessage[0] += `%c  👤 Agent: %c${nameBlock}%c 📜 Neue Prio: %c${priority}%c\n`;
       logMessage.push(
@@ -180,7 +192,9 @@ async function updatePriorities(list) {
  * @param {string} name - Vorname des Agenten.
  */
 async function updateSkills(radio, surname, name) {
-  const listItem = document.querySelector(`li[data-surname="${surname}"][data-name="${name}"]`);
+  const listItem = document.querySelector(
+    `li[data-surname="${surname}"][data-name="${name}"]`
+  );
   if (!listItem) return;
 
   const isInbound = radio.value === "inbound";
@@ -221,9 +235,9 @@ async function updateSkills(radio, surname, name) {
     const skillType = updatedSkills.skill_ib ? "Inbound" : "Outbound";
 
     console.log(
-      `%c✅ Server: Skill erfolgreich aktualisiert%c\n\n  👤 Agent: %c${capitalize(surname)}, ${capitalize(
-        name
-      )}%c\n  📞 Neuer Skill: %c${skillType}`,
+      `%c✅ Server: Skill erfolgreich aktualisiert%c\n\n  👤 Agent: %c${capitalize(
+        surname
+      )}, ${capitalize(name)}%c\n  📞 Neuer Skill: %c${skillType}`,
       "color: #4caf50; font-weight: bold;", // 🟢 Green for final success
       "",
       "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info

@@ -2,21 +2,17 @@
   "name": "website",
   "version": "1.0.0",
   "type": "module",
-  "main": "dist/server.js",
+  "main": "build/server.js",
   "description": "",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "prettier": "config/prettier.config.js",
-  "eslint.options": {
-    "configFile": "config/eslint.config.mjs"
-  },
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node build/server.js",
     "dev": "ts-node --project config/tsconfig.json src/server.ts",
     "build": "tsc --project config/tsconfig.json",
     "lint": "eslint . --config config/eslint.config.mjs --fix",
-    "format": "prettier --config config/prettier.config.js --write .",
+    "format": "prettier --config config/prettier.config.cjs --write .",
     "test": "echo \"Error: no test specified, later jest or vitest\" && exit 1"
   },
   "dependencies": {
