@@ -48,9 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
       debugLogSkills
         .get(key)
         .push([
-          `%c🔄 Detected Skill Change:%c\n👤 Agent: %c${capitalize(surname)}, ${capitalize(
+          `%c🔄 Detected Skill Change%c\n\n  👤 Agent: %c${capitalize(surname)}, ${capitalize(
             name
-          )}%c\n📞 Neuer Skill: %c${capitalize(event.target.value)}`,
+          )}%c\n  📞 Neuer Skill: %c${capitalize(event.target.value)}`,
           "color: #2196f3; font-weight: bold;",
           "",
           "color: #9c27b0; font-weight: bold;",
@@ -203,7 +203,7 @@ async function updateSkills(radio, surname, name) {
 
   // 📝 Store another debug message in the queue for data sending
   debugLogSkills.get(key).push([
-    `%c📤 Sending Data to Server:%c\n${JSON.stringify(updatedSkills, null, 2)}`,
+    `📤 %cSending Data to Server%c\n${JSON.stringify(updatedSkills, null, 2)}`,
     "color: #2196f3; font-weight: bold;", // 🔵 Blue for sending data
     "",
   ]);

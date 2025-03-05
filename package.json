@@ -1,0 +1,41 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/server.js",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "prettier": "config/prettier.config.js",
+  "eslint.options": {
+    "configFile": "config/eslint.config.mjs"
+  },
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "ts-node --project config/tsconfig.json src/server.ts",
+    "build": "tsc --project config/tsconfig.json",
+    "lint": "eslint . --config config/eslint.config.mjs --fix",
+    "format": "prettier --config config/prettier.config.js --write .",
+    "test": "echo \"Error: no test specified, later jest or vitest\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.9",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "globals": "^16.0.0",
+    "prettier": "^2.8.8",
+    "prettier-plugin-ejs": "^1.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.8.2"
+  }
+}

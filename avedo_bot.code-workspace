@@ -27,9 +27,10 @@
 	  "css.validate": false,
 	  "scss.validate": false,
 	  "stylelint.validate": ["css", "scss"],
-	  "eslint.workingDirectories": [
-		{ "directory": "./config", "changeProcessCWD": true }
-	  ],
+	  "eslint.workingDirectories": ["../"],	
+	  "eslint.options": {
+		"overrideConfigFile": "./config/eslint.config.mjs"
+	  },
 	  "editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit"
 	  },
