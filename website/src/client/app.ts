@@ -1,6 +1,6 @@
 // app.ts
 
-declare var Sortable: any;
+import Sortable from "sortablejs";
 
 type LogEntry = string[];
 const debugLogSkills: Map<string, LogEntry[]> = new Map();
@@ -9,6 +9,13 @@ const debugLogPriorities: Map<string, LogEntry[]> = new Map();
 /* Helper functions */
 function capitalize(word: string): string {
   return word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase();
+}
+
+function clearPriorityLogs(updates: AgentPriorityUpdate[]): void {
+  updates.forEach(({ surname, name }) => {
+    const key = `${surname}-${name}`;
+    debugLogPriorities.delete(key);
+  });
 }
 
 /*******************************
@@ -24,10 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
       handle: ".slider-icon",
       forceFallback: true,
       fallbackClass: "dragging",
-      onStart: (evt: any) => {
+      onStart: (evt: Sortable.SortableEvent) => {
         evt.item.classList.add("dragging");
       },
-      onEnd: (evt: any) => {
+      onEnd: (evt: Sortable.SortableEvent) => {
         evt.item.classList.remove("dragging");
         updatePriorities(list);
       },
@@ -88,6 +95,9 @@ interface AgentPriorityUpdate {
  * @param {HTMLElement} list - Die Liste, die aktualisiert wurde.
  */
 async function updatePriorities(list: HTMLElement): Promise<void> {
+  const liElements = list.querySelectorAll<HTMLLIElement>("li");
+  if (liElements.length === 0) return;
+
   const allLists = {
     inbound: document.querySelectorAll<HTMLLIElement>("#inboundList li"),
     outbound: document.querySelectorAll<HTMLLIElement>("#outboundList li"),
@@ -99,7 +109,6 @@ async function updatePriorities(list: HTMLElement): Promise<void> {
 
   const updatedPriorities: AgentPriorityUpdate[] = [];
 
-  const liElements = list.querySelectorAll<HTMLLIElement>("li");
   liElements.forEach((li, index) => {
     const newPriority = index + 1 + offset;
     li.dataset.priority = newPriority.toString();
@@ -113,10 +122,10 @@ async function updatePriorities(list: HTMLElement): Promise<void> {
       debugLogPriorities.set(key, []);
     }
 
-    debugLogPriorities.get(key).push([
-      `%c🔄 Detected Priority Change:%c\n  👤 Agent: %c${capitalize(
-        surname
-      )}, ${capitalize(name)}%c\n  📜 Neue Prio: %c${newPriority}`,
+    debugLogPriorities.get(key)!.push([
+      `%c🔄 Detected Priority Change%c\n\n  👤 Agent: %c${capitalize(
+        surname ?? ""
+      )}, ${capitalize(name ?? "")}%c\n  📜 Neue Prio: %c${newPriority}`,
       "color: #2196f3; font-weight: bold;", // 🔵 Blue for detection
       "",
       "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
@@ -125,11 +134,14 @@ async function updatePriorities(list: HTMLElement): Promise<void> {
     ]);
 
     updatedPriorities.push({
-      surname,
-      name,
+      surname: surname ?? "", // Falls undefined, wird "" gesetzt
+      name: name ?? "",
       priority: newPriority,
     });
   });
+
+  // Early return, wenn keine Aktualisierungen vorgenommen wurden:
+  if (updatedPriorities.length === 0) return;
 
   try {
     const response = await fetch("/update-agent-priority", {
@@ -142,62 +154,81 @@ async function updatePriorities(list: HTMLElement): Promise<void> {
       const errorResponse = await response
         .json()
         .catch(() => ({ error: "Unknown server error" }));
-      throw new Error(
-        `${errorResponse.error}: ${
-          errorResponse.details || "No additional details"
-        }`
+      // Übergib den Fehler und die Updates an die Fehlerbehandlung
+      return handleUpdateError(
+        updatedPriorities,
+        new Error(
+          `${errorResponse.error}: ${
+            errorResponse.details || "No additional details"
+          }`
+        )
       );
     }
 
-    const maxNameLength = Math.max(
-      ...updatedPriorities.map(
-        ({ surname, name }) => surname.length + name.length + 3
-      ) // +2 für ", "
+    logSuccess(updatedPriorities);
+  } catch (error: unknown) {
+    handleUpdateError(updatedPriorities, error);
+  } finally {
+    // Egal ob Erfolg oder Fehler, löschen wir die Debug-Logs
+    clearPriorityLogs(updatedPriorities);
+  }
+}
+
+/**
+ * Protokolliert den Erfolg der Aktualisierung.
+ */
+function logSuccess(updated: AgentPriorityUpdate[]): void {
+  const maxNameLength = Math.max(
+    ...updated.map(({ surname, name }) => surname.length + name.length + 3)
+  );
+  let logMessage = `✅ %cServer: Prioritäten erfolgreich aktualisiert\n\n`;
+  const logStyles = ["color: #4caf50; font-weight: bold;"];
+
+  updated.forEach(({ surname, name, priority }) => {
+    const nameBlock = `${capitalize(surname)}, ${capitalize(name)}`.padEnd(
+      maxNameLength
     );
+    logMessage += `%c  👤 Agent: %c${nameBlock}%c 📜 Neue Prio: %c${priority}%c\n`;
+    logStyles.push(
+      "",
+      "color: #9c27b0; font-weight: bold;",
+      "",
+      "color: #ff9800; font-weight: bold;",
+      ""
+    );
+  });
 
-    let logMessage = `✅ %cServer: Prioritäten erfolgreich aktualisiert\n\n`;
-    const logStyles = ["color: #4caf50; font-weight: bold;"];
+  console.log(logMessage, ...logStyles);
+}
 
-    updatedPriorities.forEach(({ surname, name, priority }) => {
-      const nameBlock = `${capitalize(surname)}, ${capitalize(name)}`.padEnd(
-        maxNameLength
-      );
-      logMessage += `%c  👤 Agent: %c${nameBlock}%c 📜 Neue Prio: %c${priority}%c\n`;
-      logStyles.push(
-        "",
-        "color: #9c27b0; font-weight: bold;",
-        "",
-        "color: #ff9800; font-weight: bold;",
-        ""
-      );
-    });
-
-    console.log(logMessage, ...logStyles);
-
-    // 🧹 Remove logs after success
-    updatedPriorities.forEach(({ surname, name }) => {
-      const key = `${surname}-${name}`;
-      debugLogPriorities.delete(key);
-    });
-  } catch (error: any) {
+/**
+ * Einheitliche Fehlerbehandlung für das Update.
+ */
+function handleUpdateError(
+  updated: AgentPriorityUpdate[],
+  error: unknown
+): void {
+  if (error instanceof Error) {
     console.error(
       `%c❌ Error updating agent priorities:%c\n  ${error.message}`,
       "color: #ff3333; font-weight: bold;",
       ""
     );
-
-    // Print all stored logs for this failed request and then delete them
-    updatedPriorities.forEach(({ surname, name }) => {
-      const key = `${surname}-${name}`;
-      if (debugLogPriorities.has(key)) {
-        debugLogPriorities.get(key)!.forEach((log) => console.log(...log));
-        // Delete logs even on failure
-        debugLogPriorities.delete(key);
-      }
-    });
-
-    alert("Fehler beim Aktualisieren der Agenten-Prioritäten.");
+  } else {
+    console.error("Unknown error", error);
   }
+  updated.forEach(({ surname, name }) => {
+    const key = `${surname}-${name}`;
+    debugLogPriorities.get(key)?.forEach((log) => console.log(...log));
+  });
+  alert("Fehler beim Aktualisieren der Agenten-Prioritäten.");
+}
+
+interface AgentSkillsUpdate {
+  surname: string;
+  name: string;
+  skill_ib: boolean;
+  skill_ob: boolean;
 }
 
 /*******************************
@@ -224,7 +255,7 @@ async function updateSkills(
   listItem.dataset.skill_ib = isInbound ? "true" : "false";
   listItem.dataset.skill_ob = isInbound ? "false" : "true";
 
-  const updatedSkills = {
+  const updatedSkills: AgentSkillsUpdate = {
     surname: listItem.dataset.surname ?? "",
     name: listItem.dataset.name ?? "",
     skill_ib: listItem.dataset.skill_ib === "true",
@@ -275,8 +306,14 @@ async function updateSkills(
     );
 
     debugLogSkills.delete(key); // 🧹 Remove log after success
-  } catch (error: any) {
-    debugLogSkills.get(key)!.forEach((log) => console.log(...log));
+  } catch (error: unknown) {
+    if (!(error instanceof Error)) {
+      console.error("Unknown error", error);
+      alert("Fehler beim Aktualisieren der Agentendaten.");
+      return;
+    }
+
+    debugLogSkills.get(key)?.forEach((log) => console.log(...log));
 
     console.error(
       `%c❌ Error updating agent skills:%c\n${error.message}`,
@@ -285,6 +322,7 @@ async function updateSkills(
     );
 
     alert("Fehler beim Aktualisieren der Agentendaten.");
-    debugLogSkills.delete(key); // 🧹 Remove log after success
+  } finally {
+    debugLogSkills.delete(key); // 🧹 Remove log after success or failure
   }
 }
