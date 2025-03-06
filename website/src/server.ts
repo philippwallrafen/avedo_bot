@@ -20,7 +20,7 @@ import express, { NextFunction } from "express";
 import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
 
-import { logInfo, logError, logWarning } from "../logger.js"; // Import logging functions
+import { logInfo, logError, logWarning } from "./logger.js"; // Import logging functions
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

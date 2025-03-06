@@ -8,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "node build/server.js",
+    "start": "node website/build/server.js",
     "dev": "ts-node --project config/tsconfig.json src/server.ts",
     "build": "tsc --project config/tsconfig.json",
     "lint": "eslint . --config config/eslint.config.mjs --fix",

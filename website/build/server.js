@@ -17,7 +17,7 @@ import fs from "fs/promises";
 import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
-import { logInfo } from "../logger.js"; // Import logging functions
+import { logInfo } from "../src/logger.js"; // Import logging functions
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const FILE_PATH = path.join(__dirname, "data", "agents.csv");
