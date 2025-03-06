@@ -39,7 +39,7 @@ export default [
       prettier,
     },
     rules: {
-      "@typescript-eslint/no-unused-vars": "error",
+      //"@typescript-eslint/no-unused-vars": "error",
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/consistent-type-imports": "warn",

@@ -11,20 +11,15 @@
  * - Robust error handling in CSV parsing.
  * - Clear, modular route definitions.
  */
-
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs/promises";
-import type { Response, Request } from "express";
-import express, { NextFunction } from "express";
+import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
-
-import { logInfo, logError, logWarning } from "../logger.js"; // Import logging functions
-
+import { logInfo } from "../logger.js"; // Import logging functions
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 const FILE_PATH = path.join(__dirname, "data", "agents.csv");
 const CSV_HEADER = [
   "surname",
@@ -34,24 +29,11 @@ const CSV_HEADER = [
   "skill_ib",
   "skill_ob",
   "valid",
-] as const;
-
-// Represent a single agent row
-interface Agent {
-  surname: string;
-  name: string;
-  inboundoutbound: "inbound" | "outbound";
-  priority: number;
-  skill_ib: boolean;
-  skill_ob: boolean;
-  valid: boolean;
-}
-
+];
 // ----------------------
 // Express & Middleware Setup
 // ----------------------
 const app = express();
-
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(cors());
@@ -59,19 +41,17 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(expressLayouts);
 app.set("layout", "layout");
-
 // ========= Helper Functions ===========
-function isValidNumber(val: unknown): boolean {
+function isValidNumber(val) {
   const num = Number(val);
   return Number.isInteger(num) && num >= 0;
 }
-function isValidSkill(val: unknown): boolean {
+function isValidSkill(val) {
   return typeof val === "boolean";
 }
-function toBoolean(val: unknown): boolean {
+function toBoolean(val) {
   return val === true || val === "true" || val === 1;
 }
-
 /**
  * Liest die CSV-Datei und gibt ein Array von Agenten zurück.
  *
@@ -81,64 +61,55 @@ function toBoolean(val: unknown): boolean {
  * - Validierung ALLER Werte, um ungültige Daten zu verhindern.
  * - Explizite Trennung zwischen Datenverarbeitung und Fehlerhandling.
  */
-async function parseAgents(): Promise<Agent[]> {
-  let data: string;
+async function parseAgents() {
+  let data;
   try {
     data = await fs.readFile(FILE_PATH, "utf8");
   } catch (error) {
     console.error("❌ Fehler beim Lesen der CSV:", error);
     return [];
   }
-
   const lines = data
     .trim()
     .split("\n")
     .filter((line) => line.trim() !== "");
-
   if (lines.length < 2) {
     console.warn("⚠️ CSV-Datei ist leer oder enthält nur den Header.");
     return [];
   }
-
   return lines
     .slice(1)
     .map(processLine)
-    .filter((agent): agent is Agent => agent !== null);
+    .filter((agent) => agent !== null);
 }
-
 /**
  * Wandelt eine CSV-Zeile in ein Agenten-Objekt um.
  */
-function processLine(line: string): Agent {
+function processLine(line) {
   // Split and trim CSV columns
   const values = line.split(",").map((col) => col.trim());
-
   // Build an object where every field is a string
   const partial = Object.fromEntries(
     CSV_HEADER.map((key, i) => [key, values[i] ?? ""])
-  ) as Record<string, string>;
-
+  );
   //console.log("BEFORE CONVERSION:", agent); // Debugging: Zeigt Werte vor der Umwandlung
-
   // Umwandlung der Strings in echte Zahlen / Booleans
-  const agent: Agent = {
+  const agent = {
     surname: partial.surname,
     name: partial.name,
     inboundoutbound:
       partial.inboundoutbound === "inbound" ||
       partial.inboundoutbound === "outbound"
-        ? (partial.inboundoutbound as "inbound" | "outbound")
+        ? partial.inboundoutbound
         : "outbound", // or handle it as an error
     priority: Number(partial.priority),
     skill_ib: toBoolean(partial.skill_ib),
     skill_ob: toBoolean(partial.skill_ob),
     valid: true, // default, then validate below
   };
-
   //console.log("AFTER CONVERSION:", agent); // Debugging: Zeigt Werte nach der Umwandlung
-
   // Fehlervalidierung
-  const errors: string[] = [];
+  const errors = [];
   if (values.length !== CSV_HEADER.length) {
     errors.push(
       `Wrong number of columns: ${values.length} / ${CSV_HEADER.length}`
@@ -156,25 +127,18 @@ function processLine(line: string): Agent {
   if (!isValidSkill(agent.skill_ib) || !isValidSkill(agent.skill_ob)) {
     errors.push("Invalid skill values");
   }
-
   if (errors.length) {
     console.warn(
       `⚠️ CSV error for ${agent.surname}, ${agent.name}: ${errors.join(", ")}`
     );
     agent.valid = false;
   }
-
   return agent;
 }
-
 /**
  * Saves agents to the CSV file.
  */
-async function saveAgents(
-  agents: Agent[],
-  res: Response,
-  successMessage: string
-): Promise<void> {
+async function saveAgents(agents, res, successMessage) {
   try {
     // Convert each agent back to a CSV line
     const csvLines = agents.map((agent) =>
@@ -188,7 +152,6 @@ async function saveAgents(
         String(agent.valid),
       ].join(",")
     );
-
     const csvContent = [CSV_HEADER.join(","), ...csvLines].join("\n");
     await fs.writeFile(FILE_PATH, csvContent, "utf8");
     res.json({ message: successMessage });
@@ -197,30 +160,23 @@ async function saveAgents(
     res.status(500).json({ error: "Fehler beim Speichern." });
   }
 }
-
-/**
- * Callback type for agent updates
- */
-type AgentUpdateCallback = (agent: Agent, updates: Partial<Agent>) => boolean;
-
 /**
  * Generic function to update agent data.
  */
 async function updateAgents(
-  req: Request,
-  res: Response,
-  updateCallback: AgentUpdateCallback,
-  successMessage: string,
+  req,
+  res,
+  updateCallback,
+  successMessage,
   shouldSort = false
-): Promise<void> {
+) {
   // 1) Sofortiger Abbruch, wenn das Body-Format nicht stimmt
   if (!Array.isArray(req.body)) {
     res.status(400).json({ error: "Invalid data format (expected array)" });
     return;
   }
-
   // 2) Agenten einlesen → bei Fehler direkt abbrechen
-  let agents: Agent[];
+  let agents;
   try {
     agents = await parseAgents();
   } catch (error) {
@@ -230,44 +186,34 @@ async function updateAgents(
       .json({ error: "Interner Serverfehler beim Einlesen der Agenten." });
     return;
   }
-
   console.log("🔍 Erhaltene Agenten zur Aktualisierung:", req.body);
-
   // 3) Updates durchführen
   const updatedCount = req.body.reduce(
-    (count: number, { surname, name, ...updates }) => {
+    (count, { surname, name, ...updates }) => {
       console.log(`🔎 Suche nach Agent: ${surname}, ${name}`);
       const agent = agents.find(
         (a) => a.surname === surname && a.name === name
       );
-
       if (!agent) {
         console.warn(`⚠️ Kein Match gefunden für: ${surname}, ${name}`);
         return count;
       }
-
       console.log(`✅ Gefundener Agent: ${agent.surname}, ${agent.name}`);
-      return updateCallback(agent, updates as Partial<Agent>)
-        ? count + 1
-        : count;
+      return updateCallback(agent, updates) ? count + 1 : count;
     },
     0
   );
-
   // 4) Kein Agent wurde aktualisiert → Abbruch
   if (!updatedCount) {
     console.error("❌ Fehler: Kein Agent wurde aktualisiert.");
     res.status(400).json({ error: "⚠️ Keine passenden Agenten gefunden." });
     return;
   }
-
   // 5) Optional sortieren
   if (shouldSort) {
     agents.sort((a, b) => a.priority - b.priority); // ✅ Sort agents by priority
   }
-
   console.log(`✅ Erfolgreich aktualisierte Agenten: ${updatedCount}`);
-
   // 6) Speichern → bei Fehler wird in saveAgents selbst ein 500er gesendet
   try {
     await saveAgents(agents, res, `${updatedCount} ${successMessage}`);
@@ -276,9 +222,8 @@ async function updateAgents(
     console.error("❌ Fehler beim Speichern der Agenten:", error);
   }
 }
-
 // Route: Render Index Page
-app.get("/", async (_req: Request, res: Response) => {
+app.get("/", async (_req, res) => {
   await logInfo("Root route accessed");
   try {
     const agents = await parseAgents();
@@ -288,18 +233,16 @@ app.get("/", async (_req: Request, res: Response) => {
     res.status(500).send("Fehler beim Laden der Agenten.");
   }
 });
-
 // Neue Route: Aktualisiert nur die Prioritäten und speichert sortiert
-app.post("/update-agent-priority", (req: Request, res: Response) => {
+app.post("/update-agent-priority", (req, res) => {
   updateAgents(
     req,
     res,
-    (agent: Agent, { priority }: { priority?: number }) => {
+    (agent, { priority }) => {
       // Wenn priority nicht definiert ist oder schon dem aktuellen Wert entspricht:
       if (priority === undefined || agent.priority === priority) {
         return false;
       }
-
       // Ansonsten: Aktualisierung nötig
       agent.priority = priority;
       return true;
@@ -308,28 +251,22 @@ app.post("/update-agent-priority", (req: Request, res: Response) => {
     true // ✅ Optional: sortiere die Agentenliste nach dem Update
   );
 });
-
 // Neue Route: Aktualisiert die Agenten-Skills
-app.post("/update-agent-skills", (req: Request, res: Response) => {
+app.post("/update-agent-skills", (req, res) => {
   updateAgents(
     req,
     res,
-    (
-      agent: Agent,
-      { skill_ib, skill_ob }: { skill_ib?: boolean; skill_ob?: boolean }
-    ) => {
+    (agent, { skill_ib, skill_ob }) => {
       console.log(`🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
       console.log(
         `   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`
       );
       console.log(`   ➝ Neu:     skill_ib=${skill_ib}, skill_ob=${skill_ob}`);
-
       // Wenn sich nichts ändert, gib direkt false zurück
       if (agent.skill_ib === skill_ib && agent.skill_ob === skill_ob) {
         console.log(`❌ Keine Änderung nötig: ${agent.surname}, ${agent.name}`);
         return false;
       }
-
       // Hier liegt der "Happy Path": Wir nehmen Änderungen vor
       console.log(`✅ Aktualisiert: ${agent.surname}, ${agent.name}`);
       Object.assign(agent, { skill_ib, skill_ob });
@@ -338,30 +275,25 @@ app.post("/update-agent-skills", (req: Request, res: Response) => {
     "Agenten-Skills erfolgreich aktualisiert!"
   );
 });
-
 /**
  * Beendet den Server kontrolliert.
  */
-async function handleShutdown(signal: string): Promise<void> {
+async function handleShutdown(signal) {
   console.log(`\n⚠️  Received ${signal}, shutting down gracefully...`);
   await logInfo(`Server is shutting down due to ${signal}`);
-
   server.close(() => {
     console.log("✅ Server shut down successfully.");
     process.exit(0);
   });
-
   // Falls der Shutdown zu lange dauert → erzwungen
   setTimeout(() => {
     console.error("❌ Forced shutdown due to timeout.");
     process.exit(1);
   }, 5000);
 }
-
 // System-Signale abfangen (z. B. CTRL+C lokal oder SIGTERM in Docker/K8s)
 process.on("SIGINT", handleShutdown);
 process.on("SIGTERM", handleShutdown);
-
 /**
  * Serverstart
  */
