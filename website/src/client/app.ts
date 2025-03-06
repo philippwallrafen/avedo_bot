@@ -47,9 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * Radio Event Listener
  ***********************/
 document.addEventListener("DOMContentLoaded", () => {
-  const radios = document.querySelectorAll<HTMLInputElement>(
-    'input[name^="skill_"]'
-  );
+  const radios = document.querySelectorAll<HTMLInputElement>('input[name^="skill_"]');
   radios.forEach((radio) => {
     radio.addEventListener("change", (event: Event) => {
       const target = event.target as HTMLInputElement;
@@ -67,11 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
       debugLogSkills
         .get(key)!
         .push([
-          `%c🔄 Detected Skill Change%c\n\n  👤 Agent: %c${capitalize(
-            surname
-          )}, ${capitalize(name)}%c\n  📞 Neuer Skill: %c${capitalize(
-            target.value
-          )}`,
+          `%c🔄 Detected Skill Change%c\n\n  👤 Agent: %c${capitalize(surname)}, ${capitalize(
+            name
+          )}%c\n  📞 Neuer Skill: %c${capitalize(target.value)}`,
           "color: #2196f3; font-weight: bold;",
           "",
           "color: #9c27b0; font-weight: bold;",
@@ -124,9 +120,9 @@ async function updatePriorities(list: HTMLElement): Promise<void> {
     }
 
     debugLogPriorities.get(key)!.push([
-      `%c🔄 Detected Priority Change%c\n\n  👤 Agent: %c${capitalize(
-        surname ?? ""
-      )}, ${capitalize(name ?? "")}%c\n  📜 Neue Prio: %c${newPriority}`,
+      `%c🔄 Detected Priority Change%c\n\n  👤 Agent: %c${capitalize(surname ?? "")}, ${capitalize(
+        name ?? ""
+      )}%c\n  📜 Neue Prio: %c${newPriority}`,
       "color: #2196f3; font-weight: bold;", // 🔵 Blue for detection
       "",
       "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
@@ -152,17 +148,11 @@ async function updatePriorities(list: HTMLElement): Promise<void> {
     });
 
     if (!response.ok) {
-      const errorResponse = await response
-        .json()
-        .catch(() => ({ error: "Unknown server error" }));
+      const errorResponse = await response.json().catch(() => ({ error: "Unknown server error" }));
       // Übergib den Fehler und die Updates an die Fehlerbehandlung
       return handleUpdateError(
         updatedPriorities,
-        new Error(
-          `${errorResponse.error}: ${
-            errorResponse.details || "No additional details"
-          }`
-        )
+        new Error(`${errorResponse.error}: ${errorResponse.details || "No additional details"}`)
       );
     }
 
@@ -179,24 +169,14 @@ async function updatePriorities(list: HTMLElement): Promise<void> {
  * Protokolliert den Erfolg der Aktualisierung.
  */
 function logSuccess(updated: AgentPriorityUpdate[]): void {
-  const maxNameLength = Math.max(
-    ...updated.map(({ surname, name }) => surname.length + name.length + 3)
-  );
+  const maxNameLength = Math.max(...updated.map(({ surname, name }) => surname.length + name.length + 3));
   let logMessage = `✅ %cServer: Prioritäten erfolgreich aktualisiert\n\n`;
   const logStyles = ["color: #4caf50; font-weight: bold;"];
 
   updated.forEach(({ surname, name, priority }) => {
-    const nameBlock = `${capitalize(surname)}, ${capitalize(name)}`.padEnd(
-      maxNameLength
-    );
+    const nameBlock = `${capitalize(surname)}, ${capitalize(name)}`.padEnd(maxNameLength);
     logMessage += `%c  👤 Agent: %c${nameBlock}%c 📜 Neue Prio: %c${priority}%c\n`;
-    logStyles.push(
-      "",
-      "color: #9c27b0; font-weight: bold;",
-      "",
-      "color: #ff9800; font-weight: bold;",
-      ""
-    );
+    logStyles.push("", "color: #9c27b0; font-weight: bold;", "", "color: #ff9800; font-weight: bold;", "");
   });
 
   console.log(logMessage, ...logStyles);
@@ -205,10 +185,7 @@ function logSuccess(updated: AgentPriorityUpdate[]): void {
 /**
  * Einheitliche Fehlerbehandlung für das Update.
  */
-function handleUpdateError(
-  updated: AgentPriorityUpdate[],
-  error: unknown
-): void {
+function handleUpdateError(updated: AgentPriorityUpdate[], error: unknown): void {
   if (error instanceof Error) {
     console.error(
       `%c❌ Error updating agent priorities:%c\n  ${error.message}`,
@@ -241,14 +218,8 @@ interface AgentSkillsUpdate {
  * @param {string} surname - Nachname des Agenten.
  * @param {string} name - Vorname des Agenten.
  */
-async function updateSkills(
-  radio: HTMLInputElement,
-  surname: string,
-  name: string
-): Promise<void> {
-  const listItem = document.querySelector<HTMLLIElement>(
-    `li[data-surname="${surname}"][data-name="${name}"]`
-  );
+async function updateSkills(radio: HTMLInputElement, surname: string, name: string): Promise<void> {
+  const listItem = document.querySelector<HTMLLIElement>(`li[data-surname="${surname}"][data-name="${name}"]`);
   if (!listItem) return;
 
   const input = radio as HTMLInputElement;
@@ -274,11 +245,7 @@ async function updateSkills(
   debugLogSkills
     .get(key)!
     .push([
-      `📤 %cSending Data to Server%c\n${JSON.stringify(
-        updatedSkills,
-        null,
-        2
-      )}`,
+      `📤 %cSending Data to Server%c\n${JSON.stringify(updatedSkills, null, 2)}`,
       "color: #2196f3; font-weight: bold;",
       "",
     ]);
@@ -296,9 +263,9 @@ async function updateSkills(
     const skillType = updatedSkills.skill_ib ? "Inbound" : "Outbound";
 
     console.log(
-      `%c✅ Server: Skill erfolgreich aktualisiert%c\n\n  👤 Agent: %c${capitalize(
-        surname
-      )}, ${capitalize(name)}%c\n  📞 Neuer Skill: %c${skillType}`,
+      `%c✅ Server: Skill erfolgreich aktualisiert%c\n\n  👤 Agent: %c${capitalize(surname)}, ${capitalize(
+        name
+      )}%c\n  📞 Neuer Skill: %c${skillType}`,
       "color: #4caf50; font-weight: bold;", // 🟢 Green for final success
       "",
       "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
@@ -316,11 +283,7 @@ async function updateSkills(
 
     debugLogSkills.get(key)?.forEach((log) => console.log(...log));
 
-    console.error(
-      `%c❌ Error updating agent skills:%c\n${error.message}`,
-      "color: #ff3333; font-weight: bold;",
-      ""
-    );
+    console.error(`%c❌ Error updating agent skills:%c\n${error.message}`, "color: #ff3333; font-weight: bold;", "");
 
     alert("Fehler beim Aktualisieren der Agentendaten.");
   } finally {

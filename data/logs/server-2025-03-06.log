@@ -36,3 +36,6 @@
 [2025-03-06T13:12:54.417Z] [INFO] Server is shutting down due to SIGINT
 [2025-03-06T13:12:56.153Z] [INFO] Server started on port 3000
 [2025-03-06T13:12:57.737Z] [INFO] Root route accessed
+[2025-03-06T13:43:38.370Z] [INFO] Server started on port 3000
+[2025-03-06T13:43:40.760Z] [INFO] Root route accessed
+[2025-03-06T13:44:09.151Z] [INFO] Server is shutting down due to SIGINT

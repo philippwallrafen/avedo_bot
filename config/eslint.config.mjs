@@ -1,10 +1,15 @@
 // eslint.config.mjs
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
 import eslintPluginTypescript from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import globals from "globals";
-import prettier from "eslint-plugin-prettier";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
+  {
+    ignores: ["node_modules/"],
+  },
   {
     files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
     languageOptions: {
@@ -14,19 +19,13 @@ export default [
         Sortable: "readonly",
       },
     },
-    plugins: {
-      prettier,
-    },
-    rules: {
-      "prettier/prettier": "error",
-    },
   },
   {
     files: ["**/*.ts", "**/*.tsx"],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: "./config/tsconfig.json", // Pfad zur richtigen tsconfig
+        project: "./config/tsconfig.json",
       },
       globals: {
         ...globals.node,
@@ -36,14 +35,14 @@ export default [
     },
     plugins: {
       "@typescript-eslint": eslintPluginTypescript,
-      prettier,
     },
     rules: {
-      //"@typescript-eslint/no-unused-vars": "error",
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/consistent-type-imports": "warn",
-      "prettier/prettier": "error",
     },
   },
+  eslint.configs.recommended,
+  tseslint.configs.recommended,
+  eslintConfigPrettier,
 ];

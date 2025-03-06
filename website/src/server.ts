@@ -25,15 +25,7 @@ const websitePath = path.join(process.cwd(), "website");
 const dataPath = path.join(process.cwd(), "data");
 
 const FILE_PATH = path.join(dataPath, "agents.csv");
-const CSV_HEADER = [
-  "surname",
-  "name",
-  "inboundoutbound",
-  "priority",
-  "skill_ib",
-  "skill_ob",
-  "valid",
-] as const;
+const CSV_HEADER = ["surname", "name", "inboundoutbound", "priority", "skill_ib", "skill_ob", "valid"] as const;
 
 // Represent a single agent row
 interface Agent {
@@ -56,10 +48,7 @@ app.set("view engine", "ejs");
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(websitePath, "public")));
-app.use(
-  "/build/client",
-  express.static(path.join(websitePath, "build", "client"))
-);
+app.use("/build/client", express.static(path.join(websitePath, "build", "client")));
 app.use(expressLayouts);
 app.set("layout", "layout");
 
@@ -117,9 +106,7 @@ function processLine(line: string): Agent {
   const values = line.split(",").map((col) => col.trim());
 
   // Build an object where every field is a string
-  const partial = Object.fromEntries(
-    CSV_HEADER.map((key, i) => [key, values[i] ?? ""])
-  ) as Record<string, string>;
+  const partial = Object.fromEntries(CSV_HEADER.map((key, i) => [key, values[i] ?? ""])) as Record<string, string>;
 
   //console.log("BEFORE CONVERSION:", agent); // Debugging: Zeigt Werte vor der Umwandlung
 
@@ -128,8 +115,7 @@ function processLine(line: string): Agent {
     surname: partial.surname,
     name: partial.name,
     inboundoutbound:
-      partial.inboundoutbound === "inbound" ||
-      partial.inboundoutbound === "outbound"
+      partial.inboundoutbound === "inbound" || partial.inboundoutbound === "outbound"
         ? (partial.inboundoutbound as "inbound" | "outbound")
         : "outbound", // or handle it as an error
     priority: Number(partial.priority),
@@ -143,9 +129,7 @@ function processLine(line: string): Agent {
   // Fehlervalidierung
   const errors: string[] = [];
   if (values.length !== CSV_HEADER.length) {
-    errors.push(
-      `Wrong number of columns: ${values.length} / ${CSV_HEADER.length}`
-    );
+    errors.push(`Wrong number of columns: ${values.length} / ${CSV_HEADER.length}`);
   }
   if (!agent.surname || !agent.name) {
     errors.push("Surname or name missing");
@@ -161,9 +145,7 @@ function processLine(line: string): Agent {
   }
 
   if (errors.length) {
-    console.warn(
-      `⚠️ CSV error for ${agent.surname}, ${agent.name}: ${errors.join(", ")}`
-    );
+    console.warn(`⚠️ CSV error for ${agent.surname}, ${agent.name}: ${errors.join(", ")}`);
     agent.valid = false;
   }
 
@@ -173,11 +155,7 @@ function processLine(line: string): Agent {
 /**
  * Saves agents to the CSV file.
  */
-async function saveAgents(
-  agents: Agent[],
-  res: Response,
-  successMessage: string
-): Promise<void> {
+async function saveAgents(agents: Agent[], res: Response, successMessage: string): Promise<void> {
   try {
     // Convert each agent back to a CSV line
     const csvLines = agents.map((agent) =>
@@ -228,34 +206,25 @@ async function updateAgents(
     agents = await parseAgents();
   } catch (error) {
     console.error("❌ Fehler beim Einlesen der Agenten:", error);
-    res
-      .status(500)
-      .json({ error: "Interner Serverfehler beim Einlesen der Agenten." });
+    res.status(500).json({ error: "Interner Serverfehler beim Einlesen der Agenten." });
     return;
   }
 
   console.log("🔍 Erhaltene Agenten zur Aktualisierung:", req.body);
 
   // 3) Updates durchführen
-  const updatedCount = req.body.reduce(
-    (count: number, { surname, name, ...updates }) => {
-      console.log(`🔎 Suche nach Agent: ${surname}, ${name}`);
-      const agent = agents.find(
-        (a) => a.surname === surname && a.name === name
-      );
+  const updatedCount = req.body.reduce((count: number, { surname, name, ...updates }) => {
+    console.log(`🔎 Suche nach Agent: ${surname}, ${name}`);
+    const agent = agents.find((a) => a.surname === surname && a.name === name);
 
-      if (!agent) {
-        console.warn(`⚠️ Kein Match gefunden für: ${surname}, ${name}`);
-        return count;
-      }
+    if (!agent) {
+      console.warn(`⚠️ Kein Match gefunden für: ${surname}, ${name}`);
+      return count;
+    }
 
-      console.log(`✅ Gefundener Agent: ${agent.surname}, ${agent.name}`);
-      return updateCallback(agent, updates as Partial<Agent>)
-        ? count + 1
-        : count;
-    },
-    0
-  );
+    console.log(`✅ Gefundener Agent: ${agent.surname}, ${agent.name}`);
+    return updateCallback(agent, updates as Partial<Agent>) ? count + 1 : count;
+  }, 0);
 
   // 4) Kein Agent wurde aktualisiert → Abbruch
   if (!updatedCount) {
@@ -317,14 +286,9 @@ app.post("/update-agent-skills", (req: Request, res: Response) => {
   updateAgents(
     req,
     res,
-    (
-      agent: Agent,
-      { skill_ib, skill_ob }: { skill_ib?: boolean; skill_ob?: boolean }
-    ) => {
+    (agent: Agent, { skill_ib, skill_ob }: { skill_ib?: boolean; skill_ob?: boolean }) => {
       console.log(`🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
-      console.log(
-        `   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`
-      );
+      console.log(`   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);
       console.log(`   ➝ Neu:     skill_ib=${skill_ib}, skill_ob=${skill_ob}`);
 
       // Wenn sich nichts ändert, gib direkt false zurück

@@ -41,10 +41,7 @@ export async function logInfo(message) {
 }
 
 export async function logError(message) {
-  console.error(
-    `❌ %c[ERROR] ${message}`,
-    "color: #ff3333; font-weight: bold;"
-  );
+  console.error(`❌ %c[ERROR] ${message}`, "color: #ff3333; font-weight: bold;");
   await writeLog(message, "ERROR");
 }
 

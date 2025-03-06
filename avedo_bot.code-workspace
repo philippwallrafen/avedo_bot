@@ -5,32 +5,47 @@
     }
   ],
   "settings": {
+    // == Live Sass Compiler ==
     "liveSassCompile.settings.useNewCompiler": false,
     "liveSassCompile.settings.watchOnLaunch": true,
     "liveSassCompile.settings.showOutputWindowOn": "None",
+
+    // == General Editor Settings ==
     "files.autoSave": "afterDelay",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+
+    // == Prettier Settings ==
     "prettier.configPath": "./config/prettier.config.cjs",
     "prettier.requireConfig": true,
-    "prettier.useWorkspaceVersion": true,
-    "prettier.plugins": ["./node_modules/prettier-plugin-ejs"],
-    "prettier.pluginSearchDirs": ["."],
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "[ejs]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[python]": {
       "editor.defaultFormatter": "ms-python.black-formatter"
     },
-    "editor.formatOnSave": true,
+
+    // == Stylelint Settings ==
     "stylelint.configBasedir": "./config",
     "stylelint.configFile": "./config/stylelint.config.mjs",
     "stylelint.enable": true,
     "css.validate": false,
     "scss.validate": false,
     "stylelint.validate": ["css", "scss"],
+
+    // == ESLint Settings ==
     "eslint.enable": true,
     "eslint.debug": true,
-    "eslint.format.enable": true,
+    "eslint.format.enable": false,
     "eslint.workingDirectories": [
       {
         "directory": "./",
@@ -40,16 +55,14 @@
     "eslint.options": {
       "overrideConfigFile": "./config/eslint.config.mjs"
     },
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+    // == Code Actions on Save ==
     "editor.codeActionsOnSave": {
       "source.fixAll": "explicit"
     },
-    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-    "[javascript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
+
+    // == TypeScript Settings ==
     "typescript.tsdk": "./website/node_modules/typescript/lib"
   }
 }
