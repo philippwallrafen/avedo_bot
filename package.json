@@ -11,7 +11,7 @@
     "start": "node website/build/server.js",
     "dev": "ts-node --project config/tsconfig.json src/server.ts",
     "build": "tsc --project config/tsconfig.json",
-    "lint": "eslint . --config config/eslint.config.mjs --fix",
+    "lint": "eslint --config config/eslint.config.mjs --fix",
     "format": "prettier --config config/prettier.config.cjs --write .",
     "test": "echo \"Error: no test specified, later jest or vitest\" && exit 1"
   },

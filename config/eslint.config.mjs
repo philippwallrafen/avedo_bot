@@ -1,48 +1,30 @@
 // eslint.config.mjs
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import eslintPluginTypescript from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
 import globals from "globals";
+import pluginJS from "@eslint/js";
+import tseslint from "typescript-eslint";
+import tsParser from "@typescript-eslint/parser";
 import eslintConfigPrettier from "eslint-config-prettier";
 
+/** @type {import('eslint').Linter.Config[]} */
 export default [
   {
     ignores: ["node_modules/"],
   },
   {
-    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.browser,
-        Sortable: "readonly",
-      },
-    },
+    files: ["**/*.{js,cjs,mjs}"],
+    languageOptions: {},
   },
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ["**/*.{ts,cts,mts,tsx}"],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
         project: "./config/tsconfig.json",
       },
-      globals: {
-        ...globals.node,
-        ...globals.browser,
-        Sortable: "readonly",
-      },
-    },
-    plugins: {
-      "@typescript-eslint": eslintPluginTypescript,
-    },
-    rules: {
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/consistent-type-imports": "warn",
     },
   },
-  eslint.configs.recommended,
-  tseslint.configs.recommended,
+  { languageOptions: { globals: { ...globals.node, ...globals.browser, Sortable: "readonly" } } },
+  pluginJS.configs.recommended,
+  ...tseslint.configs.recommended,
   eslintConfigPrettier,
 ];
