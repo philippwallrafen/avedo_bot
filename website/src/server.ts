@@ -13,7 +13,6 @@
  */
 
 import path from "path";
-import { fileURLToPath } from "url";
 import fs from "fs/promises";
 import type { Response, Request } from "express";
 import express, { NextFunction } from "express";
@@ -22,10 +21,10 @@ import cors from "cors";
 
 import { logInfo, logError, logWarning } from "./logger.js"; // Import logging functions
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const websitePath = path.join(process.cwd(), "website");
+const dataPath = path.join(process.cwd(), "data");
 
-const FILE_PATH = path.join(__dirname, "data", "agents.csv");
+const FILE_PATH = path.join(dataPath, "agents.csv");
 const CSV_HEADER = [
   "surname",
   "name",
@@ -52,11 +51,15 @@ interface Agent {
 // ----------------------
 const app = express();
 
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(websitePath, "views"));
 app.set("view engine", "ejs");
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(websitePath, "public")));
+app.use(
+  "/build/client",
+  express.static(path.join(websitePath, "build", "client"))
+);
 app.use(expressLayouts);
 app.set("layout", "layout");
 

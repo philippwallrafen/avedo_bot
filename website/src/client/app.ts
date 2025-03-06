@@ -1,6 +1,7 @@
 // app.ts
 
-import Sortable from "sortablejs";
+// import Sortable from "sortablejs";
+import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@latest/+esm";
 
 type LogEntry = string[];
 const debugLogSkills: Map<string, LogEntry[]> = new Map();
