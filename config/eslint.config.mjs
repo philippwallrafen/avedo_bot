@@ -1,30 +1,49 @@
 // eslint.config.mjs
-import eslint from "@eslint/js";
-import prettier from "eslint-config-prettier";
-import prettierPlugin from "eslint-plugin-prettier";
+import eslintPluginTypescript from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 import globals from "globals";
+import prettier from "eslint-plugin-prettier";
 
 export default [
-  eslint.configs.recommended,
-  prettier,
   {
+    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
       globals: {
-        ...globals.browser, // ✅ Alle Browser-Globals automatisch setzen!
         ...globals.node,
-        Sortable: "readonly", // ✅ Externe Library als Global setzen
+        ...globals.browser,
+        Sortable: "readonly",
       },
     },
     plugins: {
-      prettier: prettierPlugin,
+      prettier,
     },
     rules: {
       "prettier/prettier": "error",
-      "no-unused-vars": "warn",
-      "no-undef": "error",
-      "linebreak-style": ["error", "unix"],
+    },
+  },
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: "./config/tsconfig.json", // Pfad zur richtigen tsconfig
+      },
+      globals: {
+        ...globals.node,
+        ...globals.browser,
+        Sortable: "readonly",
+      },
+    },
+    plugins: {
+      "@typescript-eslint": eslintPluginTypescript,
+      prettier,
+    },
+    rules: {
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/consistent-type-imports": "warn",
+      "prettier/prettier": "error",
     },
   },
 ];

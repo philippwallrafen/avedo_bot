@@ -5,6 +5,9 @@
     }
   ],
   "settings": {
+    "liveSassCompile.settings.useNewCompiler": false,
+    "liveSassCompile.settings.watchOnLaunch": true,
+    "liveSassCompile.settings.showOutputWindowOn": "None",
     "files.autoSave": "afterDelay",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "prettier.configPath": "./config/prettier.config.cjs",
@@ -15,6 +18,9 @@
     "[ejs]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.black-formatter"
+    },
     "editor.formatOnSave": true,
     "stylelint.configBasedir": "./config",
     "stylelint.configFile": "./config/stylelint.config.mjs",
@@ -22,6 +28,9 @@
     "css.validate": false,
     "scss.validate": false,
     "stylelint.validate": ["css", "scss"],
+    "eslint.enable": true,
+    "eslint.debug": true,
+    "eslint.format.enable": true,
     "eslint.workingDirectories": [
       {
         "directory": "./",
@@ -32,7 +41,7 @@
       "overrideConfigFile": "./config/eslint.config.mjs"
     },
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll": "explicit"
     },
     "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
     "[javascript]": {
@@ -40,6 +49,7 @@
     },
     "[typescript]": {
       "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    }
+    },
+    "typescript.tsdk": "./website/node_modules/typescript/lib"
   }
 }

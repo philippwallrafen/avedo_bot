@@ -1,5 +1,5 @@
 /**
- * server.js
+ * server.ts
  *
  * This Express server uses EJS with express-ejs-layouts for templating.
  * It reads agent data from a CSV file, serves multiple pages, and updates the CSV
@@ -15,20 +15,42 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs/promises";
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
+
 import { logInfo, logError, logWarning } from "./logger.js"; // Import logging functions
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const FILE_PATH = path.join(__dirname, "data", "agents.csv");
-const CSV_HEADER = ["surname", "name", "inboundoutbound", "priority", "skill_ib", "skill_ob", "valid"];
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const app = express();
+const FILE_PATH = path.join(__dirname, "data", "agents.csv");
+const CSV_HEADER = [
+  "surname",
+  "name",
+  "inboundoutbound",
+  "priority",
+  "skill_ib",
+  "skill_ob",
+  "valid",
+] as const;
+
+// Represent a single agent row
+interface Agent {
+  surname: string;
+  name: string;
+  inboundoutbound: "inbound" | "outbound";
+  priority: number;
+  skill_ib: boolean;
+  skill_ob: boolean;
+  valid: boolean;
+}
 
 // ----------------------
 // Express & Middleware Setup
 // ----------------------
+const app = express();
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(cors());
@@ -38,9 +60,16 @@ app.use(expressLayouts);
 app.set("layout", "layout");
 
 // ========= Helper Functions ===========
-const isValidNumber = (val) => Number.isInteger((val = +val)) && val >= 0;
-const isValidSkill = (val) => typeof val === "boolean";
-const toBoolean = (val) => val === true || val === "true" || val === 1;
+function isValidNumber(val: unknown): boolean {
+  const num = Number(val);
+  return Number.isInteger(num) && num >= 0;
+}
+function isValidSkill(val: unknown): boolean {
+  return typeof val === "boolean";
+}
+function toBoolean(val: unknown): boolean {
+  return val === true || val === "true" || val === 1;
+}
 
 /**
  * Liest die CSV-Datei und gibt ein Array von Agenten zurück.
@@ -51,7 +80,7 @@ const toBoolean = (val) => val === true || val === "true" || val === 1;
  * - Validierung ALLER Werte, um ungültige Daten zu verhindern.
  * - Explizite Trennung zwischen Datenverarbeitung und Fehlerhandling.
  */
-async function parseAgents() {
+async function parseAgents(): Promise<Agent[]> {
   try {
     const data = await fs.readFile(FILE_PATH, "utf8");
     const lines = data
@@ -64,7 +93,10 @@ async function parseAgents() {
       return [];
     }
 
-    return lines.slice(1).map(processLine).filter(Boolean);
+    return lines
+      .slice(1)
+      .map(processLine) // convert each CSV line to Agent | null
+      .filter((agent): agent is Agent => agent !== null); // remove nulls
   } catch (err) {
     console.error("❌ Fehler beim Lesen der CSV:", err);
     return [];
@@ -74,16 +106,31 @@ async function parseAgents() {
 /**
  * Wandelt eine CSV-Zeile in ein Agenten-Objekt um.
  */
-function processLine(line) {
+function processLine(line: string): Agent {
+  // Split and trim CSV columns
   const values = line.split(",").map((col) => col.trim());
 
-  // CSV-Werte zuordnen
-  let agent = {
-    ...Object.fromEntries(CSV_HEADER.map((key, index) => [key, values[index]])),
-    valid: true, // Standardmäßig als gültig markieren
-  };
+  // Build an object where every field is a string
+  const partial = Object.fromEntries(
+    CSV_HEADER.map((key, i) => [key, values[i] ?? ""])
+  ) as Record<string, string>;
 
   //console.log("BEFORE CONVERSION:", agent); // Debugging: Zeigt Werte vor der Umwandlung
+
+  // Convert each string field into the correct type
+  const agent: Agent = {
+    surname: partial.surname,
+    name: partial.name,
+    inboundoutbound:
+      partial.inboundoutbound === "inbound" ||
+      partial.inboundoutbound === "outbound"
+        ? (partial.inboundoutbound as "inbound" | "outbound")
+        : "outbound", // or handle it as an error
+    priority: Number(partial.priority),
+    skill_ib: toBoolean(partial.skill_ib),
+    skill_ob: toBoolean(partial.skill_ob),
+    valid: true, // default, then validate below
+  };
 
   // Umwandlung der Strings in echte Zahlen / Booleans
   agent.priority = Number(agent.priority);
@@ -96,15 +143,29 @@ function processLine(line) {
   // Fehlervalidierung
   const errors = [];
   if (values.length !== CSV_HEADER.length)
-    errors.push(`Falsche Anzahl an Spalten: ${values.length} / ${CSV_HEADER.length}`);
+    errors.push(
+      `Falsche Anzahl an Spalten: ${values.length} / ${CSV_HEADER.length}`
+    );
   if (!agent.surname || !agent.name) errors.push("Vor- oder Nachname fehlt");
   if (!["inbound", "outbound"].includes(agent.inboundoutbound))
-    errors.push(`Ungültiger inboundoutbound-Wert: "${values[CSV_HEADER.indexOf("inboundoutbound")]}"`);
-  if (!isValidNumber(agent.priority)) errors.push(`Ungültige Priorität: "${values[CSV_HEADER.indexOf("priority")]}"`);
-  if (!isValidSkill(agent.skill_ib) || !isValidSkill(agent.skill_ob)) errors.push("Ungültige Skill-Werte");
+    errors.push(
+      `Ungültiger inboundoutbound-Wert: "${
+        values[CSV_HEADER.indexOf("inboundoutbound")]
+      }"`
+    );
+  if (!isValidNumber(agent.priority))
+    errors.push(
+      `Ungültige Priorität: "${values[CSV_HEADER.indexOf("priority")]}"`
+    );
+  if (!isValidSkill(agent.skill_ib) || !isValidSkill(agent.skill_ob))
+    errors.push("Ungültige Skill-Werte");
 
   if (errors.length) {
-    console.warn(`⚠️  Fehler in agents.csv: ${agent.surname}, ${agent.name} - ${errors.join(", ")}`);
+    console.warn(
+      `⚠️  Fehler in agents.csv: ${agent.surname}, ${
+        agent.name
+      } - ${errors.join(", ")}`
+    );
     agent.valid = false; // Fehlerhafte Agenten flaggen
   }
 
@@ -116,7 +177,10 @@ function processLine(line) {
  */
 async function saveAgents(agents, res, successMessage) {
   try {
-    const csvContent = [CSV_HEADER.join(","), ...agents.map((agent) => Object.values(agent).join(","))].join("\n");
+    const csvContent = [
+      CSV_HEADER.join(","),
+      ...agents.map((agent) => Object.values(agent).join(",")),
+    ].join("\n");
 
     await fs.writeFile(FILE_PATH, csvContent, "utf8");
     res.json({ message: successMessage });
@@ -129,7 +193,13 @@ async function saveAgents(agents, res, successMessage) {
 /**
  * Generic function to update agent data.
  */
-async function updateAgents(req, res, updateCallback, successMessage, shouldSort = false) {
+async function updateAgents(
+  req,
+  res,
+  updateCallback,
+  successMessage,
+  shouldSort = false
+) {
   if (!Array.isArray(req.body)) {
     return res.status(400).json({ error: "Invalid data format" });
   }
@@ -139,23 +209,32 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
 
     console.log("🔍 Erhaltene Agenten zur Aktualisierung:", req.body);
 
-    const updatedCount = req.body.reduce((count, { surname, name, ...updates }) => {
-      console.log(`🔎 Suche nach Agent: ${surname}, ${name}`);
+    const updatedCount = req.body.reduce(
+      (count, { surname, name, ...updates }) => {
+        console.log(`🔎 Suche nach Agent: ${surname}, ${name}`);
 
-      const agent = agents.find((a) => a.surname === surname && a.name === name);
+        const agent = agents.find(
+          (a) => a.surname === surname && a.name === name
+        );
 
-      if (agent) {
-        console.log(`✅ Gefundener Agent: ${agent.surname}, ${agent.name}`);
-        return updateCallback(agent, updates) ? count + 1 : count;
-      } else {
-        console.warn(`⚠️ Kein Match gefunden für: ${surname}, ${name}`);
-        return count;
-      }
-    }, 0);
+        if (agent) {
+          console.log(`✅ Gefundener Agent: ${agent.surname}, ${agent.name}`);
+          return updateCallback(agent, updates) ? count + 1 : count;
+        } else {
+          console.warn(`⚠️ Kein Match gefunden für: ${surname}, ${name}`);
+          return count;
+        }
+      },
+      0
+    );
 
     if (!updatedCount) {
-      console.error("❌ Fehler: Kein einziger Agent konnte aktualisiert werden.");
-      return res.status(400).json({ error: "⚠️ Keine passenden Agenten gefunden." });
+      console.error(
+        "❌ Fehler: Kein einziger Agent konnte aktualisiert werden."
+      );
+      return res
+        .status(400)
+        .json({ error: "⚠️ Keine passenden Agenten gefunden." });
     }
 
     if (shouldSort) {
@@ -166,7 +245,9 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
     saveAgents(agents, res, `✅ ${updatedCount} ${successMessage}`);
   } catch (error) {
     console.error("❌ Fehler beim Verarbeiten der Agenten:", error);
-    res.status(500).json({ error: "Interner Serverfehler beim Aktualisieren der Agenten." });
+    res
+      .status(500)
+      .json({ error: "Interner Serverfehler beim Aktualisieren der Agenten." });
   }
 }
 
@@ -206,7 +287,9 @@ app.post("/update-agent-skills", (req, res) => {
     res,
     (agent, { skill_ib, skill_ob }) => {
       console.log(`🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
-      console.log(`   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);
+      console.log(
+        `   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`
+      );
       console.log(`   ➝ Neu:     skill_ib=${skill_ib}, skill_ob=${skill_ob}`);
 
       if (agent.skill_ib !== skill_ib || agent.skill_ob !== skill_ob) {
