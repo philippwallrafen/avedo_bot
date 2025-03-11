@@ -2,14 +2,25 @@
 
 ## To Do
 
-- [ ] `(1)` TypeScript Umstellung
-- [ ] `(2)` agents.csv um einmalige ID erweitern
-- [ ] `(3)` Logging Library implementieren
-- [ ] `(4)`
-- [ ] `(5)` Logs auf Website abrufbar
-- [ ] `(6)` Websocket für Skill Seite und Log
-- [ ] `(7)` User und Login
-- [ ] `(8)`
+- [ ] app.ts Refaktorieren
+- [ ] TypeScript Umstellung
+- [ ] Logging Library implementieren
+- [ ] Logging fertigstellen (bulletproof für mehrere Änderungen gleichzeitig)
+- [ ] Logs auf Website abrufbar
+- [ ]
+- [ ] Reload Button
+- [ ] Skill (OB > OB, OB > IB) Buttons
+- [ ]
+- [ ]
+- [ ] Monitor Simulation fertigstellen
+- [ ] Monitor einsehbar machen
+- [ ]
+- [ ]
+- [ ]
+- [ ] agents.csv um einmalige ID erweitern
+- [ ] Websocket für Skill Seite und Log
+- [ ] User und Login
+- [ ]
 
 ## In Progress
 

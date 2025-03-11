@@ -31,7 +31,7 @@ class CallCenterSimulator:
         self.total_wait_time = 0
 
     def _update_agents(self):
-        """Simuliere Agentenverfügbarkeit mit Zufallsabwesenheiten"""
+        # Simuliere Agentenverfügbarkeit mit Zufallsabwesenheiten
         available_agents = self.agents_planned
 
         # 10% Chance dass ein Agent kurz abwesend ist
@@ -41,7 +41,7 @@ class CallCenterSimulator:
         return max(available_agents, 1)  # Mindestens 1 Agent immer da
 
     def _generate_calls(self):
-        """Generiere neue Anrufe basierend auf 30min-Forecast"""
+        # Generiere neue Anrufe basierend auf 30min-Forecast
         # Pro 2-Minuten-Intervall: (Forecast/30) * 2 Minuten + Abweichung
         base_calls = (self.forecast / 30) * 2  # Korrekte Basis für 2 Minuten
         actual_calls = random.randint(
@@ -58,7 +58,7 @@ class CallCenterSimulator:
             self.waiting_customers.append((entry_time, max(call_duration, 30)))
 
     def _handle_calls(self, available_agents):
-        """Bearbeite Anrufe und aktualisiere Warteschlange"""
+        # Bearbeite Anrufe und aktualisiere Warteschlange
         # Bearbeite bis zu available_agents Anrufe gleichzeitig
         while len(self.active_calls) < available_agents and self.waiting_customers:
             entry_time, duration = self.waiting_customers[0]
@@ -81,11 +81,11 @@ class CallCenterSimulator:
         self.handled_calls += completed_calls
 
     def _update_forecast(self):
-        """Passe Prognose mit leichter Zufallsabweichung an"""
+        # Passe Prognose mit leichter Zufallsabweichung an
         self.forecast = random.randint(max(1, self.forecast - 3), self.forecast + 3)
 
     def tick(self, interval=120):
-        """Führe einen Simulationsschritt aus (2-Minuten-Intervall)"""
+        # Führe einen Simulationsschritt aus (2-Minuten-Intervall)
         self.current_time += timedelta(seconds=interval)
         self._generate_calls()
         available_agents = self._update_agents()

@@ -8,9 +8,6 @@ import eslintConfigPrettier from "eslint-config-prettier";
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: ["node_modules/"],
-  },
-  {
     files: ["**/*.{js,cjs,mjs}"],
     languageOptions: {},
   },
@@ -27,4 +24,10 @@ export default [
   pluginJS.configs.recommended,
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
+  {
+    rules: {
+      "@typescript-eslint/no-unused-vars": "off",
+      // "@typescript-eslint/explicit-function-return-type": "off",
+    },
+  },
 ];
