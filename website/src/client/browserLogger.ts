@@ -1,6 +1,7 @@
 // browserLogger.ts
 
-import loglevel from "loglevel";
+// import loglevel from "loglevel";
+import loglevel from "https://cdn.skypack.dev/loglevel";
 
 const ALLOWED_LOG_LEVELS = ["error", "warn", "info", "debug", "trace"] as const;
 type LogLevel = (typeof ALLOWED_LOG_LEVELS)[number];

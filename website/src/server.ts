@@ -14,8 +14,7 @@
 
 import path from "path";
 import fs from "fs/promises";
-import type { Response, Request } from "express";
-import express, { NextFunction } from "express";
+import express, { Request, Response, NextFunction, RequestHandler } from "express";
 import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
 import { inspect } from "util";
@@ -64,6 +63,21 @@ function isValidSkill(val: unknown): boolean {
 function toBoolean(val: unknown): boolean {
   return val === true || val === "true" || val === 1;
 }
+
+/**
+ * Nimmt eine async Funktion entgegen und liefert einen gültigen RequestHandler zurück.
+ * Bei einem Fehler wird automatisch `next(err)` aufgerufen, statt die Anwendung abstürzen zu lassen.
+ */
+function createAsyncHandler(fn: (req: Request, res: Response, next: NextFunction) => Promise<void>): RequestHandler {
+  return (req, res, next) => {
+    fn(req, res, next).catch(next);
+  };
+}
+
+app.use((err: unknown, req: Request, res: Response, _next: NextFunction) => {
+  log("error", `❌ Unbehandelter Fehler: ${err}`);
+  res.status(500).json({ error: "Unerwarteter Server-Fehler" });
+});
 
 /**
  * Liest die CSV-Datei und gibt ein Array von Agenten zurück.
@@ -251,73 +265,83 @@ async function updateAgents(
 }
 
 // Route: Render Index Page
-app.get("/", async (_req: Request, res: Response) => {
-  await log("info", "Root route accessed");
-  try {
-    const agents = await parseAgents();
-    res.render("index", { agents });
-  } catch (error) {
-    log("error", `❌ Fehler beim Laden der Agenten: ${error}`);
-    res.status(500).send("Fehler beim Laden der Agenten.");
-  }
-});
+app.get(
+  "/",
+  createAsyncHandler(async (_req, res) => {
+    await log("info", "Root route accessed");
+    try {
+      const agents = await parseAgents();
+      res.render("index", { agents });
+    } catch (error) {
+      log("error", `❌ Fehler beim Laden der Agenten: ${error}`);
+      res.status(500).send("Fehler beim Laden der Agenten.");
+    }
+  })
+);
 
 // Route: Log Client with Winston
-app.post("/log", (req, res) => {
-  const { level, message } = req.body;
-
-  if (!level || !message) {
-    return res.status(400).json({ error: "Level und Message sind erforderlich" });
-  }
-
-  log(level, message); // Log mit Winston auf dem Server speichern
-  res.json({ success: true });
-});
+app.post(
+  "/log",
+  createAsyncHandler(async (req, res) => {
+    const { level, message } = req.body;
+    if (!level || !message) {
+      res.status(400).json({ error: "Level und Message sind erforderlich" });
+      return;
+    }
+    await log(level, message); // Log mit Winston auf dem Server speichern
+    res.json({ success: true });
+  })
+);
 
 // Neue Route: Aktualisiert nur die Prioritäten und speichert sortiert
-app.post("/update-agent-priority", (req: Request, res: Response) => {
-  updateAgents(
-    req,
-    res,
-    (agent: Agent, { priority }: { priority?: number }) => {
-      // Wenn priority nicht definiert ist oder schon dem aktuellen Wert entspricht:
-      if (priority === undefined || agent.priority === priority) {
-        return false;
-      }
-
-      // Ansonsten: Aktualisierung nötig
-      agent.priority = priority;
-      return true;
-    },
-    "Prioritäten erfolgreich aktualisiert und sortiert!",
-    true // ✅ Optional: sortiere die Agentenliste nach dem Update
-  );
-});
+app.post(
+  "/update-agent-priority",
+  createAsyncHandler(async (req, res) => {
+    await updateAgents(
+      req,
+      res,
+      (agent: Agent, { priority }: { priority?: number }) => {
+        // Wenn priority nicht definiert ist oder schon dem aktuellen Wert entspricht:
+        if (priority === undefined || agent.priority === priority) {
+          return false;
+        }
+        // Ansonsten: Aktualisierung nötig
+        agent.priority = priority;
+        return true;
+      },
+      "Prioritäten erfolgreich aktualisiert und sortiert!",
+      true // ✅ Optional: sortiere die Agentenliste nach dem Update
+    );
+  })
+);
 
 // Neue Route: Aktualisiert die Agenten-Skills
-app.post("/update-agent-skills", (req: Request, res: Response) => {
-  updateAgents(
-    req,
-    res,
-    (agent: Agent, { skill_ib, skill_ob }: { skill_ib?: boolean; skill_ob?: boolean }) => {
-      log("debug", `🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
-      log("debug", `   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);
-      log("debug", `   ➝ Neu:     skill_ib=${skill_ib}, skill_ob=${skill_ob}`);
+app.post(
+  "/update-agent-skills",
+  createAsyncHandler(async (req, res) => {
+    await updateAgents(
+      req,
+      res,
+      (agent: Agent, { skill_ib, skill_ob }: { skill_ib?: boolean; skill_ob?: boolean }) => {
+        log("debug", `🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
+        log("debug", `   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);
+        log("debug", `   ➝ Neu:     skill_ib=${skill_ib}, skill_ob=${skill_ob}`);
 
-      // Wenn sich nichts ändert, gib direkt false zurück
-      if (agent.skill_ib === skill_ib && agent.skill_ob === skill_ob) {
-        log("warn", `❌ Keine Änderung nötig: ${agent.surname}, ${agent.name}`);
-        return false;
-      }
+        // Wenn sich nichts ändert, gib direkt false zurück
+        if (agent.skill_ib === skill_ib && agent.skill_ob === skill_ob) {
+          log("warn", `❌ Keine Änderung nötig: ${agent.surname}, ${agent.name}`);
+          return false;
+        }
 
-      // Hier liegt der "Happy Path": Wir nehmen Änderungen vor
-      log("info", `✅ Aktualisiert: ${agent.surname}, ${agent.name}`);
-      Object.assign(agent, { skill_ib, skill_ob });
-      return true;
-    },
-    "Agenten-Skills erfolgreich aktualisiert!"
-  );
-});
+        // Hier liegt der "Happy Path"
+        log("info", `✅ Aktualisiert: ${agent.surname}, ${agent.name}`);
+        Object.assign(agent, { skill_ib, skill_ob });
+        return true;
+      },
+      "Agenten-Skills erfolgreich aktualisiert!"
+    );
+  })
+);
 
 /**
  * Beendet den Server kontrolliert.

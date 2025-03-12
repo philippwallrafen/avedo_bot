@@ -302,3 +302,45 @@
 [2025-03-12T20:37:44.068Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
 [2025-03-12T20:37:48.933Z] [INFO] 🚀 Server running on http://localhost:3000
 [2025-03-12T20:42:38.206Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T22:02:27.997Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T22:02:37.692Z] [INFO] Root route accessed
+[2025-03-12T22:04:07.569Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T22:04:13.585Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T22:04:15.838Z] [INFO] Root route accessed
+[2025-03-12T22:04:19.551Z] [DEBUG] 🔄 Detected skill change: hose, melissa - outbound
+[2025-03-12T22:04:19.553Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: false, skill_ob: true } ]
+[2025-03-12T22:04:19.553Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-12T22:04:19.553Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-12T22:04:19.554Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-12T22:04:24.943Z] [DEBUG] 🔄 Detected skill change: hose, melissa - inbound
+[2025-03-12T22:04:24.945Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-12T22:04:24.945Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-12T22:04:24.945Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-12T22:04:24.946Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-12T22:05:29.767Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T22:06:06.486Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T22:06:07.935Z] [INFO] Root route accessed
+[2025-03-12T22:06:09.014Z] [DEBUG] 🔄 Detected skill change: hose, melissa - inbound
+[2025-03-12T22:06:09.016Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-12T22:06:09.017Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-12T22:06:09.017Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-12T22:06:09.017Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-12T22:06:49.347Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T22:06:54.002Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T22:06:54.963Z] [INFO] Root route accessed
+[2025-03-12T22:06:56.388Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound,color: #2196f3; font-weight: bold;,color: inherit; font-weight: normal;,color: #9c27b0; font-weight: bold;,color: inherit; font-weight: normal;,color: #ff9800; font-weight: bold;
+[2025-03-12T22:06:56.390Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-12T22:06:56.391Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-12T22:06:56.391Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-12T22:06:56.391Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-12T22:46:10.994Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T22:46:15.632Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T22:46:17.829Z] [INFO] Root route accessed
+[2025-03-12T22:46:19.184Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-12T22:46:19.185Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-12T22:46:19.186Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-12T22:46:19.186Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-12T22:46:19.186Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-12T22:47:17.443Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T22:52:34.899Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T22:52:36.671Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...

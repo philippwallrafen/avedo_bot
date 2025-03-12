@@ -4,6 +4,9 @@ import winston, { format } from "winston";
 import path from "path";
 import fs from "fs";
 
+const ALLOWED_LOG_LEVELS = ["error", "warn", "info", "http", "verbose", "debug", "silly"] as const;
+type LogLevel = (typeof ALLOWED_LOG_LEVELS)[number];
+
 const dataPath: string = path.join(process.cwd(), "data");
 const logPath: string = path.join(dataPath, "logs");
 
@@ -18,18 +21,25 @@ function getLogFilePath(): string {
   return path.join(logPath, `server-${date}.log`);
 }
 
-// Server Logger (winston Library)
-
+// Winston Log Format
 const fileFormat = format.combine(
   format.uncolorize(),
   format.timestamp(),
-  format.printf(({ timestamp, level, message }: winston.Logform.TransformableInfo): string => {
+  format.printf((info: winston.Logform.TransformableInfo): string => {
+    const timestamp = String(info.timestamp);
+    const level = String(info.level).toUpperCase();
+    const message = String(info.message ?? "");
     // Logs immer als Einzeiler speichern
-    const singleLineMessage = (message as string).replace(/\n/g, " ").replace(/\s+/g, " ").trim();
-    return `[${timestamp}] [${level.toUpperCase()}] ${singleLineMessage}`;
+    // prettier-ignore
+    const singleLineMessage = message
+      .replace(/\r\n/g, " ")
+      .replace(/\n/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    return `[${timestamp}] [${level}] ${singleLineMessage}`;
   })
 );
-
+// Winston Konsolen Format
 const consoleFormat = format.combine(
   format((info) => {
     info.level = `[${info.level.toUpperCase()}]`;
@@ -38,7 +48,7 @@ const consoleFormat = format.combine(
   format.colorize(),
   format.printf(({ level, message }) => `${level} ${message}`)
 );
-
+// Server Logger (winston Library)
 const serverLogger = winston.createLogger({
   level: process.env.LOG_LEVEL || "debug", // Globales Log Level
   transports: [
@@ -47,12 +57,19 @@ const serverLogger = winston.createLogger({
   ],
 });
 
-const log = (level: string, message: string): void => {
+function log(level: string, message: string): void {
+  const validatedLevel =
+    level === "trace"
+      ? "silly"
+      : ALLOWED_LOG_LEVELS.includes(level as LogLevel)
+      ? (level as LogLevel)
+      : (console.error(`⚠️ Unbekanntes Log-Level: "${level}". Fallback auf "debug".`), "debug");
+
   try {
-    serverLogger.log({ level, message });
-  } catch (error) {
+    serverLogger.log({ level: validatedLevel, message });
+  } catch (error: unknown) {
     console.error("❌ Fehler beim Loggen:", error);
   }
-};
+}
 
 export default log;

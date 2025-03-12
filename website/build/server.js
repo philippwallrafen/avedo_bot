@@ -17,7 +17,7 @@ import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
 import { inspect } from "util";
-import log from "./shared/logger.js"; // Import logging functions
+import log from "./serverLogger.js"; // Import logging functions
 const websitePath = path.join(process.cwd(), "website");
 const dataPath = path.join(process.cwd(), "data");
 const FILE_PATH = path.join(dataPath, "agents.csv");
@@ -45,6 +45,19 @@ function isValidSkill(val) {
 function toBoolean(val) {
     return val === true || val === "true" || val === 1;
 }
+/**
+ * Nimmt eine async Funktion entgegen und liefert einen gültigen RequestHandler zurück.
+ * Bei einem Fehler wird automatisch `next(err)` aufgerufen, statt die Anwendung abstürzen zu lassen.
+ */
+function createAsyncHandler(fn) {
+    return (req, res, next) => {
+        fn(req, res, next).catch(next);
+    };
+}
+app.use((err, req, res, _next) => {
+    log("error", `❌ Unbehandelter Fehler: ${err}`);
+    res.status(500).json({ error: "Unerwarteter Server-Fehler" });
+});
 /**
  * Liest die CSV-Datei und gibt ein Array von Agenten zurück.
  *
@@ -197,7 +210,7 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
     }
 }
 // Route: Render Index Page
-app.get("/", async (_req, res) => {
+app.get("/", createAsyncHandler(async (_req, res) => {
     await log("info", "Root route accessed");
     try {
         const agents = await parseAgents();
@@ -207,19 +220,20 @@ app.get("/", async (_req, res) => {
         log("error", `❌ Fehler beim Laden der Agenten: ${error}`);
         res.status(500).send("Fehler beim Laden der Agenten.");
     }
-});
+}));
 // Route: Log Client with Winston
-app.post("/log", (req, res) => {
+app.post("/log", createAsyncHandler(async (req, res) => {
     const { level, message } = req.body;
     if (!level || !message) {
-        return res.status(400).json({ error: "Level und Message sind erforderlich" });
+        res.status(400).json({ error: "Level und Message sind erforderlich" });
+        return;
     }
-    log(level, message); // Log mit Winston auf dem Server speichern
+    await log(level, message); // Log mit Winston auf dem Server speichern
     res.json({ success: true });
-});
+}));
 // Neue Route: Aktualisiert nur die Prioritäten und speichert sortiert
-app.post("/update-agent-priority", (req, res) => {
-    updateAgents(req, res, (agent, { priority }) => {
+app.post("/update-agent-priority", createAsyncHandler(async (req, res) => {
+    await updateAgents(req, res, (agent, { priority }) => {
         // Wenn priority nicht definiert ist oder schon dem aktuellen Wert entspricht:
         if (priority === undefined || agent.priority === priority) {
             return false;
@@ -229,10 +243,10 @@ app.post("/update-agent-priority", (req, res) => {
         return true;
     }, "Prioritäten erfolgreich aktualisiert und sortiert!", true // ✅ Optional: sortiere die Agentenliste nach dem Update
     );
-});
+}));
 // Neue Route: Aktualisiert die Agenten-Skills
-app.post("/update-agent-skills", (req, res) => {
-    updateAgents(req, res, (agent, { skill_ib, skill_ob }) => {
+app.post("/update-agent-skills", createAsyncHandler(async (req, res) => {
+    await updateAgents(req, res, (agent, { skill_ib, skill_ob }) => {
         log("debug", `🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
         log("debug", `   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);
         log("debug", `   ➝ Neu:     skill_ib=${skill_ib}, skill_ob=${skill_ob}`);
@@ -241,12 +255,12 @@ app.post("/update-agent-skills", (req, res) => {
             log("warn", `❌ Keine Änderung nötig: ${agent.surname}, ${agent.name}`);
             return false;
         }
-        // Hier liegt der "Happy Path": Wir nehmen Änderungen vor
+        // Hier liegt der "Happy Path"
         log("info", `✅ Aktualisiert: ${agent.surname}, ${agent.name}`);
         Object.assign(agent, { skill_ib, skill_ob });
         return true;
     }, "Agenten-Skills erfolgreich aktualisiert!");
-});
+}));
 /**
  * Beendet den Server kontrolliert.
  */

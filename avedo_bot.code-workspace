@@ -5,6 +5,7 @@
     }
   ],
   "settings": {
+    "files.eol": "\n",
     // == Live Sass Compiler ==
     "liveSassCompile.settings.useNewCompiler": false,
     "liveSassCompile.settings.watchOnLaunch": true,
