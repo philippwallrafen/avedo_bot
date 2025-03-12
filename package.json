@@ -9,7 +9,8 @@
   "license": "ISC",
   "scripts": {
     "start": "node website/build/server.js",
-    "dev": "ts-node --project config/tsconfig.json src/server.ts",
+    "dev_old": "ts-node --project config/tsconfig.json src/server.ts",
+    "dev": "npm run build || echo Ignoring errors... && npm run start",
     "build": "tsc --project config/tsconfig.json",
     "lint": "eslint --config config/eslint.config.mjs --fix",
     "format": "prettier --config config/prettier.config.cjs --write .",
@@ -19,7 +20,9 @@
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
-    "express-ejs-layouts": "^2.5.1"
+    "express-ejs-layouts": "^2.5.1",
+    "loglevel": "^1.9.2",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
@@ -30,6 +33,7 @@
     "@types/sortablejs": "^1.15.8",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
     "@typescript-eslint/parser": "^8.26.0",
+    "cross-env": "^7.0.3",
     "eslint": "^9.21.0",
     "eslint-config-prettier": "^10.0.2",
     "globals": "^16.0.0",

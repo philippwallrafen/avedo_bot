@@ -41,23 +41,18 @@ export const ColorStyles = {
   agentName: "color: #9c27b0; font-weight: bold;",
   updatedData: "color: #ff9800; font-weight: bold;",
   error: "color: #ff3333; font-weight: bold;",
+  unstyled: "color: inherit; font-weight: normal;",
 };
 
 /**
  * Fügt einen Log-Eintrag in eine Map ein,
  * ohne überall das gleiche "if (!map.has(key)) ..." schreiben zu müssen
  */
-function pushDebugLog(logMap: Map<string, LogEntry[]>, key: string, entry: LogEntry) {
+function debugLogPushEntry(logMap: Map<string, LogEntry[]>, key: string, entry: LogEntry) {
   if (!logMap.has(key)) {
     logMap.set(key, []);
   }
   logMap.get(key)!.push(entry);
-}
-
-// Kleine Helper-Funktion für gefärbte Texte
-function colored(text: string, style: string): [string, string] {
-  // Liefert zwei Einträge: einmal '%c...' und einmal den style
-  return [`%c${text}`, style];
 }
 
 /**
@@ -67,16 +62,17 @@ function colored(text: string, style: string): [string, string] {
  * @param agent   Der betroffene Agent
  * @param detail  Zusätzliche Info (z. B. "Neuer Skill: inbound" oder "Neue Prio: 3")
  */
-function logRouteChange(logMap: Map<string, LogEntry[]>, heading: string, agent: Agent, detail: string) {
-  const entry: LogEntry = [
-    ...colored(`🔄 ${heading}\n\n`, ColorStyles.debugHeading),
-    "  👤 Agent: ",
-    ...colored(`${capitalize(agent.surname)}, ${capitalize(agent.name)}`, ColorStyles.agentName),
-    "\n  ", // Zeilenumbruch
-    ...colored(detail, ColorStyles.updatedData),
+function logFormat(heading: string, agent: Agent, detail: string): LogEntry {
+  return [
+    `%c${heading}%c\n\n  👤 Agent: %c${capitalize(agent.surname)}, ${capitalize(
+      agent.name
+    )}%c\n  📞 Neuer Skill: %c${capitalize(detail)}`,
+    ColorStyles.debugHeading,
+    ColorStyles.unstyled,
+    ColorStyles.agentName,
+    ColorStyles.unstyled,
+    ColorStyles.updatedData,
   ];
-
-  pushDebugLog(logMap, agent.key, entry);
 }
 
 /*******************************
@@ -122,34 +118,16 @@ document.addEventListener("DOMContentLoaded", () => {
         key: getAgentKey({ surname, name }),
       };
 
-      logRouteChange(
-        debugLogSkills, // Map für Skills
-        "Detected Skill Change", // Überschrift
-        agent,
-        `📞 Neuer Skill: ${selectedRadio.value}` // Detail
+      debugLogPushEntry(
+        debugLogSkills,
+        agent.key,
+        logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`)
       );
+
       updateSkills(selectedRadio, agent);
     });
   });
 });
-
-function logSkillChange(debugLogSkills: Map<string, any[]>, agent: Agent, newSkill: string) {
-  if (!debugLogSkills.has(agent.key)) {
-    debugLogSkills.set(agent.key, []);
-  }
-  debugLogSkills
-    .get(agent.key)!
-    .push([
-      `%c🔄 Detected Skill Change%c\n\n  👤 Agent: %c${capitalize(agent.surname)}, ${capitalize(
-        agent.name
-      )}%c\n  📞 Neuer Skill: %c${capitalize(newSkill)}`,
-      "color: #2196f3; font-weight: bold;",
-      "",
-      "color: #9c27b0; font-weight: bold;",
-      "",
-      "color: #ff9800; font-weight: bold;",
-    ]);
-}
 
 type UpdateData<T> = T[];
 
@@ -203,17 +181,17 @@ async function updateSkills(radio: HTMLInputElement, agent: Agent): Promise<void
 }
 
 function logErrorDebug<T extends { agent: Agent }>(error: unknown, updated: UpdateData<T>): void {
-  if (error instanceof Error) {
-    console.error(`%c❌ Error updating data:%c\n  ${error.message}`, "color: #ff3333; font-weight: bold;", "");
-  } else {
-    console.error("Unknown error:", error);
-  }
-
   // Print existing logs for each item:
   updated.forEach(({ agent }) => {
     debugLogPriorities.get(agent.key)?.forEach((log) => console.log(...log));
     debugLogSkills.get(agent.key)?.forEach((log) => console.log(...log));
   });
+
+  if (error instanceof Error) {
+    console.error(`%c❌ Error updating data:%c\n  ${error.message}`, "color: #ff3333; font-weight: bold;", "");
+  } else {
+    console.error("Unknown error:", error);
+  }
 
   alert("Fehler beim Aktualisieren der Agenten-Daten.");
 }
@@ -260,11 +238,10 @@ function collectPriorityUpdates(list: HTMLElement): AgentPriorityUpdate[] {
     };
 
     // EINZENTRALE Log-Funktion
-    logRouteChange(
-      debugLogPriorities, // Map für Priorities
-      "Detected Priority Change", // heading
-      agent,
-      `📜 Neue Prio: ${newPriority}` // detail
+    debugLogPushEntry(
+      debugLogPriorities,
+      agent.key,
+      logFormat("Detected priority change", agent, `📜 Neue Prio: ${newPriority}`)
     );
 
     updatedPriorities.push({ agent, priority: newPriority });
@@ -289,28 +266,11 @@ function collectSkillUpdates(radio: HTMLInputElement, agent: Agent): AgentSkills
     skill_ob: listItem.dataset.skill_ob === "true",
   };
 
-  // // debug logs
-  // if (!debugLogSkills.has(agent.key)) {
-  //   debugLogSkills.set(agent.key, []);
-  // }
-
-  // debugLogSkills
-  //   .get(agent.key)!
-  //   .push([
-  //     `📤 %cSending Data to Server%c\n${JSON.stringify(updatedSkills, null, 2)}`,
-  //     "color: #2196f3; font-weight: bold;",
-  //     "",
-  //   ]);
-
-  // Optional: Logge zusätzlich (nur beim Absenden an den Server) separat, ohne doppelte Logs zu erzeugen
-  pushDebugLog(debugLogSkills, agent.key, [
-    `%c📤 Sending Data to Server\n`,
+  debugLogPushEntry(debugLogSkills, agent.key, [
+    `%c📤 Sending data to server:\n`,
     ColorStyles.debugHeading,
     JSON.stringify(updatedSkills, null, 2),
   ]);
-
-  // Zentrales Logging für die erkannte Änderung:
-  logRouteChange(debugLogSkills, "Detected Skill Change", agent, `📞 Neuer Skill: ${capitalize(radio.value)}`);
 
   return updatedSkills;
 }
