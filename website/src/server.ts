@@ -20,7 +20,7 @@ import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
 import { inspect } from "util";
 
-import log from "./shared/logger.js"; // Import logging functions
+import log from "./serverLogger.js"; // Import logging functions
 
 const websitePath = path.join(process.cwd(), "website");
 const dataPath = path.join(process.cwd(), "data");
@@ -260,6 +260,18 @@ app.get("/", async (_req: Request, res: Response) => {
     log("error", `❌ Fehler beim Laden der Agenten: ${error}`);
     res.status(500).send("Fehler beim Laden der Agenten.");
   }
+});
+
+// Route: Log Client with Winston
+app.post("/log", (req, res) => {
+  const { level, message } = req.body;
+
+  if (!level || !message) {
+    return res.status(400).json({ error: "Level und Message sind erforderlich" });
+  }
+
+  log(level, message); // Log mit Winston auf dem Server speichern
+  res.json({ success: true });
 });
 
 // Neue Route: Aktualisiert nur die Prioritäten und speichert sortiert

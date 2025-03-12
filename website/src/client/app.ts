@@ -3,7 +3,7 @@
 // import Sortable from "sortablejs";
 import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@latest/+esm";
 
-import log from "../shared/logger.js"; // Import logging functions
+import log from "../serverLogger.js"; // Import logging functions
 
 type LogEntry = string[];
 const debugLogSkills: Map<string, LogEntry[]> = new Map();
