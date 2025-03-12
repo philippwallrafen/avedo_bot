@@ -20,7 +20,7 @@ import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
 import { inspect } from "util";
 
-import log from "./logger.js"; // Import logging functions
+import log from "./shared/logger.js"; // Import logging functions
 
 const websitePath = path.join(process.cwd(), "website");
 const dataPath = path.join(process.cwd(), "data");

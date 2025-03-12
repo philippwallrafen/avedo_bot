@@ -26,41 +26,41 @@ function getLogFilePath(): string {
   return path.join(logPath, `server-${date}.log`);
 }
 
-// winston.addColors({
-//   error: "red",
-//   warn: "yellow",
-//   info: "green",
-//   verbose: "cyan",
-//   debug: "blue",
-//   silly: "magenta",
-// });
-
-// Browser Logger (using loglevel)
+// Browser Logger (loglevel Library)
 if (isBrowser) {
   const browserLogger = loglevel.getLogger("browser");
   browserLogger.setLevel(loglevel.levels.DEBUG);
 
   log = (level: string, message: string): void => {
     switch (level) {
-      case "info":
-        browserLogger.info(message);
+      case "error":
+        browserLogger.error(message);
         break;
       case "warn":
         browserLogger.warn(message);
         break;
-      case "error":
-        browserLogger.error(message);
+      case "info":
+        browserLogger.info(message);
+        break;
+      case "debug":
+        browserLogger.debug(message);
+        break;
+      case "trace":
+        browserLogger.trace(message);
         break;
       default:
+        console.warn(`Unbekanntes Log-Level: ${level}, benutze 'debug' als Fallback.`);
         browserLogger.debug(message);
     }
   };
 } else {
+  // Server Logger (winston Library)
+
   const fileFormat = format.combine(
     format.uncolorize(),
     format.timestamp(),
     format.printf(({ timestamp, level, message }: winston.Logform.TransformableInfo): string => {
-      // Replace newlines with a space, then collapse multiple spaces and trim the result.
+      // Logs immer als Einzeiler speichern
       const singleLineMessage = (message as string).replace(/\n/g, " ").replace(/\s+/g, " ").trim();
       return `[${timestamp}] [${level.toUpperCase()}] ${singleLineMessage}`;
     })
@@ -68,22 +68,19 @@ if (isBrowser) {
 
   const consoleFormat = format.combine(
     format((info) => {
-      // Modify the level to include brackets and uppercase it.
       info.level = `[${info.level.toUpperCase()}]`;
       return info;
     })(),
-    // Colorize all text (not only the level property)
     format.colorize(),
     format.printf(({ level, message }) => `${level} ${message}`)
   );
 
-  // Server Logger (using winston)
   const serverLogger = winston.createLogger({
-    level: process.env.LOG_LEVEL || "debug", // use environment variable to control log level
+    level: process.env.LOG_LEVEL || "debug", // Globales Log Level
     transports: [
-      // Console transport with colorized output
+      // Console transport
       new winston.transports.Console({ format: consoleFormat }),
-      // File transport to log file
+      // File transport
       new winston.transports.File({ filename: getLogFilePath(), format: fileFormat }),
     ],
   });

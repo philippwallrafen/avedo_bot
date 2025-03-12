@@ -3,6 +3,8 @@
 // import Sortable from "sortablejs";
 import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@latest/+esm";
 
+import log from "../shared/logger.js"; // Import logging functions
+
 type LogEntry = string[];
 const debugLogSkills: Map<string, LogEntry[]> = new Map();
 const debugLogPriorities: Map<string, LogEntry[]> = new Map();
@@ -123,6 +125,8 @@ document.addEventListener("DOMContentLoaded", () => {
         agent.key,
         logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`)
       );
+
+      log("debug", `🔄 Detected skill change: ${agent.surname}, ${agent.name} - ${selectedRadio.value}`);
 
       updateSkills(selectedRadio, agent);
     });

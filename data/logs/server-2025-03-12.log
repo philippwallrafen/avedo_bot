@@ -270,3 +270,30 @@
 [2025-03-12T03:25:07.379Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
 [2025-03-12T03:25:07.379Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
 [2025-03-12T03:43:02.735Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T19:26:03.574Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T19:26:12.011Z] [INFO] Root route accessed
+[2025-03-12T19:26:44.205Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-12T19:26:44.205Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-12T19:26:44.205Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-12T19:26:44.206Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-12T19:37:43.092Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T19:37:52.083Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T19:37:53.891Z] [INFO] Root route accessed
+[2025-03-12T19:38:06.386Z] [INFO] Root route accessed
+[2025-03-12T19:38:18.474Z] [INFO] Root route accessed
+[2025-03-12T19:38:31.170Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-12T19:38:31.170Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-12T19:38:31.171Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-12T19:38:31.171Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-12T19:40:06.962Z] [INFO] Root route accessed
+[2025-03-12T19:41:13.982Z] [INFO] Root route accessed
+[2025-03-12T19:59:24.560Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T19:59:29.338Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T19:59:31.538Z] [INFO] Root route accessed
+[2025-03-12T20:00:24.199Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T20:00:28.931Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T20:00:30.697Z] [INFO] Root route accessed
+[2025-03-12T20:04:34.617Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T20:04:39.183Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T20:04:41.018Z] [INFO] Root route accessed
+[2025-03-12T20:29:38.203Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
