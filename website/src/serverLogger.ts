@@ -59,7 +59,9 @@ const serverLogger = winston.createLogger({
 
 function log(level: string, message: string): void {
   const validatedLevel =
-    level === "trace"
+    level === "log"
+      ? "info"
+      : level === "trace"
       ? "silly"
       : ALLOWED_LOG_LEVELS.includes(level as LogLevel)
       ? (level as LogLevel)
