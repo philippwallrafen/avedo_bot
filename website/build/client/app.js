@@ -1,4 +1,4 @@
-// app.ts
+// ~/website/src/client/app.ts
 // import Sortable from "sortablejs";
 // @ts-expect-error Bundler wird später geadded
 import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@latest/+esm";

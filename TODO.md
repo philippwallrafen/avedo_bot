@@ -17,7 +17,7 @@
 - [ ] agents.csv um einmalige ID erweitern
 - [ ] Websocket für Skill Seite und Log
 - [ ] User und Login
-- [ ] Bundler verwenden (webPack, vite)
+- [ ] Bundler verwenden (vite)
 
 ## In Progress
 
@@ -27,3 +27,4 @@
 
 - [x] TypeScript Umstellung
 - [x] Logging Library implementieren
+- [x] Server.ts aufgeteilt in Routen und utils

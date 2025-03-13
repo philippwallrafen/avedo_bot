@@ -137,7 +137,7 @@ body:not(:has(:target)) #dashboard {
 
 /* =========== Tab-Content : Monitor ============ */
 /* ============== Tab-Content : Dashboard ============== */
-[role="toolbar"] {
+[role=toolbar] {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -192,7 +192,7 @@ button {
   color: var(--text-color);
   cursor: pointer;
 }
-.agent-list li[data-valid="false"] {
+.agent-list li[data-valid=false] {
   background: hsl(0, 58%, 18%);
 }
 
@@ -233,4 +233,4 @@ button {
   #site-logo {
     display: none;
   }
-} /*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */

@@ -1,4 +1,5 @@
-// eslint.config.mjs
+// ~/config/eslint.config.mjs
+
 import globals from "globals";
 import pluginJS from "@eslint/js";
 import tseslint from "typescript-eslint";

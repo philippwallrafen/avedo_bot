@@ -1,4 +1,4 @@
-// browserLogger.ts
+// ~/website/src/client/browserLogger.ts
 const ALLOWED_LOG_LEVELS = ["error", "warn", "info", "log", "debug", "trace"];
 // Lookup-Table für die Log-Methoden
 const logFunctionMap = {

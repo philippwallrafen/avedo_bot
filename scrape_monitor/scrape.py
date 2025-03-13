@@ -1,3 +1,5 @@
+# ~/website/scrape_monitor/scrape.py
+
 # ============= imports & variables ==============
 
 import time

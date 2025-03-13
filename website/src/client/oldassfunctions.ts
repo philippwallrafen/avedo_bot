@@ -1,3 +1,5 @@
+// ~/website/src/client/oldassfunctions.ts
+
 // type LogEntry = string[];
 // const debugLogSkills: Map<string, LogEntry[]> = new Map();
 // const debugLogPriorities: Map<string, LogEntry[]> = new Map();

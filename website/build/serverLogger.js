@@ -1,4 +1,4 @@
-// serverLogger.ts
+// ~/website/src/serverLogger.ts
 import winston, { format } from "winston";
 import path from "path";
 import fs from "fs";

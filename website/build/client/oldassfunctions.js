@@ -1,7 +1,8 @@
+// ~/website/src/client/oldassfunctions.ts
+export {};
 // type LogEntry = string[];
 // const debugLogSkills: Map<string, LogEntry[]> = new Map();
 // const debugLogPriorities: Map<string, LogEntry[]> = new Map();
-export {};
 // function ensureLogEntryArrayExists(logMap: Map<string, LogEntry[]>, key: string): void {
 //   if (!logMap.has(key)) {
 //     logMap.set(key, []);

@@ -1,4 +1,4 @@
-// serverLogger.ts
+// ~/website/src/serverLogger.ts
 
 import winston, { format } from "winston";
 import path from "path";
@@ -79,7 +79,7 @@ const clientLogger = winston.createLogger({
 });
 
 // Haupt-Logging-Funktion für Server- und Client-Logs. API-Logs werden vorher in der Route automatisch als "client" gesetzt.
-function log(level: string, message: string, source: string = "server"): void {
+export function log(level: string, message: string, source: string = "server"): void {
   const validatedLevel = validateLevel(level);
   if (source === "server") {
     serverLogger.log({ level: validatedLevel, message });
@@ -100,5 +100,3 @@ function validateLevel(level: string): LogLevel {
   }
   return level as LogLevel;
 }
-
-export default log;
