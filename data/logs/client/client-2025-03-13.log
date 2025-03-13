@@ -1,2 +1,154 @@
 [2025-03-13T02:11:58.618Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound
 [2025-03-13T02:11:58.619Z] [DEBUG] %c📤 Sending data to server:
+[2025-03-13T02:57:39.888Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T02:57:39.889Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T02:57:39.895Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound
+[2025-03-13T02:57:39.896Z] [DEBUG] %c📤 Sending data to server:
+[2025-03-13T03:02:43.741Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:02:43.742Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:02:43.747Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound
+[2025-03-13T03:02:43.748Z] [DEBUG] %c📤 Sending data to server:
+[2025-03-13T03:02:54.335Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cOutbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:02:54.335Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cOutbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:02:54.342Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cOutbound
+[2025-03-13T03:02:54.343Z] [DEBUG] %c📤 Sending data to server:
+{"level":"info","message":"%c🔄 Detected skill change:%c\n\n  👤 Agent: %cHose, Melissa%c\n  📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;","timestamp":"2025-03-13T03:05:11.740Z"}
+{"level":"info","message":"%c🔄 Detected skill change:%c\n\n  👤 Agent: %cHose, Melissa%c\n  📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;","timestamp":"2025-03-13T03:05:11.741Z"}
+{"level":"debug","message":"%c🔄 Detected skill change:%c\n\n  👤 Agent: %cHose, Melissa%c\n  📞 Neuer Skill: %cInbound","timestamp":"2025-03-13T03:05:11.747Z"}
+{"level":"debug","message":"%c📤 Sending data to server:\n","timestamp":"2025-03-13T03:05:11.748Z"}
+{"level":"info","message":"%c🔄 Detected skill change:%c\n\n  👤 Agent: %cHose, Melissa%c\n  📞 Neuer Skill: %cOutbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;","timestamp":"2025-03-13T03:05:29.825Z"}
+{"level":"info","message":"%c🔄 Detected skill change:%c\n\n  👤 Agent: %cHose, Melissa%c\n  📞 Neuer Skill: %cOutbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;","timestamp":"2025-03-13T03:05:29.826Z"}
+{"level":"debug","message":"%c🔄 Detected skill change:%c\n\n  👤 Agent: %cHose, Melissa%c\n  📞 Neuer Skill: %cOutbound","timestamp":"2025-03-13T03:05:29.832Z"}
+{"level":"debug","message":"%c📤 Sending data to server:\n","timestamp":"2025-03-13T03:05:29.832Z"}
+[2025-03-13T03:13:10.424Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:13:10.425Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:13:10.431Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound
+[2025-03-13T03:13:10.431Z] [DEBUG] %c📤 Sending data to server:
+[2025-03-13T03:13:23.911Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cOutbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:13:23.912Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cOutbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:13:23.918Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cOutbound
+[2025-03-13T03:13:23.918Z] [DEBUG] %c📤 Sending data to server:
+[2025-03-13T03:14:39.592Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:14:39.593Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:14:39.598Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound
+[2025-03-13T03:14:39.599Z] [DEBUG] %c📤 Sending data to server:
+[2025-03-13T03:16:15.551Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:16:15.552Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:16:15.558Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound
+[2025-03-13T03:16:15.559Z] [DEBUG] %c📤 Sending data to server:
+[2025-03-13T03:16:22.153Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cOutbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:16:22.154Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cOutbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:16:22.160Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cOutbound
+[2025-03-13T03:16:22.160Z] [DEBUG] %c📤 Sending data to server:
+[2025-03-13T03:19:08.475Z] [INFO] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:19:08.476Z] [INFO] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T03:19:08.482Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:19:08.482Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T03:21:36.150Z] [INFO] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:21:36.151Z] [INFO] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:21:36.156Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:21:36.157Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T03:21:48.128Z] [INFO] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T03:21:48.129Z] [INFO] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T03:21:48.135Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T03:21:48.136Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T03:32:32.982Z] [INFO] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:32:32.987Z] [INFO] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:32:32.994Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:32:32.995Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T03:40:45.932Z] [INFO ] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:40:45.933Z] [INFO ] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:40:45.939Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:40:45.939Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T03:40:46.423Z] [INFO ] 🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:40:46.424Z] [INFO ] 🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:40:46.430Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:40:46.430Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T03:46:43.535Z] [[INFO] ] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:46:43.536Z] [[INFO] ] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:46:43.542Z] [[DEBUG]] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:46:43.543Z] [[DEBUG]] 📤 Sending data to server:
+[2025-03-13T03:46:44.078Z] [[INFO] ] 🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:46:44.079Z] [[INFO] ] 🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:46:44.084Z] [[DEBUG]] 🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:46:44.085Z] [[DEBUG]] 📤 Sending data to server:
+[2025-03-13T03:47:50.119Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:47:50.120Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:47:50.126Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:47:50.127Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T03:47:50.708Z] [INFO]  🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:47:50.709Z] [INFO]  🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:47:50.714Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:47:50.715Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T03:49:23.340Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:49:23.341Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:49:23.348Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T03:49:23.349Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T03:49:23.952Z] [INFO]  🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:49:23.953Z] [INFO]  🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:49:23.958Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T03:49:23.959Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T03:52:14.120Z] [INFO]    🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T03:52:14.124Z] [INFO]    🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T03:52:14.130Z] [DEBUG]   🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T03:52:14.131Z] [DEBUG]   📤 Sending data to server:
+[2025-03-13T04:07:14.519Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:07:14.520Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:07:14.526Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:07:14.527Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:10:09.717Z] [info]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:10:09.721Z] [info]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:10:09.728Z] [debug] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:10:09.729Z] [debug] 📤 Sending data to server:
+[2025-03-13T04:13:31.788Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:13:31.793Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:13:31.801Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:13:31.802Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:14:31.523Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:14:31.527Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:14:31.535Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:14:31.536Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:16:22.356Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:16:22.360Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:16:22.366Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:16:22.367Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:19:45.108Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:19:45.111Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:19:45.117Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:19:45.118Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:25:14.213Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:25:14.217Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:25:14.223Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:25:14.224Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:27:12.677Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:27:12.681Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:27:12.687Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:27:12.687Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:27:35.303Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:27:35.307Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:27:35.315Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:27:35.316Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:27:57.032Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:27:57.036Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:27:57.044Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:27:57.044Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:28:09.946Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:28:09.950Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:28:09.958Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:28:09.959Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:28:51.771Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:28:51.775Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:28:51.783Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:28:51.784Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:29:15.427Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:29:15.431Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:29:15.437Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:29:15.438Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:29:30.908Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:29:30.912Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:29:30.920Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Outbound
+[2025-03-13T04:29:30.921Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:33:26.842Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:33:26.846Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:33:26.852Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
+[2025-03-13T04:33:26.853Z] [DEBUG] 📤 Sending data to server:

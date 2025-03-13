@@ -183,7 +183,7 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
         log("debug", `🔎 Suche nach Agent: ${surname}, ${name}`);
         const agent = agents.find((a) => a.surname === surname && a.name === name);
         if (!agent) {
-            log("warn", `⚠️ Kein Match gefunden für: ${surname}, ${name}`);
+            log("warn", `⚠️\u00A0Kein Match gefunden für: ${surname}, ${name}`);
             return count;
         }
         log("debug", `✅ Gefundener Agent: ${agent.surname}, ${agent.name}`);
@@ -192,7 +192,7 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
     // 4) Kein Agent wurde aktualisiert → Abbruch
     if (!updatedCount) {
         log("error", "❌ Fehler: Kein Agent wurde aktualisiert.");
-        res.status(400).json({ error: "⚠️ Keine passenden Agenten gefunden." });
+        res.status(400).json({ error: "⚠️\u00A0Keine passenden Agenten gefunden." });
         return;
     }
     // 5) Optional sortieren
