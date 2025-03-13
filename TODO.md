@@ -2,9 +2,6 @@
 
 ## To Do
 
-- [ ] app.ts Refaktorieren
-- [ ] TypeScript Umstellung
-- [ ] Logging Library implementieren
 - [ ] Logging fertigstellen (bulletproof für mehrere Änderungen gleichzeitig)
 - [ ] Logs auf Website abrufbar
 - [ ]
@@ -20,8 +17,13 @@
 - [ ] agents.csv um einmalige ID erweitern
 - [ ] Websocket für Skill Seite und Log
 - [ ] User und Login
-- [ ]
+- [ ] Bundler verwenden (webPack, vite)
 
 ## In Progress
 
+- [ ] app.ts Refaktorieren
+
 ## Done
+
+- [x] TypeScript Umstellung
+- [x] Logging Library implementieren

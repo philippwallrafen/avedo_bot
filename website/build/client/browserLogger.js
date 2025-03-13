@@ -10,20 +10,25 @@ const logFunctionMap = {
     trace: console.trace,
 };
 // Logging-Funktion
-function log(level, message) {
-    const validatedLevel = ALLOWED_LOG_LEVELS.includes(level)
-        ? level
-        : (console.error(`⚠️ Unbekanntes Log-Level: "${level}". Fallback auf "log".`), "log");
+function log(level, message, sendToServer = true) {
+    if (!ALLOWED_LOG_LEVELS.includes(level)) {
+        console.error(`⚠️ Unbekanntes Log-Level: "${level}". Fallback auf "log".`);
+        level = "log";
+    }
+    const validatedLevel = level;
+    let flattenedMessage;
     if (Array.isArray(message)) {
-        console.log("Detected array");
         logFunctionMap[validatedLevel](...message);
-        sendLogToServer(validatedLevel, message.join(" "));
+        flattenedMessage = message.join(" ");
     }
     else {
-        console.log("Detected normal message");
         logFunctionMap[validatedLevel](message);
-        sendLogToServer(validatedLevel, message);
+        flattenedMessage = message;
     }
+    if (!sendToServer) {
+        return;
+    }
+    sendLogToServer(validatedLevel, flattenedMessage);
 }
 async function sendLogToServer(level, message) {
     if (!navigator.onLine) {

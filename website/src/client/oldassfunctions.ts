@@ -1,3 +1,13 @@
+// type LogEntry = string[];
+// const debugLogSkills: Map<string, LogEntry[]> = new Map();
+// const debugLogPriorities: Map<string, LogEntry[]> = new Map();
+
+// function ensureLogEntryArrayExists(logMap: Map<string, LogEntry[]>, key: string): void {
+//   if (!logMap.has(key)) {
+//     logMap.set(key, []);
+//   }
+// }
+
 // function clearPriorityLogs(updates: AgentPriorityUpdate[]): void {
 //   updates.forEach(({ surname, name }) => {
 //     const agentKey = `${surname}-${name}`;
@@ -37,16 +47,16 @@
 //       debugLogPriorities.set(agentKey, []);
 //     }
 
-    // debugLogPriorities.get(agentKey)!.push([
-    //   `%c🔄 Detected Priority Change%c\n\n  👤 Agent: %c${capitalize(surname ?? "")}, ${capitalize(
-    //     name ?? ""
-    //   )}%c\n  📜 Neue Prio: %c${newPriority}`,
-    //   "color: #2196f3; font-weight: bold;", // 🔵 Blue for detection
-    //   "",
-    //   "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
-    //   "",
-    //   "color: #ff9800; font-weight: bold;", // 🟠 Orange for priority update
-    // ]);
+// debugLogPriorities.get(agentKey)!.push([
+//   `%c🔄 Detected Priority Change%c\n\n  👤 Agent: %c${capitalize(surname ?? "")}, ${capitalize(
+//     name ?? ""
+//   )}%c\n  📜 Neue Prio: %c${newPriority}`,
+//   "color: #2196f3; font-weight: bold;", // 🔵 Blue for detection
+//   "",
+//   "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
+//   "",
+//   "color: #ff9800; font-weight: bold;", // 🟠 Orange for priority update
+// ]);
 
 //     updatedPriorities.push({
 //       surname: surname ?? "", // Falls undefined, wird "" gesetzt
@@ -218,3 +228,36 @@
 //     };
 //   });
 // }
+
+/**
+ * Fügt einen Log-Eintrag in eine Map ein,
+ * ohne überall das gleiche "if (!map.has(key)) ..." schreiben zu müssen
+ */
+// function debugLogPushEntry(logMap: Map<string, LogEntry[]>, key: string, entry: LogEntry) {
+//     if (!logMap.has(key)) {
+//       logMap.set(key, []);
+//     }
+//     logMap.get(key)!.push(entry);
+//   }
+
+// function clearLogs<T extends { agent: Agent }>(updated: UpdateData<T>): void {
+//     updated.forEach(({ agent }) => {
+//       debugLogPriorities.delete(agent.key);
+//       debugLogSkills.delete(agent.key);
+//     });
+//   }
+
+// function logFormat(heading: string, agent: Agent, change: string, detail: string): LogEntry {
+//     console.log("logFormat called with:", { heading, agent, detail });
+
+//     return [
+//       `%c${heading}%c\n\n  👤 Agent: %c${capitalize(agent.surname)}, ${capitalize(
+//         agent.name
+//       )}%c\n  ${change} %c${capitalize(detail)}`,
+//       ColorStyles.debugHeading,
+//       ColorStyles.unstyled,
+//       ColorStyles.agentName,
+//       ColorStyles.unstyled,
+//       ColorStyles.updatedData,
+//     ];
+//   }

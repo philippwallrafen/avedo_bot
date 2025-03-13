@@ -20,7 +20,7 @@ if (!fs.existsSync(clientLogsPath)) {
 
 // Generate log filename with the current date
 function getLogFilePath(logType: "server" | "client"): string {
-  const currentDate: string = new Date().toISOString().split("T")[0]; // Format: YYYY-MM-DD
+  const currentDate: string = new Date().toISOString().split("T")?.[0] ?? ""; // Format: YYYY-MM-DD
 
   let logPath: string;
   if (logType === "server") {
@@ -51,7 +51,7 @@ const plaintextFileFormat = format.combine(
   })
 );
 
-const jsonFileFormat = format.combine();
+// const jsonFileFormat = format.combine();
 
 const consoleFormat = format.combine(
   format((info) => {

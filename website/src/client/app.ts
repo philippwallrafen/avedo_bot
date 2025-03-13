@@ -1,13 +1,10 @@
 // app.ts
 
 // import Sortable from "sortablejs";
+// @ts-expect-error Bundler wird später geadded
 import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@latest/+esm";
 
 import log from "./browserLogger.js"; // Import logging functions
-
-type LogEntry = string[];
-const debugLogSkills: Map<string, LogEntry[]> = new Map();
-const debugLogPriorities: Map<string, LogEntry[]> = new Map();
 
 interface Agent {
   surname: string;
@@ -38,44 +35,13 @@ function getAgentKey(agent: Pick<Agent, "surname" | "name">): string {
 
 // Alle Farben & Formatierungen zentral verwalten
 export const ColorStyles = {
-  success: "color: #4caf50; font-weight: bold;",
-  debugHeading: "color: #2196f3; font-weight: bold;",
-  agentName: "color: #9c27b0; font-weight: bold;",
-  updatedData: "color: #ff9800; font-weight: bold;",
-  error: "color: #ff3333; font-weight: bold;",
-  unstyled: "color: inherit; font-weight: normal;",
+  success: "color: #4caf50; font-weight: bold;", // 🟢
+  debugHeading: "color: #2196f3; font-weight: bold;", // 🔵
+  agentName: "color: #9c27b0; font-weight: bold;", // 🟣
+  updatedData: "color: #ff9800; font-weight: bold;", // 🟠
+  error: "color: #ff3333; font-weight: bold;", // 🔴
+  unstyled: "color: inherit; font-weight: normal;", // ⚪
 };
-
-/**
- * Fügt einen Log-Eintrag in eine Map ein,
- * ohne überall das gleiche "if (!map.has(key)) ..." schreiben zu müssen
- */
-function debugLogPushEntry(logMap: Map<string, LogEntry[]>, key: string, entry: LogEntry) {
-  if (!logMap.has(key)) {
-    logMap.set(key, []);
-  }
-  logMap.get(key)!.push(entry);
-}
-
-/**
- * Loggt Änderungen (Priority, Skill, etc.) einheitlich und nutzt die passende Map.
- * @param logMap  Entweder debugLogSkills oder debugLogPriorities
- * @param heading Überschrift (z. B. "Detected Skill Change")
- * @param agent   Der betroffene Agent
- * @param detail  Zusätzliche Info (z. B. "Neuer Skill: inbound" oder "Neue Prio: 3")
- */
-function logFormat(heading: string, agent: Agent, detail: string): LogEntry {
-  return [
-    `%c${heading}%c\n\n  👤 Agent: %c${capitalize(agent.surname)}, ${capitalize(
-      agent.name
-    )}%c\n  📞 Neuer Skill: %c${capitalize(detail)}`,
-    ColorStyles.debugHeading,
-    ColorStyles.unstyled,
-    ColorStyles.agentName,
-    ColorStyles.unstyled,
-    ColorStyles.updatedData,
-  ];
-}
 
 /*******************************
  * Drag & Drop Event Listener
@@ -115,62 +81,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const agent = createAgent(parentLi);
       if (!agent) return;
 
-      ensureLogEntryArrayExists(debugLogSkills, agent.key);
-      // debugLogPushEntry(
-      //   debugLogSkills,
-      //   agent.key,
-      //   logFormat("🔄 Detected radio change:", agent, `${selectedRadio.value}`)
-      // );
-
-      // debugLogSkills.get(agent.key)!.push([
-      //   `%c🔄 Detected radio change:%c\n\n  👤 Agent: %c${capitalize(agent.surname ?? "")}, ${capitalize(
-      //     agent.name ?? ""
-      //   )}%c\n  📜 Neue Prio: %c${capitalize(selectedRadio.value)}`,
-      //   ColorStyles.debugHeading, // 🔵 Blue for detection
-      //   "",
-      //   ColorStyles.agentName, // 🟣 Purple for agent info
-      //   "",
-      //   ColorStyles.updatedData, // 🟠 Orange for priority update
-      // ]);
-
       log("debug", [
-        `%c🔄 Detected radio change:%c\n\n  👤 Agent: %c${capitalize(agent.surname ?? "")}, ${capitalize(
-          agent.name ?? ""
+        `%c🔄 Detected radio change:%c\n\n  👤 Agent: %c${capitalize(agent.surname)}, ${capitalize(
+          agent.name
         )}%c\n  📜 Neue Prio: %c${capitalize(selectedRadio.value)}`,
-        ColorStyles.debugHeading, // 🔵 Blue for detection
+        ColorStyles.debugHeading, // 🔵
         "",
-        ColorStyles.agentName, // 🟣 Purple for agent info
+        ColorStyles.agentName, // 🟣
         "",
-        ColorStyles.updatedData, // 🟠 Orange for priority update
+        ColorStyles.updatedData, // 🟠
       ]);
-
-      debugLogSkills.get(agent.key)?.forEach((log) => console.debug(...log));
 
       updateSkills(selectedRadio, agent);
     });
   });
 });
 
-function ensureLogEntryArrayExists(logMap: Map<string, LogEntry[]>, key: string): void {
-  if (!logMap.has(key)) {
-    logMap.set(key, []);
-  }
-}
-
-function createAgent(element: HTMLElement | null): Agent | null {
-  if (!element) {
-    console.error("Fehler: Element ist null oder nicht vorhanden!");
-    return null;
-  }
-
-  const surname = element.dataset.surname;
-  const name = element.dataset.name;
-
-  if (!surname || !name) {
-    console.error("Fehler: Agent-Daten fehlen!", { surname, name, element });
-    return null;
-  }
-
+function createAgent(element: HTMLElement): Agent {
+  const surname = element.dataset.surname || "Unknown";
+  const name = element.dataset.name || "Unknown";
   return {
     surname,
     name,
@@ -180,13 +109,7 @@ function createAgent(element: HTMLElement | null): Agent | null {
 
 type UpdateData<T> = T[];
 
-async function sendUpdates<T>(
-  url: string,
-  updates: UpdateData<T>,
-  onError: (error: unknown, updates: T[]) => void,
-  onSuccess: (updated: UpdateData<T>) => void,
-  clearLogs: (updated: UpdateData<T>) => void
-): Promise<void> {
+async function sendUpdates<T>(url: string, updates: UpdateData<T>): Promise<void> {
   if (updates.length === 0) return;
 
   try {
@@ -201,24 +124,16 @@ async function sendUpdates<T>(
       throw new Error(`${errorResponse.error}: ${errorResponse.details || "No additional details"}`);
     }
 
-    onSuccess(updates);
+    log("info", [`✅ %cServer: Update erfolgreich:`, ColorStyles.success]);
   } catch (error: unknown) {
-    onError(error, updates);
-  } finally {
-    clearLogs(updates);
+    log("error", [`❌ %cError updating data:%c  ${error}`, ColorStyles.error]);
   }
 }
 
 async function updatePriorities(list: HTMLElement): Promise<void> {
   const updatedPriorities = collectPriorityUpdates(list);
 
-  await sendUpdates<AgentPriorityUpdate>(
-    "/update-agent-priority",
-    updatedPriorities,
-    logErrorDebug,
-    logSuccess,
-    clearLogs
-  );
+  await sendUpdates<AgentPriorityUpdate>("/update-agent-priority", updatedPriorities);
 }
 
 async function updateSkills(radio: HTMLInputElement, agent: Agent): Promise<void> {
@@ -226,47 +141,7 @@ async function updateSkills(radio: HTMLInputElement, agent: Agent): Promise<void
   if (!updatedSkills) return;
 
   // Just pass an array with one entry
-  await sendUpdates<AgentSkillsUpdate>("/update-agent-skills", [updatedSkills], logErrorDebug, logSuccess, clearLogs);
-}
-
-function logErrorDebug<T extends { agent: Agent }>(error: unknown, updated: UpdateData<T>): void {
-  // Print existing logs for each item:
-  updated.forEach(({ agent }) => {
-    debugLogPriorities.get(agent.key)?.forEach((log) => console.debug(...log));
-    debugLogSkills.get(agent.key)?.forEach((log) => console.debug(...log));
-    // debugLogSkills.get(agent.key)?.forEach((logEntry) => log("debug", ...logEntry));
-    // debugLogSkills.get(agent.key)?.forEach((log) => log("debug", ...log));
-  });
-
-  if (error instanceof Error) {
-    console.error(`%c❌ Error updating data:%c\n  ${error.message}`, "color: #ff3333; font-weight: bold;", "");
-  } else {
-    console.error("Unknown error:", error);
-  }
-
-  alert("Fehler beim Aktualisieren der Agenten-Daten.");
-}
-
-function logSuccess<T extends { agent: Agent }>(updated: UpdateData<T>): void {
-  // Determine the longest full name for padding purposes
-  const maxNameLength = Math.max(...updated.map(({ agent }) => agent.surname.length + agent.name.length + 2));
-  let logMessage = `✅ %cServer: Update erfolgreich\n\n`;
-  const logStyles = ["color: #4caf50; font-weight: bold;"];
-
-  updated.forEach(({ agent }) => {
-    const fullName = `${capitalize(agent.surname)}, ${capitalize(agent.name)}`.padEnd(maxNameLength);
-    logMessage += `  👤 %cAgent: %c${fullName}%c\n`;
-    logStyles.push("", "color: #9c27b0; font-weight: bold;", "");
-  });
-
-  console.log(logMessage, ...logStyles);
-}
-
-function clearLogs<T extends { agent: Agent }>(updated: UpdateData<T>): void {
-  updated.forEach(({ agent }) => {
-    debugLogPriorities.delete(agent.key);
-    debugLogSkills.delete(agent.key);
-  });
+  await sendUpdates<AgentSkillsUpdate>("/update-agent-skills", [updatedSkills]);
 }
 
 function collectPriorityUpdates(list: HTMLElement): AgentPriorityUpdate[] {
@@ -283,12 +158,16 @@ function collectPriorityUpdates(list: HTMLElement): AgentPriorityUpdate[] {
     const agent = createAgent(li);
     if (!agent) return;
 
-    // EINZENTRALE Log-Funktion
-    debugLogPushEntry(
-      debugLogPriorities,
-      agent.key,
-      logFormat("Detected priority change", agent, `📜 Neue Prio: ${newPriority}`)
-    );
+    log("debug", [
+      `%cDetected priority change:%c\n\n  👤 Agent: %c${capitalize(agent.surname ?? "")}, ${capitalize(
+        agent.name ?? ""
+      )} %c 📜 Neue Prio: %c${newPriority}`,
+      ColorStyles.debugHeading,
+      "",
+      ColorStyles.agentName,
+      "",
+      ColorStyles.updatedData,
+    ]);
 
     updatedPriorities.push({ agent, priority: newPriority });
   });
@@ -312,11 +191,7 @@ function collectSkillUpdates(radio: HTMLInputElement, agent: Agent): AgentSkills
     skill_ob: listItem.dataset.skill_ob === "true",
   };
 
-  debugLogPushEntry(debugLogSkills, agent.key, [
-    `%c📤 Sending data to server:\n`,
-    ColorStyles.debugHeading,
-    JSON.stringify(updatedSkills, null, 2),
-  ]);
+  log("debug", [`%c📤 Sending data to server:\n`, ColorStyles.debugHeading, JSON.stringify(updatedSkills, null, 2)]);
 
   return updatedSkills;
 }

@@ -38,6 +38,25 @@ interface Agent {
   valid: boolean;
 }
 
+interface LogPostBody {
+  level: string;
+  message: string;
+  source?: "server" | "client";
+}
+
+interface UpdateAgentPriorityPostBody {
+  surname: string;
+  name: string;
+  priority: number;
+}
+
+interface UpdateAgentSkillsPostBody {
+  surname: string;
+  name: string;
+  skill_ib: boolean;
+  skill_ob: boolean;
+}
+
 // ----------------------
 // Express & Middleware Setup
 // ----------------------
@@ -68,103 +87,113 @@ function toBoolean(val: unknown): boolean {
  * Nimmt eine async Funktion entgegen und liefert einen gültigen RequestHandler zurück.
  * Bei einem Fehler wird automatisch `next(err)` aufgerufen, statt die Anwendung abstürzen zu lassen.
  */
-function createAsyncHandler(fn: (req: Request, res: Response, next: NextFunction) => Promise<void>): RequestHandler {
-  return (req, res, next) => {
-    fn(req, res, next).catch(next);
-  };
+function createHandler<T extends object = object>(
+  handler: RequestHandler<Record<string, string>, unknown, T>
+): RequestHandler {
+  return (req, res, next) =>
+    Promise.resolve()
+      .then(() => handler(req, res, next))
+      .catch(next);
 }
 
-app.use((err: unknown, req: Request, res: Response, _next: NextFunction) => {
-  log("error", `❌ Unbehandelter Fehler: ${err}`);
-  res.status(500).json({ error: "Unerwarteter Server-Fehler" });
-});
+function globalErrorHandler(err: unknown, req: Request, res: Response, _next: NextFunction) {
+  log("error", `❌ Fehler in ${req.method} ${req.url}: ${String(err)}`);
+  res.status(500).json({ error: "Interner Serverfehler", details: String(err) });
+}
+app.use(globalErrorHandler);
 
-/**
- * Liest die CSV-Datei und gibt ein Array von Agenten zurück.
- *
- * ✅ Verwendet Best Practices:
- * - Keine stillen Korrekturen → Fehlerhafte Zeilen werden verworfen.
- * - Klare Fehlermeldungen mit Zeilennummern für Debugging.
- * - Validierung ALLER Werte, um ungültige Daten zu verhindern.
- * - Explizite Trennung zwischen Datenverarbeitung und Fehlerhandling.
- */
-async function parseAgents(): Promise<Agent[]> {
-  let data: string;
+async function loadAndValidateAgents(): Promise<Agent[]> {
+  const rawRows = await loadRowsFromCsv();
+  const agents = rawRows.map(convertCsvRowToAgent).filter((agent): agent is Agent => agent !== null);
+
+  agents.forEach((agent) => {
+    const errors = validateAgent(agent);
+    if (errors.length) {
+      log("warn", `⚠️ CSV error for ${agent.surname}, ${agent.name}: ${errors.join(", ")}`);
+      agent.valid = false;
+    }
+  });
+
+  return agents;
+}
+
+async function loadRowsFromCsv(): Promise<string[]> {
+  let csvContent: string;
   try {
-    data = await fs.readFile(FILE_PATH, "utf8");
+    csvContent = await fs.readFile(FILE_PATH, "utf8");
   } catch (error) {
     log("error", `❌ Fehler beim Lesen der CSV: ${error}`);
     return [];
   }
 
-  const lines = data
+  const csvRows = csvContent
     .trim()
     .split("\n")
     .filter((line) => line.trim() !== "");
 
-  if (lines.length < 2) {
+  if (csvRows.length < 2) {
     log("warn", "⚠️ CSV-Datei ist leer oder enthält nur den Header.");
     return [];
   }
 
-  return lines
-    .slice(1)
-    .map(processLine)
-    .filter((agent): agent is Agent => agent !== null);
+  const dataRows = csvRows.slice(1).filter((row) => {
+    const columns = row.split(",").map((field) => field.trim());
+    if (columns.length !== CSV_HEADER.length) {
+      log("warn", `⚠️ Falsche Anzahl an Spalten: ${columns.length} / ${CSV_HEADER.length}`);
+      return false;
+    }
+    return true;
+  });
+
+  return dataRows;
+  // .map(convertCsvRowToAgent)
+  // .filter((agent): agent is Agent => agent !== null);
 }
 
-/**
- * Wandelt eine CSV-Zeile in ein Agenten-Objekt um.
- */
-function processLine(line: string): Agent {
+function convertCsvRowToAgent(csvRow: string): Agent | null {
   // Split and trim CSV columns
-  const values = line.split(",").map((col) => col.trim());
+  const columns = csvRow.split(",").map((field) => field.trim());
 
   // Build an object where every field is a string
-  const partial = Object.fromEntries(CSV_HEADER.map((key, i) => [key, values[i] ?? ""])) as Record<string, string>;
+  const rowData = Object.fromEntries(CSV_HEADER.map((key, i) => [key, columns[i] ?? ""])) as Record<string, string>;
 
-  //log("debug", `BEFORE CONVERSION: ${JSON.stringify(agent)}`); // Debugging: Zeigt Werte vor der Umwandlung
+  //log("debug", `BEFORE CONVERSION: ${JSON.stringify(agentData)}`); // Debugging: Zeigt Werte vor der Umwandlung
 
   // Umwandlung der Strings in echte Zahlen / Booleans
-  const agent: Agent = {
-    surname: partial.surname,
-    name: partial.name,
+  const agentData: Agent = {
+    surname: rowData.surname,
+    name: rowData.name,
     inboundoutbound:
-      partial.inboundoutbound === "inbound" || partial.inboundoutbound === "outbound"
-        ? (partial.inboundoutbound as "inbound" | "outbound")
-        : "outbound", // or handle it as an error
-    priority: Number(partial.priority),
-    skill_ib: toBoolean(partial.skill_ib),
-    skill_ob: toBoolean(partial.skill_ob),
+      rowData.inboundoutbound === "inbound" || rowData.inboundoutbound === "outbound"
+        ? (rowData.inboundoutbound as "inbound" | "outbound")
+        : "inbound", // or handle it as an error
+    priority: Number(rowData.priority),
+    skill_ib: toBoolean(rowData.skill_ib),
+    skill_ob: toBoolean(rowData.skill_ob),
     valid: true, // default, then validate below
   };
 
-  //log("debug", `AFTER CONVERSION: ${JSON.stringify(agent)}`); // Debugging: Zeigt Werte nach der Umwandlung
+  //log("debug", `AFTER CONVERSION: ${JSON.stringify(agentData)}`); // Debugging: Zeigt Werte nach der Umwandlung
 
-  // Fehlervalidierung
-  const errors: string[] = [];
-  if (values.length !== CSV_HEADER.length) {
-    errors.push(`Wrong number of columns: ${values.length} / ${CSV_HEADER.length}`);
-  }
+  return agentData;
+}
+
+function validateAgent(agent: Agent): string[] {
+  const validationErrors: string[] = [];
   if (!agent.surname || !agent.name) {
-    errors.push("Surname or name missing");
+    validationErrors.push("Surname or name missing");
   }
   if (!["inbound", "outbound"].includes(agent.inboundoutbound)) {
-    errors.push(`Invalid inboundoutbound value: "${agent.inboundoutbound}"`);
+    validationErrors.push(`Invalid inboundoutbound value: "${agent.inboundoutbound}"`);
   }
   if (!isValidNumber(agent.priority)) {
-    errors.push(`Invalid priority: "${agent.priority}"`);
+    validationErrors.push(`Invalid priority: "${agent.priority}"`);
   }
   if (!isValidSkill(agent.skill_ib) || !isValidSkill(agent.skill_ob)) {
-    errors.push("Invalid skill values");
+    validationErrors.push("Invalid skill values");
   }
 
-  if (errors.length) {
-    log("warn", `⚠️ CSV error for ${agent.surname}, ${agent.name}: ${errors.join(", ")}`);
-    agent.valid = false;
-  }
-
-  return agent;
+  return validationErrors;
 }
 
 /**
@@ -218,7 +247,7 @@ async function updateAgents(
   // 2) Agenten einlesen → bei Fehler direkt abbrechen
   let agents: Agent[];
   try {
-    agents = await parseAgents();
+    agents = await loadAndValidateAgents();
   } catch (error) {
     log("error", `❌ Fehler beim Einlesen der Agenten: ${error}`);
     res.status(500).json({ error: "Interner Serverfehler beim Einlesen der Agenten." });
@@ -267,10 +296,10 @@ async function updateAgents(
 // Route: Render Index Page
 app.get(
   "/",
-  createAsyncHandler(async (_req, res) => {
+  createHandler(async (_req, res) => {
     await log("info", "Root route accessed");
     try {
-      const agents = await parseAgents();
+      const agents = await loadAndValidateAgents();
       res.render("index", { agents });
     } catch (error) {
       log("error", `❌ Fehler beim Laden der Agenten: ${error}`);
@@ -282,18 +311,14 @@ app.get(
 // Route: Log Client with Winston
 app.post(
   "/log",
-  createAsyncHandler(async (req, res) => {
+  createHandler<LogPostBody>(async (req, res) => {
     const { level, message, source = "client" } = req.body;
     if (!level || !message) {
       res.status(400).json({ error: "Level und Message sind erforderlich" });
       return;
     }
 
-    if (source === "client") {
-      await log(level, message, "client");
-    } else {
-      await log(level, message, "server");
-    }
+    await log(level, message, "client");
 
     res.json({ success: true });
   })
@@ -302,7 +327,7 @@ app.post(
 // Neue Route: Aktualisiert nur die Prioritäten und speichert sortiert
 app.post(
   "/update-agent-priority",
-  createAsyncHandler(async (req, res) => {
+  createHandler<UpdateAgentPriorityPostBody[]>(async (req, res) => {
     await updateAgents(
       req,
       res,
@@ -324,7 +349,7 @@ app.post(
 // Neue Route: Aktualisiert die Agenten-Skills
 app.post(
   "/update-agent-skills",
-  createAsyncHandler(async (req, res) => {
+  createHandler<UpdateAgentSkillsPostBody>(async (req, res) => {
     await updateAgents(
       req,
       res,

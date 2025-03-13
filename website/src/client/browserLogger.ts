@@ -23,7 +23,7 @@ function log(level: string, message: string | string[], sendToServer: boolean = 
   let flattenedMessage: string;
 
   if (Array.isArray(message)) {
-    logFunctionMap[validatedLevel](...message);
+    logFunctionMap[validatedLevel](...(message as [string, ...string[]]));
     flattenedMessage = message.join(" ");
   } else {
     logFunctionMap[validatedLevel](message);

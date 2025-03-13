@@ -165,3 +165,109 @@
 [2025-03-13T05:53:06.483Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
 [2025-03-13T05:53:07.921Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Outbound
 [2025-03-13T05:53:11.766Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-13T06:20:05.761Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-13T06:48:32.797Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Inbound
+[2025-03-13T09:43:11.997Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-13T09:43:11.998Z] [DEBUG] 📤 Sending data to server: { "agent": { "surname": "hose", "name": "melissa", "key": "hose-melissa" }, "skill_ib": true, "skill_ob": false }
+[2025-03-13T09:43:20.195Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Inbound
+[2025-03-13T09:43:20.196Z] [DEBUG] 📤 Sending data to server: { "agent": { "surname": "mustermann", "name": "max", "key": "mustermann-max" }, "skill_ib": true, "skill_ob": false }
+[2025-03-13T09:43:46.812Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: Inbound
+[2025-03-13T09:43:46.814Z] [DEBUG] 📤 Sending data to server: { "agent": { "surname": "kuckucksmilch", "name": "jan", "key": "kuckucksmilch-jan" }, "skill_ib": true, "skill_ob": false }
+[2025-03-13T09:43:52.519Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Outbound
+[2025-03-13T09:43:52.520Z] [DEBUG] 📤 Sending data to server: { "agent": { "surname": "hose", "name": "melissa", "key": "hose-melissa" }, "skill_ib": false, "skill_ob": true }
+[2025-03-13T09:44:46.696Z] [DEBUG] Detected priority change: 👤 Agent: [object Object] 📜 Neue Prio:1
+[2025-03-13T09:44:46.697Z] [DEBUG] Detected priority change: 👤 Agent: [object Object] 📜 Neue Prio:2
+[2025-03-13T09:44:46.698Z] [DEBUG] Detected priority change: 👤 Agent: [object Object] 📜 Neue Prio:3
+[2025-03-13T09:44:46.699Z] [DEBUG] Detected priority change: 👤 Agent: [object Object] 📜 Neue Prio:4
+[2025-03-13T09:44:46.700Z] [DEBUG] Detected priority change: 👤 Agent: [object Object] 📜 Neue Prio:5
+[2025-03-13T09:49:04.814Z] [DEBUG] Detected priority change: 👤 Agent: [object Object] 📜 Neue Prio:1
+[2025-03-13T09:49:04.816Z] [DEBUG] Detected priority change: 👤 Agent: [object Object] 📜 Neue Prio:2
+[2025-03-13T09:49:04.817Z] [DEBUG] Detected priority change: 👤 Agent: [object Object] 📜 Neue Prio:3
+[2025-03-13T09:49:04.818Z] [DEBUG] Detected priority change: 👤 Agent: [object Object] 📜 Neue Prio:4
+[2025-03-13T09:49:04.819Z] [DEBUG] Detected priority change: 👤 Agent: [object Object] 📜 Neue Prio:5
+[2025-03-13T09:50:11.923Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-13T09:50:11.924Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-13T09:50:11.925Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T09:50:11.926Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T09:50:11.926Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T09:53:58.694Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 1
+[2025-03-13T09:53:58.696Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 2
+[2025-03-13T09:53:58.697Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T09:53:58.697Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T09:53:58.698Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T10:18:01.318Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-13T10:18:01.320Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-13T10:18:01.321Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T10:18:01.322Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T10:18:01.322Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T10:24:04.405Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-13T10:24:04.406Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-13T10:24:04.406Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T10:24:04.407Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T10:24:04.409Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T10:24:08.893Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Inbound
+[2025-03-13T10:24:08.894Z] [DEBUG] 📤 Sending data to server: { "agent": { "surname": "mustermann", "name": "max", "key": "mustermann-max" }, "skill_ib": true, "skill_ob": false }
+[2025-03-13T10:24:15.424Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 1
+[2025-03-13T10:24:15.425Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 2
+[2025-03-13T10:24:15.427Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T10:24:15.427Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T10:24:15.428Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T10:24:20.191Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-13T10:24:20.192Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-13T10:24:20.193Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T10:24:20.194Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T10:24:20.195Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T10:39:04.846Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-13T10:39:04.847Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-13T10:39:04.848Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T10:39:04.849Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T10:39:04.849Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T10:39:04.860Z] [INFO]  ✅ Server: Update erfolgreich 👤 Agent: Mustermann, Max 👤 Agent: Hose, Melissa 👤 Agent: Kuckucksmilch, Jan 👤 Agent: Schmidt, Michael 👤 Agent: Schmidt, Sabine
+[2025-03-13T10:41:15.581Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-13T10:41:15.582Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-13T10:41:15.583Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T10:41:15.584Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T10:41:15.585Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T10:41:15.595Z] [ERROR] Server: Update fehlgeschlagen 👤 Agent: Mustermann, Max 👤 Agent: Hose, Melissa 👤 Agent: Kuckucksmilch, Jan 👤 Agent: Schmidt, Michael 👤 Agent: Schmidt, Sabine
+[2025-03-13T11:55:36.107Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 1
+[2025-03-13T11:55:36.109Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 2
+[2025-03-13T11:55:36.109Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T11:55:36.110Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T11:55:36.111Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T11:55:36.120Z] [ERROR] Server: Update fehlgeschlagen 👤 Agent: Hose, Melissa 👤 Agent: Mustermann, Max 👤 Agent: Kuckucksmilch, Jan 👤 Agent: Schmidt, Michael 👤 Agent: Schmidt, Sabine
+[2025-03-13T12:18:59.533Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-13T12:18:59.534Z] [DEBUG] 📤 Sending data to server: { "agent": { "surname": "hose", "name": "melissa", "key": "hose-melissa" }, "skill_ib": true, "skill_ob": false }
+[2025-03-13T12:18:59.543Z] [ERROR] Server: Update fehlgeschlagen 👤 Agent: Hose, Melissa
+[2025-03-13T12:19:05.686Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-13T12:19:05.687Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-13T12:19:05.688Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T12:19:05.689Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T12:19:05.690Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T12:19:05.701Z] [ERROR] Server: Update fehlgeschlagen 👤 Agent: Mustermann, Max 👤 Agent: Hose, Melissa 👤 Agent: Kuckucksmilch, Jan 👤 Agent: Schmidt, Michael 👤 Agent: Schmidt, Sabine
+[2025-03-13T12:27:32.032Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: Inbound
+[2025-03-13T12:27:32.036Z] [DEBUG] 📤 Sending data to server: { "agent": { "surname": "kuckucksmilch", "name": "jan", "key": "kuckucksmilch-jan" }, "skill_ib": true, "skill_ob": false }
+[2025-03-13T12:27:32.046Z] [ERROR] Server: Update fehlgeschlagen 👤 Agent: Kuckucksmilch, Jan
+[2025-03-13T12:27:39.182Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 1
+[2025-03-13T12:27:39.183Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 2
+[2025-03-13T12:27:39.185Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T12:27:39.186Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T12:27:39.187Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T12:27:39.198Z] [ERROR] Server: Update fehlgeschlagen 👤 Agent: Hose, Melissa 👤 Agent: Mustermann, Max 👤 Agent: Kuckucksmilch, Jan 👤 Agent: Schmidt, Michael 👤 Agent: Schmidt, Sabine
+[2025-03-13T12:54:48.586Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-13T12:54:48.587Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-13T12:54:48.588Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T12:54:48.589Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T12:54:48.590Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T12:54:48.601Z] [ERROR] ❌ Error updating data: Error: ⚠️ Keine passenden Agenten gefunden.: No additional details
+[2025-03-13T12:54:50.670Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Inbound
+[2025-03-13T12:54:50.671Z] [DEBUG] 📤 Sending data to server: { "agent": { "surname": "mustermann", "name": "max", "key": "mustermann-max" }, "skill_ib": true, "skill_ob": false }
+[2025-03-13T12:54:50.675Z] [ERROR] ❌ Error updating data: Error: ⚠️ Keine passenden Agenten gefunden.: No additional details
+[2025-03-13T12:55:42.475Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-13T12:55:42.476Z] [DEBUG] 📤 Sending data to server: { "agent": { "surname": "hose", "name": "melissa", "key": "hose-melissa" }, "skill_ib": true, "skill_ob": false }
+[2025-03-13T12:55:42.482Z] [ERROR] ❌ Error updating data: Error: ⚠️ Keine passenden Agenten gefunden.: No additional details
+[2025-03-13T12:55:45.714Z] [DEBUG] Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-13T12:55:45.715Z] [DEBUG] Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-13T12:55:45.715Z] [DEBUG] Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-13T12:55:45.716Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-13T12:55:45.717Z] [DEBUG] Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 5
+[2025-03-13T12:55:45.723Z] [ERROR] ❌ Error updating data: Error: ⚠️ Keine passenden Agenten gefunden.: No additional details

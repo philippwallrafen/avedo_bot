@@ -14,7 +14,7 @@ if (!fs.existsSync(clientLogsPath)) {
 }
 // Generate log filename with the current date
 function getLogFilePath(logType) {
-    const currentDate = new Date().toISOString().split("T")[0]; // Format: YYYY-MM-DD
+    const currentDate = new Date().toISOString().split("T")?.[0] ?? ""; // Format: YYYY-MM-DD
     let logPath;
     if (logType === "server") {
         logPath = serverLogsPath;
@@ -39,7 +39,7 @@ const plaintextFileFormat = format.combine(format.uncolorize(), format.timestamp
         .trim(); // Entfernt Leerzeichen am Anfang und Ende
     return `[${timestamp}] ${level} ${cleanedMessage}`;
 }));
-const jsonFileFormat = format.combine();
+// const jsonFileFormat = format.combine();
 const consoleFormat = format.combine(format((info) => {
     info.level = `[${info.level.toUpperCase()}]`.padEnd(7, " ");
     return info;

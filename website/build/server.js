@@ -49,10 +49,10 @@ function toBoolean(val) {
  * Nimmt eine async Funktion entgegen und liefert einen gültigen RequestHandler zurück.
  * Bei einem Fehler wird automatisch `next(err)` aufgerufen, statt die Anwendung abstürzen zu lassen.
  */
-function createAsyncHandler(fn) {
-    return (req, res, next) => {
-        fn(req, res, next).catch(next);
-    };
+function createHandler(handler) {
+    return (req, res, next) => Promise.resolve()
+        .then(() => handler(req, res, next))
+        .catch(next);
 }
 app.use((err, req, res, _next) => {
     log("error", `❌ Unbehandelter Fehler: ${err}`);
@@ -210,7 +210,7 @@ async function updateAgents(req, res, updateCallback, successMessage, shouldSort
     }
 }
 // Route: Render Index Page
-app.get("/", createAsyncHandler(async (_req, res) => {
+app.get("/", createHandler(async (_req, res) => {
     await log("info", "Root route accessed");
     try {
         const agents = await parseAgents();
@@ -222,22 +222,17 @@ app.get("/", createAsyncHandler(async (_req, res) => {
     }
 }));
 // Route: Log Client with Winston
-app.post("/log", createAsyncHandler(async (req, res) => {
+app.post("/log", createHandler(async (req, res) => {
     const { level, message, source = "client" } = req.body;
     if (!level || !message) {
         res.status(400).json({ error: "Level und Message sind erforderlich" });
         return;
     }
-    if (source === "client") {
-        await log(level, message, "client");
-    }
-    else {
-        await log(level, message, "server");
-    }
+    await log(level, message, "client");
     res.json({ success: true });
 }));
 // Neue Route: Aktualisiert nur die Prioritäten und speichert sortiert
-app.post("/update-agent-priority", createAsyncHandler(async (req, res) => {
+app.post("/update-agent-priority", createHandler(async (req, res) => {
     await updateAgents(req, res, (agent, { priority }) => {
         // Wenn priority nicht definiert ist oder schon dem aktuellen Wert entspricht:
         if (priority === undefined || agent.priority === priority) {
@@ -250,7 +245,7 @@ app.post("/update-agent-priority", createAsyncHandler(async (req, res) => {
     );
 }));
 // Neue Route: Aktualisiert die Agenten-Skills
-app.post("/update-agent-skills", createAsyncHandler(async (req, res) => {
+app.post("/update-agent-skills", createHandler(async (req, res) => {
     await updateAgents(req, res, (agent, { skill_ib, skill_ob }) => {
         log("debug", `🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
         log("debug", `   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);

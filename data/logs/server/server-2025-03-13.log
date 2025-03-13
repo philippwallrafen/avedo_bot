@@ -469,3 +469,258 @@
 [2025-03-13T05:53:24.228Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
 [2025-03-13T05:53:24.228Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
 [2025-03-13T06:18:38.133Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T06:20:01.284Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T06:20:03.905Z] [INFO]  Root route accessed
+[2025-03-13T06:20:05.763Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T06:20:05.763Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T06:20:05.764Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T06:20:05.764Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T06:45:08.827Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T06:45:12.665Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T06:45:16.046Z] [INFO]  Root route accessed
+[2025-03-13T06:48:32.800Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T06:48:32.800Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T06:48:32.800Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T06:48:32.801Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T06:49:02.515Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T06:49:06.568Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T06:49:08.241Z] [INFO]  Root route accessed
+[2025-03-13T09:42:15.637Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T09:42:19.902Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T09:43:10.815Z] [INFO]  Root route accessed
+[2025-03-13T09:43:12.000Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T09:43:12.000Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:43:12.001Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:43:12.001Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T09:43:20.198Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T09:43:20.198Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:43:20.198Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:43:20.199Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T09:43:46.816Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T09:43:46.816Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:43:46.817Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:43:46.817Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T09:43:52.522Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: false, skill_ob: true } ]
+[2025-03-13T09:43:52.522Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:43:52.522Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:43:52.522Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T09:44:46.702Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T09:44:46.702Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:44:46.702Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:44:46.702Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:44:46.703Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:44:46.703Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:44:46.703Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:44:46.703Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:44:46.703Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:44:46.704Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:44:46.704Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:44:46.704Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T09:48:50.292Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T09:48:55.221Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T09:49:02.802Z] [INFO]  Root route accessed
+[2025-03-13T09:49:04.823Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T09:49:04.823Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:49:04.823Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:49:04.824Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:49:04.824Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:49:04.824Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:49:04.824Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:49:04.824Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:49:04.825Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:49:04.825Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:49:04.825Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:49:04.825Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T09:50:02.791Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T09:50:07.307Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T09:50:10.688Z] [INFO]  Root route accessed
+[2025-03-13T09:50:11.929Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T09:50:11.929Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:50:11.930Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:50:11.930Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:50:11.930Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:50:11.930Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:50:11.930Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:50:11.931Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:50:11.931Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:50:11.931Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:50:11.931Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:50:11.931Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T09:53:58.699Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 1 }, { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T09:53:58.699Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:53:58.700Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:53:58.700Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:53:58.700Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:53:58.700Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:53:58.700Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:53:58.700Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:53:58.700Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:53:58.701Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T09:53:58.701Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T09:53:58.701Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T10:17:48.455Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T10:17:52.489Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T10:17:54.952Z] [INFO]  Root route accessed
+[2025-03-13T10:19:20.815Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T10:24:00.788Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T10:24:02.934Z] [INFO]  Root route accessed
+[2025-03-13T10:24:04.411Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T10:24:04.411Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:04.411Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:04.411Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:04.412Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:04.412Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:04.412Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:04.412Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:04.412Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:04.413Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:04.413Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:04.413Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T10:24:08.896Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T10:24:08.896Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:08.897Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:08.897Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T10:24:15.430Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 1 }, { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T10:24:15.430Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:15.431Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:15.431Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:15.431Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:15.431Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:15.431Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:15.431Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:15.432Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:15.432Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:15.432Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:15.432Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T10:24:20.196Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T10:24:20.197Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:20.197Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:20.197Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:20.197Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:20.197Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:20.198Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:20.198Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:20.198Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:20.198Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:24:20.198Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:24:20.198Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T10:38:53.205Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T10:38:59.717Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T10:39:02.852Z] [INFO]  Root route accessed
+[2025-03-13T10:39:04.852Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T10:39:04.852Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:39:04.852Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:39:04.853Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:39:04.853Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:39:04.853Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:39:04.853Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:39:04.853Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:39:04.854Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:39:04.854Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:39:04.854Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:39:04.854Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T10:41:08.413Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T10:41:12.621Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T10:41:13.704Z] [INFO]  Root route accessed
+[2025-03-13T10:41:15.587Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T10:41:15.587Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:41:15.587Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:41:15.588Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:41:15.588Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:41:15.588Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:41:15.588Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:41:15.588Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:41:15.589Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:41:15.589Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T10:41:15.589Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T10:41:15.589Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T11:55:36.112Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 1 }, { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T11:55:36.112Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T11:55:36.112Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T11:55:36.113Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T11:55:36.113Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T11:55:36.113Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T11:55:36.113Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T11:55:36.113Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T11:55:36.113Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T11:55:36.113Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T11:55:36.114Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T11:55:36.114Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T12:18:50.948Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T12:18:55.369Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T12:18:58.304Z] [INFO]  Root route accessed
+[2025-03-13T12:18:59.536Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T12:18:59.536Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:18:59.536Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:18:59.536Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T12:19:05.692Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T12:19:05.692Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:19:05.693Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:19:05.693Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:19:05.693Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:19:05.693Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:19:05.694Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:19:05.694Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:19:05.694Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:19:05.694Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:19:05.694Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:19:05.694Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T12:27:24.632Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T12:27:28.268Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T12:27:32.040Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T12:27:32.040Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:27:32.040Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:27:32.040Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T12:27:39.190Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 1 }, { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T12:27:39.190Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:27:39.190Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:27:39.191Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:27:39.191Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:27:39.191Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:27:39.191Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:27:39.192Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:27:39.192Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:27:39.192Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:27:39.192Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:27:39.192Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T12:54:39.538Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T12:54:43.599Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T12:54:47.102Z] [INFO]  Root route accessed
+[2025-03-13T12:54:48.595Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T12:54:48.595Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:54:48.596Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:54:48.596Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:54:48.596Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:54:48.596Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:54:48.597Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:54:48.597Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:54:48.597Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:54:48.597Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:54:48.597Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:54:48.598Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T12:54:50.672Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T12:54:50.672Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:54:50.673Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:54:50.673Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T12:55:34.247Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T12:55:38.507Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T12:55:40.820Z] [INFO]  Root route accessed
+[2025-03-13T12:55:42.478Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T12:55:42.479Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:55:42.479Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:55:42.479Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T12:55:45.719Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T12:55:45.720Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:55:45.720Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:55:45.720Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:55:45.720Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:55:45.720Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:55:45.720Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:55:45.721Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:55:45.721Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:55:45.721Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T12:55:45.721Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T12:55:45.721Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T13:04:44.322Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T13:04:48.506Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T13:05:41.370Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...

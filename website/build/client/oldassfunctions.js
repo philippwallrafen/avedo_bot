@@ -1,10 +1,18 @@
+// type LogEntry = string[];
+// const debugLogSkills: Map<string, LogEntry[]> = new Map();
+// const debugLogPriorities: Map<string, LogEntry[]> = new Map();
+export {};
+// function ensureLogEntryArrayExists(logMap: Map<string, LogEntry[]>, key: string): void {
+//   if (!logMap.has(key)) {
+//     logMap.set(key, []);
+//   }
+// }
 // function clearPriorityLogs(updates: AgentPriorityUpdate[]): void {
 //   updates.forEach(({ surname, name }) => {
 //     const agentKey = `${surname}-${name}`;
 //     debugLogPriorities.delete(agentKey);
 //   });
 // }
-export {};
 /**
  * Aktualisiert die Priorität der Agenten und sendet die Änderungen an den Server.
  * @param {HTMLElement} list - Die Liste, die aktualisiert wurde.
@@ -185,3 +193,32 @@ export {};
 //     };
 //   });
 // }
+/**
+ * Fügt einen Log-Eintrag in eine Map ein,
+ * ohne überall das gleiche "if (!map.has(key)) ..." schreiben zu müssen
+ */
+// function debugLogPushEntry(logMap: Map<string, LogEntry[]>, key: string, entry: LogEntry) {
+//     if (!logMap.has(key)) {
+//       logMap.set(key, []);
+//     }
+//     logMap.get(key)!.push(entry);
+//   }
+// function clearLogs<T extends { agent: Agent }>(updated: UpdateData<T>): void {
+//     updated.forEach(({ agent }) => {
+//       debugLogPriorities.delete(agent.key);
+//       debugLogSkills.delete(agent.key);
+//     });
+//   }
+// function logFormat(heading: string, agent: Agent, change: string, detail: string): LogEntry {
+//     console.log("logFormat called with:", { heading, agent, detail });
+//     return [
+//       `%c${heading}%c\n\n  👤 Agent: %c${capitalize(agent.surname)}, ${capitalize(
+//         agent.name
+//       )}%c\n  ${change} %c${capitalize(detail)}`,
+//       ColorStyles.debugHeading,
+//       ColorStyles.unstyled,
+//       ColorStyles.agentName,
+//       ColorStyles.unstyled,
+//       ColorStyles.updatedData,
+//     ];
+//   }
