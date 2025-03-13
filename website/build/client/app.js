@@ -1,7 +1,6 @@
 // app.ts
 // import Sortable from "sortablejs";
 import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@latest/+esm";
-import log from "./browserLogger.js"; // Import logging functions
 const debugLogSkills = new Map();
 const debugLogPriorities = new Map();
 /* Helper functions */
@@ -89,7 +88,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 key: getAgentKey({ surname, name }),
             };
             debugLogPushEntry(debugLogSkills, agent.key, logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`));
-            log("debug", logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`).join(" "));
+            console.error("🚧 Not implemented yet: Update skills on server");
+            console.warn("Selected radio:", selectedRadio.value);
+            console.info("Agent:", agent);
+            console.log("Parent LI:", parentLi);
+            console.debug("Debug log:", debugLogSkills);
             updateSkills(selectedRadio, agent);
         });
     });

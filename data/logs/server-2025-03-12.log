@@ -344,3 +344,11 @@
 [2025-03-12T22:47:17.443Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
 [2025-03-12T22:52:34.899Z] [INFO] 🚀 Server running on http://localhost:3000
 [2025-03-12T22:52:36.671Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-12T23:38:26.540Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-12T23:38:33.521Z] [INFO] Root route accessed
+[2025-03-12T23:38:34.759Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-12T23:38:34.761Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-12T23:38:34.761Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-12T23:38:34.762Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-12T23:38:34.762Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-12T23:48:50.368Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
