@@ -34,7 +34,7 @@ async function sendLogToServer(level: LogLevel, message: string): Promise<void> 
     await fetch("/log", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ level, message }),
+      body: JSON.stringify({ level, message, source: "client" }),
     });
   } catch (error) {
     console.error("❌ Fehler beim Senden des Logs an den Server:", error);

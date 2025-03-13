@@ -1,9 +1,0 @@
-[2025-03-13T00:06:03.944Z] [INFO] 🚀 Server running on http://localhost:3000
-[2025-03-13T00:06:18.379Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
-[2025-03-13T00:06:22.329Z] [INFO] 🚀 Server running on http://localhost:3000
-[2025-03-13T00:06:27.008Z] [INFO] Root route accessed
-[2025-03-13T00:06:28.252Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
-[2025-03-13T00:06:28.252Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
-[2025-03-13T00:06:28.252Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
-[2025-03-13T00:06:28.253Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
-[2025-03-13T00:20:13.700Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...

@@ -1,19 +1,23 @@
 // browserLogger.ts
-const ALLOWED_LOG_LEVELS = ["error", "warn", "info", "log", "debug", "trace"];
+// import loglevel from "loglevel";
+import loglevel from "https://cdn.skypack.dev/loglevel";
+const ALLOWED_LOG_LEVELS = ["error", "warn", "info", "debug", "trace"];
+// `loglevel`-Logger für Client
+const browserLogger = loglevel.getLogger("browser");
+browserLogger.setLevel(loglevel.levels.DEBUG);
 // Lookup-Table für die Log-Methoden
 const logFunctionMap = {
-    error: console.error,
-    warn: console.warn,
-    info: console.info,
-    log: console.log,
-    debug: console.debug,
-    trace: console.trace,
+    error: browserLogger.error.bind(browserLogger),
+    warn: browserLogger.warn.bind(browserLogger),
+    info: browserLogger.info.bind(browserLogger),
+    debug: browserLogger.debug.bind(browserLogger),
+    trace: browserLogger.trace.bind(browserLogger),
 };
 // Logging-Funktion
 function log(level, message) {
     const validatedLevel = ALLOWED_LOG_LEVELS.includes(level)
         ? level
-        : (console.error(`⚠️ Unbekanntes Log-Level: "${level}". Fallback auf "log".`), "log");
+        : (console.error(`⚠️ Unbekanntes Log-Level: "${level}". Fallback auf "debug".`), "debug");
     logFunctionMap[validatedLevel](message);
     sendLogToServer(validatedLevel, message);
 }
@@ -26,7 +30,7 @@ async function sendLogToServer(level, message) {
         await fetch("/log", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ level, message, source: "client" }),
+            body: JSON.stringify({ level, message }),
         });
     }
     catch (error) {

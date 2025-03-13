@@ -126,7 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
         logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`)
       );
 
-      log("debug", logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`);
+      log("log", logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`).join(" "));
+      log("log", logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`).join(" "));
 
       updateSkills(selectedRadio, agent);
     });
@@ -187,8 +188,10 @@ async function updateSkills(radio: HTMLInputElement, agent: Agent): Promise<void
 function logErrorDebug<T extends { agent: Agent }>(error: unknown, updated: UpdateData<T>): void {
   // Print existing logs for each item:
   updated.forEach(({ agent }) => {
-    debugLogPriorities.get(agent.key)?.forEach((log) => console.log(...log));
-    debugLogSkills.get(agent.key)?.forEach((log) => console.log(...log));
+    debugLogPriorities.get(agent.key)?.forEach((log) => console.debug(...log));
+    debugLogSkills.get(agent.key)?.forEach((log) => console.debug(...log));
+    debugLogSkills.get(agent.key)?.forEach((logEntry) => log("debug", ...logEntry));
+    debugLogSkills.get(agent.key)?.forEach((log) => log("debug", ...log));
   });
 
   if (error instanceof Error) {

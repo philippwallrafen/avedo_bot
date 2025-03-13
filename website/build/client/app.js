@@ -1,6 +1,7 @@
 // app.ts
 // import Sortable from "sortablejs";
 import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@latest/+esm";
+import log from "./browserLogger.js"; // Import logging functions
 const debugLogSkills = new Map();
 const debugLogPriorities = new Map();
 /* Helper functions */
@@ -88,11 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 key: getAgentKey({ surname, name }),
             };
             debugLogPushEntry(debugLogSkills, agent.key, logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`));
-            console.error("🚧 Not implemented yet: Update skills on server");
-            console.warn("Selected radio:", selectedRadio.value);
-            console.info("Agent:", agent);
-            console.log("Parent LI:", parentLi);
-            console.debug("Debug log:", debugLogSkills);
+            log("log", logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`).join(" "));
+            log("log", logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`).join(" "));
             updateSkills(selectedRadio, agent);
         });
     });
@@ -133,8 +131,10 @@ async function updateSkills(radio, agent) {
 function logErrorDebug(error, updated) {
     // Print existing logs for each item:
     updated.forEach(({ agent }) => {
-        debugLogPriorities.get(agent.key)?.forEach((log) => console.log(...log));
-        debugLogSkills.get(agent.key)?.forEach((log) => console.log(...log));
+        debugLogPriorities.get(agent.key)?.forEach((log) => console.debug(...log));
+        debugLogSkills.get(agent.key)?.forEach((log) => console.debug(...log));
+        debugLogSkills.get(agent.key)?.forEach((logEntry) => log("debug", ...logEntry));
+        debugLogSkills.get(agent.key)?.forEach((log) => log("debug", ...log));
     });
     if (error instanceof Error) {
         console.error(`%c❌ Error updating data:%c\n  ${error.message}`, "color: #ff3333; font-weight: bold;", "");

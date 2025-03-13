@@ -283,12 +283,18 @@ app.get(
 app.post(
   "/log",
   createAsyncHandler(async (req, res) => {
-    const { level, message } = req.body;
+    const { level, message, source = "client" } = req.body;
     if (!level || !message) {
       res.status(400).json({ error: "Level und Message sind erforderlich" });
       return;
     }
-    await log(level, message); // Log mit Winston auf dem Server speichern
+
+    if (source === "client") {
+      await log(level, message, "client");
+    } else {
+      await log(level, message, "server");
+    }
+
     res.json({ success: true });
   })
 );

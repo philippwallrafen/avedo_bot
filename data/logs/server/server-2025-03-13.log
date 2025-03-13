@@ -1,0 +1,75 @@
+[2025-03-13T00:06:03.944Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-13T00:06:18.379Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T00:06:22.329Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-13T00:06:27.008Z] [INFO] Root route accessed
+[2025-03-13T00:06:28.252Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T00:06:28.252Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T00:06:28.252Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T00:06:28.253Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T00:20:13.700Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T00:43:46.582Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-13T00:43:49.142Z] [INFO] Root route accessed
+[2025-03-13T00:43:50.249Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T00:43:50.251Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T00:43:50.252Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T00:43:50.252Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T00:43:50.252Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T00:44:11.326Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T00:44:39.687Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-13T00:44:41.063Z] [INFO] Root route accessed
+[2025-03-13T00:44:41.951Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T00:44:41.953Z] [DEBUG] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T00:44:41.954Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T00:44:41.955Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T00:44:41.955Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T00:44:41.955Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T00:48:05.924Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T00:48:10.026Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-13T00:48:12.178Z] [INFO] Root route accessed
+[2025-03-13T00:48:13.357Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T00:48:13.358Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T00:48:13.360Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T00:48:13.360Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T00:48:13.361Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T00:48:13.361Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T00:48:13.368Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound
+[2025-03-13T00:48:13.368Z] [INFO] %c📤 Sending data to server:
+[2025-03-13T00:48:38.544Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T00:48:44.109Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-13T00:48:46.232Z] [INFO] Root route accessed
+[2025-03-13T00:48:47.406Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T00:48:47.407Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T00:48:47.409Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T00:48:47.409Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T00:48:47.409Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T00:48:47.409Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T00:48:47.413Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound
+[2025-03-13T00:48:47.414Z] [INFO] %c📤 Sending data to server:
+[2025-03-13T00:49:28.294Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T00:49:32.697Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-13T00:49:42.018Z] [INFO] Root route accessed
+[2025-03-13T00:49:45.764Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T00:49:45.766Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound color: #2196f3; font-weight: bold; color: inherit; font-weight: normal; color: #9c27b0; font-weight: bold; color: inherit; font-weight: normal; color: #ff9800; font-weight: bold;
+[2025-03-13T00:49:45.768Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T00:49:45.769Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T00:49:45.769Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T00:49:45.769Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T00:49:45.773Z] [INFO] %c🔄 Detected skill change:%c 👤 Agent: %cHose, Melissa%c 📞 Neuer Skill: %cInbound
+[2025-03-13T00:49:45.774Z] [INFO] %c📤 Sending data to server:
+[2025-03-13T02:09:14.398Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T02:09:18.978Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-13T02:09:21.212Z] [INFO] Root route accessed
+[2025-03-13T02:09:22.391Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T02:09:22.392Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T02:09:22.392Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T02:09:22.392Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T02:10:47.428Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T02:10:47.428Z] [INFO] Server is shutting down due to SIGINT
+[2025-03-13T02:10:52.440Z] [ERROR] ❌ Forced shutdown due to timeout.
+[2025-03-13T02:11:55.069Z] [INFO] 🚀 Server running on http://localhost:3000
+[2025-03-13T02:11:56.819Z] [INFO] Root route accessed
+[2025-03-13T02:11:58.614Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T02:11:58.614Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T02:11:58.614Z] [WARN] ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T02:11:58.615Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T02:50:12.947Z] [INFO] ⚠️ Received SIGINT, shutting down gracefully...
