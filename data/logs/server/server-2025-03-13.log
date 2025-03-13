@@ -386,3 +386,86 @@
 [2025-03-13T04:34:27.705Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
 [2025-03-13T04:34:27.705Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
 [2025-03-13T04:36:43.563Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T04:41:07.053Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T04:41:10.210Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, skill_ib: true, skill_ob: false } ]
+[2025-03-13T04:41:10.210Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T04:41:10.211Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T04:41:10.211Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T04:41:26.622Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, skill_ib: false, skill_ob: true } ]
+[2025-03-13T04:41:26.623Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T04:41:26.623Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T04:41:26.623Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T04:44:30.520Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T04:44:34.137Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T04:44:36.346Z] [INFO]  Root route accessed
+[2025-03-13T04:45:30.299Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T04:45:34.951Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T04:45:37.930Z] [INFO]  Root route accessed
+[2025-03-13T04:46:00.769Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T04:46:04.191Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T04:46:08.447Z] [INFO]  Root route accessed
+[2025-03-13T04:52:31.706Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T04:52:35.669Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T04:52:37.939Z] [INFO]  Root route accessed
+[2025-03-13T04:56:26.834Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T04:56:30.532Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T04:56:32.840Z] [INFO]  Root route accessed
+[2025-03-13T04:57:14.692Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T04:57:18.131Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T04:57:21.986Z] [INFO]  Root route accessed
+[2025-03-13T04:57:58.593Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T04:58:03.247Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T04:58:05.503Z] [INFO]  Root route accessed
+[2025-03-13T04:59:14.093Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T04:59:14.093Z] [INFO]  Server is shutting down due to SIGINT
+[2025-03-13T04:59:17.725Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T04:59:19.102Z] [ERROR] ❌ Forced shutdown due to timeout.
+[2025-03-13T04:59:19.519Z] [INFO]  Root route accessed
+[2025-03-13T05:03:26.750Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:03:31.315Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:03:33.679Z] [INFO]  Root route accessed
+[2025-03-13T05:04:39.569Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:04:43.126Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:04:44.527Z] [INFO]  Root route accessed
+[2025-03-13T05:09:31.177Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:09:35.038Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:09:36.876Z] [INFO]  Root route accessed
+[2025-03-13T05:10:30.126Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:10:33.582Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:10:35.395Z] [INFO]  Root route accessed
+[2025-03-13T05:12:59.364Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:13:02.933Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:13:04.492Z] [INFO]  Root route accessed
+[2025-03-13T05:14:44.380Z] [INFO]  Root route accessed
+[2025-03-13T05:14:59.362Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:15:07.365Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:15:08.667Z] [INFO]  Root route accessed
+[2025-03-13T05:16:24.642Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:16:24.643Z] [INFO]  Server is shutting down due to SIGINT
+[2025-03-13T05:16:29.651Z] [ERROR] ❌ Forced shutdown due to timeout.
+[2025-03-13T05:16:29.693Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:16:33.575Z] [INFO]  Root route accessed
+[2025-03-13T05:17:29.821Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:17:34.066Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:17:35.458Z] [INFO]  Root route accessed
+[2025-03-13T05:37:21.397Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:37:25.201Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:37:28.114Z] [INFO]  Root route accessed
+[2025-03-13T05:50:37.128Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:50:45.862Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:52:59.367Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T05:53:03.299Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T05:53:05.281Z] [INFO]  Root route accessed
+[2025-03-13T05:53:24.225Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { agent: { surname: 'mustermann', name: 'max', key: 'mustermann-max' }, priority: 1 }, { agent: { surname: 'hose', name: 'melissa', key: 'hose-melissa' }, priority: 2 }, { agent: { surname: 'kuckucksmilch', name: 'jan', key: 'kuckucksmilch-jan' }, priority: 3 }, { agent: { surname: 'schmidt', name: 'michael', key: 'schmidt-michael' }, priority: 4 }, { agent: { surname: 'schmidt', name: 'sabine', key: 'schmidt-sabine' }, priority: 5 } ]
+[2025-03-13T05:53:24.226Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T05:53:24.226Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T05:53:24.226Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T05:53:24.227Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T05:53:24.227Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T05:53:24.227Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T05:53:24.228Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T05:53:24.228Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T05:53:24.228Z] [DEBUG] 🔎 Suche nach Agent: undefined, undefined
+[2025-03-13T05:53:24.228Z] [WARN]  ⚠️ Kein Match gefunden für: undefined, undefined
+[2025-03-13T05:53:24.228Z] [ERROR] ❌ Fehler: Kein Agent wurde aktualisiert.
+[2025-03-13T06:18:38.133Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...

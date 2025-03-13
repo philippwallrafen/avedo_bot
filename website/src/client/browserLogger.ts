@@ -14,14 +14,26 @@ const logFunctionMap: Record<LogLevel, (message: string, ...optionalParams: unkn
 };
 
 // Logging-Funktion
-function log(level: string, message: string): void {
-  const validatedLevel = ALLOWED_LOG_LEVELS.includes(level as LogLevel)
-    ? (level as LogLevel)
-    : (console.error(`⚠️ Unbekanntes Log-Level: "${level}". Fallback auf "log".`), "log");
+function log(level: string, message: string | string[], sendToServer: boolean = true): void {
+  if (!ALLOWED_LOG_LEVELS.includes(level as LogLevel)) {
+    console.error(`⚠️ Unbekanntes Log-Level: "${level}". Fallback auf "log".`);
+    level = "log";
+  }
+  const validatedLevel = level as LogLevel;
+  let flattenedMessage: string;
 
-  logFunctionMap[validatedLevel](message);
+  if (Array.isArray(message)) {
+    logFunctionMap[validatedLevel](...message);
+    flattenedMessage = message.join(" ");
+  } else {
+    logFunctionMap[validatedLevel](message);
+    flattenedMessage = message;
+  }
 
-  sendLogToServer(validatedLevel, message);
+  if (!sendToServer) {
+    return;
+  }
+  sendLogToServer(validatedLevel, flattenedMessage);
 }
 
 async function sendLogToServer(level: LogLevel, message: string): Promise<void> {

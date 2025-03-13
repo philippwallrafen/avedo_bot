@@ -81,20 +81,62 @@ document.addEventListener("DOMContentLoaded", () => {
             const parentLi = selectedRadio.closest("li");
             if (!parentLi)
                 return;
-            const surname = parentLi.dataset.surname ?? "";
-            const name = parentLi.dataset.name ?? "";
-            const agent = {
-                surname,
-                name,
-                key: getAgentKey({ surname, name }),
-            };
-            debugLogPushEntry(debugLogSkills, agent.key, logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`));
-            log("log", logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`).join(" "));
-            log("log", logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`).join(" "));
-            updateSkills(selectedRadio, agent);
+            const agent = createAgent(parentLi);
+            if (!agent)
+                return;
+            ensureLogEntryArrayExists(debugLogSkills, agent.key);
+            // debugLogPushEntry(
+            //   debugLogSkills,
+            //   agent.key,
+            //   logFormat("🔄 Detected skill change:", agent, `${selectedRadio.value}`)
+            // );
+            // debugLogSkills.get(agent.key)!.push([
+            //   `%c🔄 Detected skill change:%c\n\n  👤 Agent: %c${capitalize(agent.surname ?? "")}, ${capitalize(
+            //     agent.name ?? ""
+            //   )}%c\n  📜 Neue Prio: %c${capitalize(selectedRadio.value)}`,
+            //   ColorStyles.debugHeading, // 🔵 Blue for detection
+            //   "",
+            //   ColorStyles.agentName, // 🟣 Purple for agent info
+            //   "",
+            //   ColorStyles.updatedData, // 🟠 Orange for priority update
+            // ]);
+            log("debug", [
+                `%c🔄 Detected skill change:%c\n\n  👤 Agent: %c${capitalize(agent.surname ?? "")}, ${capitalize(agent.name ?? "")}%c\n  📜 Neue Prio: %c${capitalize(selectedRadio.value)}`,
+                ColorStyles.debugHeading, // 🔵 Blue for detection
+                "",
+                ColorStyles.agentName, // 🟣 Purple for agent info
+                "",
+                ColorStyles.updatedData, // 🟠 Orange for priority update
+            ]);
+            debugLogSkills.get(agent.key)?.forEach((log) => console.debug(...log));
+            // debugLogSkills.get(agent.key)?.forEach((logEntry) => log("debug", ...logEntry));
+            // debugLogSkills.get(agent.key)?.forEach((log) => log("debug", ...log));
+            // updateSkills(selectedRadio, agent);
         });
     });
 });
+function ensureLogEntryArrayExists(logMap, key) {
+    if (!logMap.has(key)) {
+        logMap.set(key, []);
+    }
+}
+function createAgent(element) {
+    if (!element) {
+        console.error("Fehler: Element ist null oder nicht vorhanden!");
+        return null;
+    }
+    const surname = element.dataset.surname;
+    const name = element.dataset.name;
+    if (!surname || !name) {
+        console.error("Fehler: Agent-Daten fehlen!", { surname, name, element });
+        return null;
+    }
+    return {
+        surname,
+        name,
+        key: getAgentKey({ surname, name }),
+    };
+}
 async function sendUpdates(url, updates, onError, onSuccess, clearLogs) {
     if (updates.length === 0)
         return;
@@ -133,8 +175,8 @@ function logErrorDebug(error, updated) {
     updated.forEach(({ agent }) => {
         debugLogPriorities.get(agent.key)?.forEach((log) => console.debug(...log));
         debugLogSkills.get(agent.key)?.forEach((log) => console.debug(...log));
-        debugLogSkills.get(agent.key)?.forEach((logEntry) => log("debug", ...logEntry));
-        debugLogSkills.get(agent.key)?.forEach((log) => log("debug", ...log));
+        // debugLogSkills.get(agent.key)?.forEach((logEntry) => log("debug", ...logEntry));
+        // debugLogSkills.get(agent.key)?.forEach((log) => log("debug", ...log));
     });
     if (error instanceof Error) {
         console.error(`%c❌ Error updating data:%c\n  ${error.message}`, "color: #ff3333; font-weight: bold;", "");
@@ -170,13 +212,9 @@ function collectPriorityUpdates(list) {
     liElements.forEach((li, index) => {
         const newPriority = index + 1 + offset;
         li.dataset.priority = newPriority.toString();
-        const surname = li.dataset.surname ?? "";
-        const name = li.dataset.name ?? "";
-        const agent = {
-            surname,
-            name,
-            key: getAgentKey({ surname, name }),
-        };
+        const agent = createAgent(li);
+        if (!agent)
+            return;
         // EINZENTRALE Log-Funktion
         debugLogPushEntry(debugLogPriorities, agent.key, logFormat("Detected priority change", agent, `📜 Neue Prio: ${newPriority}`));
         updatedPriorities.push({ agent, priority: newPriority });

@@ -30,16 +30,16 @@ export {};
 //     if (!debugLogPriorities.has(agentKey)) {
 //       debugLogPriorities.set(agentKey, []);
 //     }
-//     debugLogPriorities.get(agentKey)!.push([
-//       `%c🔄 Detected Priority Change%c\n\n  👤 Agent: %c${capitalize(surname ?? "")}, ${capitalize(
-//         name ?? ""
-//       )}%c\n  📜 Neue Prio: %c${newPriority}`,
-//       "color: #2196f3; font-weight: bold;", // 🔵 Blue for detection
-//       "",
-//       "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
-//       "",
-//       "color: #ff9800; font-weight: bold;", // 🟠 Orange for priority update
-//     ]);
+// debugLogPriorities.get(agentKey)!.push([
+//   `%c🔄 Detected Priority Change%c\n\n  👤 Agent: %c${capitalize(surname ?? "")}, ${capitalize(
+//     name ?? ""
+//   )}%c\n  📜 Neue Prio: %c${newPriority}`,
+//   "color: #2196f3; font-weight: bold;", // 🔵 Blue for detection
+//   "",
+//   "color: #9c27b0; font-weight: bold;", // 🟣 Purple for agent info
+//   "",
+//   "color: #ff9800; font-weight: bold;", // 🟠 Orange for priority update
+// ]);
 //     updatedPriorities.push({
 //       surname: surname ?? "", // Falls undefined, wird "" gesetzt
 //       name: name ?? "",

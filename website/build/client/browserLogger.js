@@ -14,8 +14,16 @@ function log(level, message) {
     const validatedLevel = ALLOWED_LOG_LEVELS.includes(level)
         ? level
         : (console.error(`⚠️ Unbekanntes Log-Level: "${level}". Fallback auf "log".`), "log");
-    logFunctionMap[validatedLevel](message);
-    sendLogToServer(validatedLevel, message);
+    if (Array.isArray(message)) {
+        console.log("Detected array");
+        logFunctionMap[validatedLevel](...message);
+        sendLogToServer(validatedLevel, message.join(" "));
+    }
+    else {
+        console.log("Detected normal message");
+        logFunctionMap[validatedLevel](message);
+        sendLogToServer(validatedLevel, message);
+    }
 }
 async function sendLogToServer(level, message) {
     if (!navigator.onLine) {

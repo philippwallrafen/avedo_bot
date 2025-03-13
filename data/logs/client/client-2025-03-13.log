@@ -152,3 +152,16 @@
 [2025-03-13T04:33:26.846Z] [INFO]  🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
 [2025-03-13T04:33:26.852Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📞 Neuer Skill: Inbound
 [2025-03-13T04:33:26.853Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:41:10.204Z] [INFO]  🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T04:41:10.208Z] [INFO]  🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T04:41:10.214Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Inbound
+[2025-03-13T04:41:10.215Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T04:41:26.619Z] [INFO]  🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Outbound
+[2025-03-13T04:41:26.620Z] [INFO]  🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Outbound
+[2025-03-13T04:41:26.627Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Mustermann, Max 📞 Neuer Skill: Outbound
+[2025-03-13T04:41:26.629Z] [DEBUG] 📤 Sending data to server:
+[2025-03-13T05:09:38.463Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📜 Neue Prio: inbound[object HTMLInputElement]
+[2025-03-13T05:10:36.229Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-13T05:53:06.483Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-13T05:53:07.921Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Outbound
+[2025-03-13T05:53:11.766Z] [DEBUG] 🔄 Detected skill change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound

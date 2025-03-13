@@ -41,10 +41,6 @@ const plaintextFileFormat = format.combine(format.uncolorize(), format.timestamp
 }));
 const jsonFileFormat = format.combine();
 const consoleFormat = format.combine(format((info) => {
-    info.level = `[${info.level.toUpperCase()}]`;
-    return info;
-})(), format.colorize(), format.printf(({ level, message }) => `${level} ${message}`));
-const consoleFormat2 = format.combine(format((info) => {
     info.level = `[${info.level.toUpperCase()}]`.padEnd(7, " ");
     return info;
 })(), format.colorize(), format.printf(({ level, message }) => {
@@ -55,7 +51,7 @@ const consoleFormat2 = format.combine(format((info) => {
 const serverLogger = winston.createLogger({
     level: process.env.LOG_LEVEL || "debug", // Globales Log Level
     transports: [
-        new winston.transports.Console({ format: consoleFormat2 }),
+        new winston.transports.Console({ format: consoleFormat }),
         new winston.transports.File({ filename: getLogFilePath("server"), format: plaintextFileFormat }),
     ],
 });
