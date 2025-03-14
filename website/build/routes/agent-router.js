@@ -1,11 +1,11 @@
-// ~/website/src/routes/agentRoutes.ts
+// ~/website/src/routes/agent-router.ts
 import { Router } from "express";
-import { loadAndValidateAgents, saveAgents, updateAgents } from "../csvService.js";
-import log from "../serverLogger.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
-const router = Router();
+import { loadAndValidateAgents, saveAgents, updateAgents } from "../csv-service.js";
+import { log } from "../server-logger.js";
+import { asyncHandler } from "../utils/async-handler.js";
+export const agentRouter = Router();
 // POST /update-agent-priority
-router.post("/update-agent-priority", asyncHandler(async (req, res) => {
+agentRouter.post("/update-priority", asyncHandler(async (req, res) => {
     const { updatedCount, message } = await updateAgents(req.body, (agent, { priority }) => {
         if (priority === undefined || agent.priority === priority)
             return false;
@@ -16,7 +16,7 @@ router.post("/update-agent-priority", asyncHandler(async (req, res) => {
     res.json({ updatedCount, message });
 }));
 // POST /update-agent-skills
-router.post("/update-agent-skills", asyncHandler(async (req, res) => {
+agentRouter.post("/update-skills", asyncHandler(async (req, res) => {
     const { updatedCount, message } = await updateAgents(req.body, (agent, { skill_ib, skill_ob }) => {
         log("debug", `🔄 Prüfe Agenten-Update: ${agent.surname}, ${agent.name}`);
         log("debug", `   ➝ Aktuell: skill_ib=${agent.skill_ib}, skill_ob=${agent.skill_ob}`);
@@ -31,4 +31,3 @@ router.post("/update-agent-skills", asyncHandler(async (req, res) => {
     }, "Agenten-Skills erfolgreich aktualisiert!");
     res.json({ updatedCount, message });
 }));
-export default router;

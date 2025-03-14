@@ -12,7 +12,7 @@
   <!-- Separate inbound vs. outbound properly inside a single code block: -->
 
   <div role="toolbar">
-    <button onclick="reload()">Reload</button>
+    <button id="reloadButton">Reload</button>
     <div role="skillButtons">
       <button onclick="skillOutboundtoInbound()">OB > IB</button>
       <button onclick="skillOutboundtoOutbound()">OB > OB</button>
@@ -31,13 +31,13 @@
   %>
 
   <!-- Render outbound list partial -->
-  <%- include('partials/_agentList', {
+  <%- include('partials/_agent-list', {
     title: 'Inbound Agents',
     listId: 'inboundList',
     agents: inboundAgents
   })
   %>
-  <%- include('partials/_agentList', {
+  <%- include('partials/_agent-list', {
     title: 'Outbound Agents',
     listId: 'outboundList',
     agents: outboundAgents

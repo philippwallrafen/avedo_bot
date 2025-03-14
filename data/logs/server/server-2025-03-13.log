@@ -724,3 +724,57 @@
 [2025-03-13T13:04:44.322Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
 [2025-03-13T13:04:48.506Z] [INFO]  🚀 Server running on http://localhost:3000
 [2025-03-13T13:05:41.370Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T22:53:50.708Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T22:53:59.285Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T22:54:09.775Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T22:54:14.849Z] [INFO]  Root route accessed
+[2025-03-13T22:54:14.854Z] [ERROR] ❌ Fehler in GET /: Error: C:\Users\Philipp\Documents\1\coding\avedo_bot\website\views\index.ejs:34 32| 33| <!-- Render outbound list partial --> >> 34| <%- include('partials/_agentList', { 35| title: 'Inbound Agents', 36| listId: 'inboundList', 37| agents: inboundAgents Could not find the include file "partials/_agentList"
+[2025-03-13T22:58:27.692Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T22:58:30.584Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T22:58:33.357Z] [INFO]  Root route accessed
+[2025-03-13T23:04:18.339Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T23:04:21.160Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T23:04:24.239Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-13T23:22:23.945Z] [INFO]  🚀 Server running on http://localhost:3000
+[2025-03-13T23:22:31.341Z] [INFO]  Root route accessed
+[2025-03-13T23:22:32.741Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', skill_ib: true, skill_ob: false } ]
+[2025-03-13T23:22:32.741Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-13T23:22:32.742Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-13T23:22:32.742Z] [DEBUG] 🔄 Prüfe Agenten-Update: hose, melissa
+[2025-03-13T23:22:32.742Z] [DEBUG] ➝ Aktuell: skill_ib=false, skill_ob=true
+[2025-03-13T23:22:32.742Z] [DEBUG] ➝ Neu: skill_ib=true, skill_ob=false
+[2025-03-13T23:22:32.743Z] [INFO]  ✅ Aktualisiert: hose, melissa
+[2025-03-13T23:22:32.743Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-13T23:22:42.048Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'mustermann', name: 'max', priority: 1 }, { surname: 'hose', name: 'melissa', priority: 2 }, { surname: 'kuckucksmilch', name: 'jan', priority: 3 }, { surname: 'schmidt', name: 'michael', priority: 4 }, { surname: 'schmidt', name: 'sabine', priority: 5 } ]
+[2025-03-13T23:22:42.049Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-13T23:22:42.049Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-13T23:22:42.049Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-13T23:22:42.049Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-13T23:22:42.050Z] [DEBUG] 🔎 Suche nach Agent: kuckucksmilch, jan
+[2025-03-13T23:22:42.050Z] [DEBUG] ✅ Gefundener Agent: kuckucksmilch, jan
+[2025-03-13T23:22:42.050Z] [DEBUG] 🔎 Suche nach Agent: schmidt, michael
+[2025-03-13T23:22:42.050Z] [DEBUG] ✅ Gefundener Agent: schmidt, michael
+[2025-03-13T23:22:42.050Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-13T23:22:42.050Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-13T23:22:42.051Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-13T23:23:24.652Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'mustermann', name: 'max', skill_ib: true, skill_ob: false } ]
+[2025-03-13T23:23:24.652Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-13T23:23:24.652Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-13T23:23:24.653Z] [DEBUG] 🔄 Prüfe Agenten-Update: mustermann, max
+[2025-03-13T23:23:24.653Z] [DEBUG] ➝ Aktuell: skill_ib=false, skill_ob=true
+[2025-03-13T23:23:24.653Z] [DEBUG] ➝ Neu: skill_ib=true, skill_ob=false
+[2025-03-13T23:23:24.653Z] [INFO]  ✅ Aktualisiert: mustermann, max
+[2025-03-13T23:23:24.653Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-13T23:23:31.300Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', priority: 1 }, { surname: 'mustermann', name: 'max', priority: 2 }, { surname: 'kuckucksmilch', name: 'jan', priority: 3 }, { surname: 'schmidt', name: 'michael', priority: 4 }, { surname: 'schmidt', name: 'sabine', priority: 5 } ]
+[2025-03-13T23:23:31.300Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-13T23:23:31.301Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-13T23:23:31.301Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-13T23:23:31.301Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-13T23:23:31.301Z] [DEBUG] 🔎 Suche nach Agent: kuckucksmilch, jan
+[2025-03-13T23:23:31.301Z] [DEBUG] ✅ Gefundener Agent: kuckucksmilch, jan
+[2025-03-13T23:23:31.302Z] [DEBUG] 🔎 Suche nach Agent: schmidt, michael
+[2025-03-13T23:23:31.302Z] [DEBUG] ✅ Gefundener Agent: schmidt, michael
+[2025-03-13T23:23:31.302Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-13T23:23:31.302Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-13T23:23:31.302Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T00:00:17.188Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...

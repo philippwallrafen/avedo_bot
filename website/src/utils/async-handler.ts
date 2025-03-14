@@ -1,4 +1,4 @@
-// ~/website/src/utils/asyncHandler.ts
+// ~/website/src/utils/async-handler.ts
 
 import { RequestHandler } from "express";
 

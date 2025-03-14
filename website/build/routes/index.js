@@ -1,10 +1,9 @@
 // ~/website/src/routes/index.ts
 import { Router } from "express";
-import rootRoutes from "./rootRoutes.js";
-import logRoutes from "./logRoutes.js";
-import agentRoutes from "./agentRoutes.js";
-const router = Router();
-router.use("/", rootRoutes);
-router.use("/logs", logRoutes);
-router.use("/agents", agentRoutes);
-export default router;
+import { rootRouter } from "./root-router.js";
+import { logRouter } from "./log-router.js";
+import { agentRouter } from "./agent-router.js";
+export const router = Router();
+router.use("/", rootRouter);
+router.use("/logs", logRouter);
+router.use("/agents", agentRouter);

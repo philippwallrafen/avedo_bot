@@ -1,14 +1,14 @@
-// ~/website/src/routes/rootRoutes.ts
+// ~/website/src/routes/root-router.ts
 
 import { Router } from "express";
-import { asyncHandler } from "../utils/asyncHandler.js";
-import log from "../serverLogger.js";
-import { loadAndValidateAgents } from "../csvService.js";
+import { asyncHandler } from "../utils/async-handler.js";
+import { log } from "../server-logger.js";
+import { loadAndValidateAgents } from "../csv-service.js";
 
-const router = Router();
+export const rootRouter = Router();
 
 // GET /
-router.get(
+rootRouter.get(
   "/",
   asyncHandler(async (_req, res) => {
     await log("info", "Root route accessed");
@@ -21,5 +21,3 @@ router.get(
     }
   })
 );
-
-export default router;

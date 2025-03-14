@@ -2,7 +2,8 @@
 
 ## To Do
 
-- [ ] Logging fertigstellen (bulletproof für mehrere Änderungen gleichzeitig)
+- [ ] Logging fertigstellen
+- [ ] Bundler verwenden (vite)
 - [ ] Logs auf Website abrufbar
 - [ ]
 - [ ] Reload Button
@@ -15,9 +16,9 @@
 - [ ]
 - [ ]
 - [ ] agents.csv um einmalige ID erweitern
-- [ ] Websocket für Skill Seite und Log
 - [ ] User und Login
-- [ ] Bundler verwenden (vite)
+- [ ] Websocket für Skill Seite und Log
+- [ ] RESTful Agenten Routen (PATCH /agents/:agentId/priority und PATCH /agents/:agentId/skills)
 
 ## In Progress
 

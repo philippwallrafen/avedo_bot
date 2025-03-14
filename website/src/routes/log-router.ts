@@ -1,8 +1,8 @@
-// ~/website/src/routes/logRoutes.ts
+// ~/website/src/routes/log-router.ts
 
 import { Router } from "express";
-import { asyncHandler } from "../utils/asyncHandler.js";
-import { log } from "../serverLogger.js";
+import { asyncHandler } from "../utils/async-handler.js";
+import { log } from "../server-logger.js";
 
 // Interface für den Log-Request-Body
 interface LogPostBody {
@@ -11,11 +11,11 @@ interface LogPostBody {
   source?: "server" | "client";
 }
 
-const router = Router();
+export const logRouter = Router();
 
 // Log-Routen: POST /log
-router.post(
-  "/log",
+logRouter.post(
+  "/",
   asyncHandler<LogPostBody>(async (req, res) => {
     const { level, message, source: _source = "client" } = req.body;
     if (!level || !message) {
@@ -27,5 +27,3 @@ router.post(
     res.json({ success: true });
   })
 );
-
-export default router;

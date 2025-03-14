@@ -1,9 +1,9 @@
-// ~/website/src/routes/agentRoutes.ts
+// ~/website/src/routes/agent-router.ts
 
 import { Router } from "express";
-import { Agent, loadAndValidateAgents, saveAgents, updateAgents } from "../csvService.js";
-import log from "../serverLogger.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
+import { Agent, loadAndValidateAgents, saveAgents, updateAgents } from "../csv-service.js";
+import { log } from "../server-logger.js";
+import { asyncHandler } from "../utils/async-handler.js";
 
 interface UpdatePriorityPostBody {
   surname: string;
@@ -18,11 +18,11 @@ interface UpdateSkillsPostBody {
   skill_ob: boolean;
 }
 
-const router = Router();
+export const agentRouter = Router();
 
 // POST /update-agent-priority
-router.post(
-  "/update-agent-priority",
+agentRouter.post(
+  "/update-priority",
   asyncHandler<UpdatePriorityPostBody[]>(async (req, res) => {
     const { updatedCount, message } = await updateAgents(
       req.body,
@@ -40,8 +40,8 @@ router.post(
 );
 
 // POST /update-agent-skills
-router.post(
-  "/update-agent-skills",
+agentRouter.post(
+  "/update-skills",
   asyncHandler<UpdateSkillsPostBody>(async (req, res) => {
     const { updatedCount, message } = await updateAgents(
       req.body,
@@ -64,5 +64,3 @@ router.post(
     res.json({ updatedCount, message });
   })
 );
-
-export default router;

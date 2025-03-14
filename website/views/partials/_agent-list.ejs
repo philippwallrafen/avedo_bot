@@ -1,8 +1,8 @@
-<!-- ~/website/views/partials/_agentList.ejs -->
+<!-- ~/website/views/partials/_agent-list.ejs -->
 
 <h2><%= title %></h2>
 <ol id="<%= listId %>" class="agent-list">
   <% agents.forEach(agent => { %>
-  <%- include('_agentRow', { agent }) %>
+  <%- include('_agent-row', { agent }) %>
   <% }) %>
 </ol>

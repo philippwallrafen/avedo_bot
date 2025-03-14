@@ -61,7 +61,7 @@ const clientLogger = winston.createLogger({
     transports: [new winston.transports.File({ filename: getLogFilePath("client"), format: plaintextFileFormat })],
 });
 // Haupt-Logging-Funktion für Server- und Client-Logs. API-Logs werden vorher in der Route automatisch als "client" gesetzt.
-function log(level, message, source = "server") {
+export function log(level, message, source = "server") {
     const validatedLevel = validateLevel(level);
     if (source === "server") {
         serverLogger.log({ level: validatedLevel, message });
@@ -84,4 +84,3 @@ function validateLevel(level) {
     }
     return level;
 }
-export default log;

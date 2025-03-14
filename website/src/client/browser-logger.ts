@@ -1,4 +1,4 @@
-// ~/website/src/client/browserLogger.ts
+// ~/website/src/client/browser-logger.ts
 
 const ALLOWED_LOG_LEVELS = ["error", "warn", "info", "log", "debug", "trace"] as const;
 type LogLevel = (typeof ALLOWED_LOG_LEVELS)[number];
@@ -14,7 +14,7 @@ const logFunctionMap: Record<LogLevel, (message: string, ...optionalParams: unkn
 };
 
 // Logging-Funktion
-function log(level: string, message: string | string[], sendToServer: boolean = true): void {
+export function log(level: string, message: string | string[], sendToServer: boolean = true): void {
   if (!ALLOWED_LOG_LEVELS.includes(level as LogLevel)) {
     console.error(`⚠️ Unbekanntes Log-Level: "${level}". Fallback auf "log".`);
     level = "log";
@@ -43,14 +43,16 @@ async function sendLogToServer(level: LogLevel, message: string): Promise<void> 
   }
 
   try {
-    await fetch("/log", {
+    const response = await fetch("/logs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ level, message, source: "client" }),
     });
+
+    if (!response.ok) {
+      throw new Error(`❌ Server antwortete mit Status ${response.status}`);
+    }
   } catch (error) {
     console.error("❌ Fehler beim Senden des Logs an den Server:", error);
   }
 }
-
-export default log;

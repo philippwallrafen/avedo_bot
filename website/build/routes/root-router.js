@@ -1,11 +1,11 @@
-// ~/website/src/routes/rootRoutes.ts
+// ~/website/src/routes/root-router.ts
 import { Router } from "express";
-import { asyncHandler } from "../utils/asyncHandler.js";
-import log from "../serverLogger.js";
-import { loadAndValidateAgents } from "../csvService.js";
-const router = Router();
+import { asyncHandler } from "../utils/async-handler.js";
+import { log } from "../server-logger.js";
+import { loadAndValidateAgents } from "../csv-service.js";
+export const rootRouter = Router();
 // GET /
-router.get("/", asyncHandler(async (_req, res) => {
+rootRouter.get("/", asyncHandler(async (_req, res) => {
     await log("info", "Root route accessed");
     try {
         const agents = await loadAndValidateAgents();
@@ -16,4 +16,3 @@ router.get("/", asyncHandler(async (_req, res) => {
         res.status(500).send("Fehler beim Laden der Agenten.");
     }
 }));
-export default router;

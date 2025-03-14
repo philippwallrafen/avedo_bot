@@ -1,0 +1,42 @@
+[2025-03-14T01:31:54.626Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: Inbound
+[2025-03-14T01:31:54.627Z] [DEBUG] 📤 Sending data to server: { "surname": "schmidt", "name": "sabine", "skill_ib": true, "skill_ob": false }
+[2025-03-14T01:31:54.634Z] [INFO]  ✅ Server: Update erfolgreich:
+[2025-03-14T01:32:00.385Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 1
+[2025-03-14T01:32:00.386Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 2
+[2025-03-14T01:32:00.392Z] [INFO]  ✅ Server: Update erfolgreich:
+[2025-03-14T01:32:13.167Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 1
+[2025-03-14T01:32:13.168Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-14T01:32:13.174Z] [INFO]  ✅ Server: Update erfolgreich:
+[2025-03-14T01:32:16.594Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-14T01:32:16.595Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 2
+[2025-03-14T01:32:16.595Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 3
+[2025-03-14T01:32:16.597Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 4
+[2025-03-14T01:32:16.598Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 5
+[2025-03-14T01:32:16.609Z] [INFO]  ✅ Server: Update erfolgreich:
+[2025-03-14T01:32:25.757Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-14T01:32:25.758Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 5
+[2025-03-14T01:32:25.763Z] [INFO]  ✅ Server: Update erfolgreich:
+[2025-03-14T01:35:06.473Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Outbound
+[2025-03-14T01:35:06.473Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": false, "skill_ob": true }
+[2025-03-14T01:35:06.478Z] [INFO]  ✅ Server: Update erfolgreich:
+[2025-03-14T01:35:13.824Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Inbound
+[2025-03-14T01:35:13.825Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": true, "skill_ob": false }
+[2025-03-14T01:35:13.830Z] [INFO]  ✅ Server: Update erfolgreich:
+[2025-03-14T01:35:14.870Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: Outbound
+[2025-03-14T01:35:14.871Z] [DEBUG] 📤 Sending data to server: { "surname": "schmidt", "name": "sabine", "skill_ib": false, "skill_ob": true }
+[2025-03-14T01:35:14.876Z] [INFO]  ✅ Server: Update erfolgreich:
+[2025-03-14T01:35:20.840Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: Outbound
+[2025-03-14T01:35:20.841Z] [DEBUG] 📤 Sending data to server: { "surname": "kuckucksmilch", "name": "jan", "skill_ib": false, "skill_ob": true }
+[2025-03-14T01:35:20.846Z] [INFO]  ✅ Server: Update erfolgreich:
+[2025-03-14T01:35:24.701Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Outbound
+[2025-03-14T01:35:24.702Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": false, "skill_ob": true }
+[2025-03-14T01:35:24.712Z] [INFO]  ✅ Server: Update erfolgreich:
+[2025-03-14T01:35:50.431Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Inbound
+[2025-03-14T01:35:50.432Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": true, "skill_ob": false }
+[2025-03-14T01:35:50.439Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T01:35:55.962Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: Inbound
+[2025-03-14T01:35:55.963Z] [DEBUG] 📤 Sending data to server: { "surname": "schmidt", "name": "sabine", "skill_ib": true, "skill_ob": false }
+[2025-03-14T01:35:55.968Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T01:36:02.535Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 1
+[2025-03-14T01:36:02.536Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 2
+[2025-03-14T01:36:02.542Z] [INFO]  ✅ Server: Update erfolgreich

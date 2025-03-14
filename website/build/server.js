@@ -3,8 +3,9 @@ import path from "path";
 import express from "express";
 import expressLayouts from "express-ejs-layouts";
 import cors from "cors";
-import log from "./serverLogger.js";
-import routes from "./routes/index.js";
+import { log } from "./server-logger.js";
+import { router } from "./routes/index.js";
+import { globalErrorHandler } from "./utils/global-error-handler.js";
 const websitePath = path.join(process.cwd(), "website");
 // ======================
 // Express & Middleware Setup
@@ -18,14 +19,7 @@ app.use(express.static(path.join(websitePath, "public")));
 app.use("/build/client", express.static(path.join(websitePath, "build", "client")));
 app.use(expressLayouts);
 app.set("layout", "layout");
-app.use(routes);
-// ======================
-// Fehlerbehandlung
-// ======================
-function globalErrorHandler(err, req, res, _next) {
-    log("error", `❌ Fehler in ${req.method} ${req.url}: ${String(err)}`);
-    res.status(500).json({ error: "Interner Serverfehler", details: String(err) });
-}
+app.use(router);
 app.use(globalErrorHandler);
 // ======================
 // Server-Shutdown

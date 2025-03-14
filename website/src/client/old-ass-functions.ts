@@ -1,4 +1,4 @@
-// ~/website/src/client/oldassfunctions.ts
+// ~/website/src/client/old-ass-functions.ts
 
 // type LogEntry = string[];
 // const debugLogSkills: Map<string, LogEntry[]> = new Map();

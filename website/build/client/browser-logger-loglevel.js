@@ -1,4 +1,4 @@
-// ~/website/src/client/browserLogger-loglevel.ts
+// ~/website/src/client/browser-logger-loglevel.ts
 // import loglevel from "loglevel";
 // @ts-expect-error Bundler wird später geadded
 import loglevel from "https://cdn.skypack.dev/loglevel";
