@@ -44,5 +44,5 @@ process.on("SIGTERM", handleShutdown);
 // ======================
 const PORT = 3000;
 const server = app.listen(PORT, async () => {
-    log("info", `🚀 Server running on http://localhost:${PORT}`);
+    log("info", `🚀 Server läuft auf http://localhost:${PORT}`);
 });

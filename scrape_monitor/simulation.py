@@ -7,7 +7,6 @@ from datetime import datetime, timedelta
 
 class CallCenterSimulator:
     def __init__(self):
-        # Initialkonfiguration
         self.current_time = datetime.now()
         self.forecast = 45  # Prognostizierte Anrufe pro 30min
         self.agents_planned = 16  # Geplante Agenten
@@ -47,7 +46,7 @@ class CallCenterSimulator:
         # Pro 2-Minuten-Intervall: (Forecast/30) * 2 Minuten + Abweichung
         base_calls = (self.forecast / 30) * 2  # Korrekte Basis für 2 Minuten
         actual_calls = random.randint(
-            int(base_calls * 0.7), int(base_calls * 1.3)  # -30%  # +30%
+            int(base_calls * 0.7), int(base_calls * 1.3)  # ±30%
         )
 
         # Füge Anrufe mit zufälligem Zeitpunkt in den nächsten 2 Minuten hinzu

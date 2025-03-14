@@ -40,3 +40,25 @@
 [2025-03-14T01:36:02.535Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 1
 [2025-03-14T01:36:02.536Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 2
 [2025-03-14T01:36:02.542Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T01:42:59.778Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: Outbound
+[2025-03-14T01:42:59.779Z] [DEBUG] 📤 Sending data to server: { "surname": "schmidt", "name": "sabine", "skill_ib": false, "skill_ob": true }
+[2025-03-14T01:42:59.786Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T01:43:02.873Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: Inbound
+[2025-03-14T01:43:02.873Z] [DEBUG] 📤 Sending data to server: { "surname": "schmidt", "name": "sabine", "skill_ib": true, "skill_ob": false }
+[2025-03-14T01:43:02.879Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T01:43:05.143Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-14T01:43:05.144Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 2
+[2025-03-14T01:43:05.150Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T01:43:08.735Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 3
+[2025-03-14T01:43:08.736Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 4
+[2025-03-14T01:43:08.737Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 5
+[2025-03-14T01:43:08.743Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T01:43:13.481Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: Inbound
+[2025-03-14T01:43:13.482Z] [DEBUG] 📤 Sending data to server: { "surname": "kuckucksmilch", "name": "jan", "skill_ib": true, "skill_ob": false }
+[2025-03-14T01:43:13.487Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T01:43:15.612Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: Outbound
+[2025-03-14T01:43:15.613Z] [DEBUG] 📤 Sending data to server: { "surname": "schmidt", "name": "michael", "skill_ib": false, "skill_ob": true }
+[2025-03-14T01:43:15.618Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T01:48:08.846Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Outbound
+[2025-03-14T01:48:08.847Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": false, "skill_ob": true }
+[2025-03-14T01:48:08.854Z] [INFO]  ✅ Server: Update erfolgreich

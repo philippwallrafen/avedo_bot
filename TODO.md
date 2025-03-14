@@ -1,4 +1,4 @@
-# 🚀 Project Goals
+# 🚀 Projekt Ziele
 
 ## To Do
 
@@ -20,11 +20,11 @@
 - [ ] Websocket für Skill Seite und Log
 - [ ] RESTful Agenten Routen (PATCH /agents/:agentId/priority und PATCH /agents/:agentId/skills)
 
-## In Progress
+## Dabei
 
 - [ ] app.ts Refaktorieren
 
-## Done
+## Fettig
 
 - [x] TypeScript Umstellung
 - [x] Logging Library implementieren

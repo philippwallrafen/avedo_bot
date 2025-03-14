@@ -127,6 +127,9 @@ async function handleRadioChange(event) {
         return;
     await sendUpdates("/agents/update-skills", [updatedSkills]);
 }
+function handleReloadButton() {
+    console.log("Reload Button wurde geklickt!");
+}
 /**********************
  * Setup Funktionen
  **********************/
@@ -158,11 +161,8 @@ function setupRadioListeners() {
 function setupReloadListener() {
     const reloadButton = document.getElementById("reloadButton");
     if (reloadButton) {
-        reloadButton.addEventListener("click", reload);
+        reloadButton.addEventListener("click", handleReloadButton);
     }
-}
-function reload() {
-    console.log("Reload Button wurde geklickt!");
 }
 /***********************
  * Application Startup
