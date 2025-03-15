@@ -1,6 +1,6 @@
 // ~/website/src/client/browser-logger.ts
 
-const ALLOWED_LOG_LEVELS = ["error", "warn", "info", "log", "debug", "trace"] as const;
+const ALLOWED_LOG_LEVELS = ['error', 'warn', 'info', 'log', 'debug', 'trace'] as const;
 type LogLevel = (typeof ALLOWED_LOG_LEVELS)[number];
 
 // Lookup-Table für die Log-Methoden
@@ -17,14 +17,14 @@ const logFunctionMap: Record<LogLevel, (message: string, ...optionalParams: unkn
 export function log(level: string, message: string | string[], sendToServer: boolean = true): void {
   if (!ALLOWED_LOG_LEVELS.includes(level as LogLevel)) {
     console.error(`⚠️ Unbekanntes Log-Level: "${level}". Fallback auf "log".`);
-    level = "log";
+    level = 'log';
   }
   const validatedLevel = level as LogLevel;
   let flattenedMessage: string;
 
   if (Array.isArray(message)) {
     logFunctionMap[validatedLevel](...(message as [string, ...string[]]));
-    flattenedMessage = message.join(" ");
+    flattenedMessage = message.join(' ');
   } else {
     logFunctionMap[validatedLevel](message);
     flattenedMessage = message;
@@ -38,21 +38,21 @@ export function log(level: string, message: string | string[], sendToServer: boo
 
 async function sendLogToServer(level: LogLevel, message: string): Promise<void> {
   if (!navigator.onLine) {
-    console.warn("📴 Kein Internet – Log wird nicht gesendet.");
+    console.warn('📴 Kein Internet – Log wird nicht gesendet.');
     return;
   }
 
   try {
-    const response = await fetch("/logs", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ level, message, source: "client" }),
+    const response = await fetch('/logs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ level, message, source: 'client' }),
     });
 
     if (!response.ok) {
       throw new Error(`❌ Server antwortete mit Status ${response.status}`);
     }
   } catch (error) {
-    console.error("❌ Fehler beim Senden des Logs an den Server:", error);
+    console.error('❌ Fehler beim Senden des Logs an den Server:', error);
   }
 }

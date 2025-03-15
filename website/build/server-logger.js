@@ -1,86 +1,89 @@
 // ~/website/src/serverLogger.ts
-import winston, { format } from "winston";
-import path from "path";
-import fs from "fs";
-const ALLOWED_LOG_LEVELS = ["error", "warn", "info", "http", "verbose", "debug", "silly"];
-const serverLogsPath = path.join(process.cwd(), "data", "logs", "server");
-const clientLogsPath = path.join(process.cwd(), "data", "logs", "client");
+import winston, { format } from 'winston';
+import path from 'path';
+import fs from 'fs';
+const ALLOWED_LOG_LEVELS = ['error', 'warn', 'info', 'http', 'verbose', 'debug', 'silly'];
+const serverLogsPath = path.join(process.cwd(), 'data', 'logs', 'server');
+const clientLogsPath = path.join(process.cwd(), 'data', 'logs', 'client');
 // Sicherstellen, dass die Log-Verzeichnisse existieren
 if (!fs.existsSync(serverLogsPath)) {
-    fs.mkdirSync(serverLogsPath, { recursive: true });
+  fs.mkdirSync(serverLogsPath, { recursive: true });
 }
 if (!fs.existsSync(clientLogsPath)) {
-    fs.mkdirSync(clientLogsPath, { recursive: true });
+  fs.mkdirSync(clientLogsPath, { recursive: true });
 }
 // Generate log filename with the current date
 function getLogFilePath(logType) {
-    const currentDate = new Date().toISOString().split("T")?.[0] ?? ""; // Format: YYYY-MM-DD
-    let logPath;
-    if (logType === "server") {
-        logPath = serverLogsPath;
-    }
-    else if (logType === "client") {
-        logPath = clientLogsPath;
-    }
-    else {
-        throw new Error(`Unbekannter Log-Typ: "${logType}".`);
-    }
-    return path.join(logPath, `${logType}-${currentDate}.log`);
+  const currentDate = new Date().toISOString().split('T')?.[0] ?? ''; // Format: YYYY-MM-DD
+  let logPath;
+  if (logType === 'server') {
+    logPath = serverLogsPath;
+  } else if (logType === 'client') {
+    logPath = clientLogsPath;
+  } else {
+    throw new Error(`Unbekannter Log-Typ: "${logType}".`);
+  }
+  return path.join(logPath, `${logType}-${currentDate}.log`);
 }
-const plaintextFileFormat = format.combine(format.uncolorize(), format.timestamp(), format.printf((info) => {
-    const timestamp = String(info.timestamp);
-    const level = `[${String(info.level).toUpperCase()}]`.padEnd(7, " ");
-    const message = String(info.message ?? "");
+const plaintextFileFormat = format.combine(
+  format.uncolorize(),
+  format.timestamp(),
+  format.printf((info) => {
+    const timestamp = String(info['timestamp']);
+    const level = `[${String(info.level).toUpperCase()}]`.padEnd(7, ' ');
+    const message = String(info.message ?? '');
     const cleanedMessage = message
-        .replace(/\r?\n/g, " ") // Ersetzt sowohl "\r\n" (Windows) als auch "\n" (Unix)
-        .replace(/%c/g, "") // Entfernt console.log-Styles
-        .replace(/(color|font-weight|background|text-decoration):.*?;/g, "") // Entfernt CSS-Styles
-        .replace(/\s+/g, " ") // Ersetzt mehrere Leerzeichen durch ein einzelnes
-        .trim(); // Entfernt Leerzeichen am Anfang und Ende
+      .replace(/\r?\n/g, ' ') // Ersetzt sowohl "\r\n" (Windows) als auch "\n" (Unix)
+      .replace(/%c/g, '') // Entfernt console.log-Styles
+      .replace(/(color|font-weight|background|text-decoration):.*?;/g, '') // Entfernt CSS-Styles
+      .replace(/\s+/g, ' ') // Ersetzt mehrere Leerzeichen durch ein einzelnes
+      .trim(); // Entfernt Leerzeichen am Anfang und Ende
     return `[${timestamp}] ${level} ${cleanedMessage}`;
-}));
+  })
+);
 // const jsonFileFormat = format.combine();
-const consoleFormat = format.combine(format((info) => {
-    info.level = `[${info.level.toUpperCase()}]`.padEnd(7, " ");
+const consoleFormat = format.combine(
+  format((info) => {
+    info.level = `[${info.level.toUpperCase()}]`.padEnd(7, ' ');
     return info;
-})(), format.colorize(), format.printf(({ level, message }) => {
-    const cleanedMessage = String(message ?? "").trim();
+  })(),
+  format.colorize(),
+  format.printf(({ level, message }) => {
+    const cleanedMessage = String(message ?? '').trim();
     return `${level} ${cleanedMessage}`;
-}));
+  })
+);
 // Winston-Logger für Server-Logs
 const serverLogger = winston.createLogger({
-    level: process.env.LOG_LEVEL || "debug", // Globales Log Level
-    transports: [
-        new winston.transports.Console({ format: consoleFormat }),
-        new winston.transports.File({ filename: getLogFilePath("server"), format: plaintextFileFormat }),
-    ],
+  level: process.env['LOG_LEVEL'] || 'info', // Globales Log Level
+  transports: [
+    new winston.transports.Console({ format: consoleFormat }),
+    new winston.transports.File({ filename: getLogFilePath('server'), format: plaintextFileFormat }),
+  ],
 });
 // Winston-Logger für Client-Logs
 const clientLogger = winston.createLogger({
-    level: process.env.LOG_LEVEL || "debug", // Globales Log Level
-    transports: [new winston.transports.File({ filename: getLogFilePath("client"), format: plaintextFileFormat })],
+  level: process.env['LOG_LEVEL'] || 'silly', // Globales Log Level
+  transports: [new winston.transports.File({ filename: getLogFilePath('client'), format: plaintextFileFormat })],
 });
 // Haupt-Logging-Funktion für Server- und Client-Logs. API-Logs werden vorher in der Route automatisch als "client" gesetzt.
-export function log(level, message, source = "server") {
-    const validatedLevel = validateLevel(level);
-    if (source === "server") {
-        serverLogger.log({ level: validatedLevel, message });
-    }
-    else if (source === "client") {
-        clientLogger.log({ level: validatedLevel, message });
-    }
-    else {
-        console.error(`⚠️ Unbekannte Log-Quelle: "${source}".`);
-    }
+export function log(level, message, source = 'server') {
+  const validatedLevel = validateLevel(level);
+  if (source === 'server') {
+    serverLogger.log({ level: validatedLevel, message });
+  } else if (source === 'client') {
+    clientLogger.log({ level: validatedLevel, message });
+  } else {
+    console.error(`⚠️ Unbekannte Log-Quelle: "${source}".`);
+  }
 }
 function validateLevel(level) {
-    if (level === "log")
-        return "info";
-    if (level === "trace")
-        return "silly";
-    if (!ALLOWED_LOG_LEVELS.includes(level)) {
-        console.warn(`⚠️ Unbekanntes Client-Log-Level: "${level}". Fallback auf "debug".`);
-        return "debug";
-    }
-    return level;
+  if (level === 'log') return 'info';
+  if (level === 'trace') return 'silly';
+  if (!ALLOWED_LOG_LEVELS.includes(level)) {
+    console.warn(`⚠️ Unbekanntes Client-Log-Level: "${level}". Fallback auf "debug".`);
+    return 'debug';
+  }
+  return level;
 }
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2VydmVyLWxvZ2dlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uL3NyYy9zZXJ2ZXItbG9nZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLGdDQUFnQztBQUVoQyxPQUFPLE9BQU8sRUFBRSxFQUFFLE1BQU0sRUFBRSxNQUFNLFNBQVMsQ0FBQztBQUMxQyxPQUFPLElBQUksTUFBTSxNQUFNLENBQUM7QUFDeEIsT0FBTyxFQUFFLE1BQU0sSUFBSSxDQUFDO0FBRXBCLE1BQU0sa0JBQWtCLEdBQUcsQ0FBQyxPQUFPLEVBQUUsTUFBTSxFQUFFLE1BQU0sRUFBRSxNQUFNLEVBQUUsU0FBUyxFQUFFLE9BQU8sRUFBRSxPQUFPLENBQVUsQ0FBQztBQUduRyxNQUFNLGNBQWMsR0FBVyxJQUFJLENBQUMsSUFBSSxDQUFDLE9BQU8sQ0FBQyxHQUFHLEVBQUUsRUFBRSxNQUFNLEVBQUUsTUFBTSxFQUFFLFFBQVEsQ0FBQyxDQUFDO0FBQ2xGLE1BQU0sY0FBYyxHQUFXLElBQUksQ0FBQyxJQUFJLENBQUMsT0FBTyxDQUFDLEdBQUcsRUFBRSxFQUFFLE1BQU0sRUFBRSxNQUFNLEVBQUUsUUFBUSxDQUFDLENBQUM7QUFFbEYsdURBQXVEO0FBQ3ZELElBQUksQ0FBQyxFQUFFLENBQUMsVUFBVSxDQUFDLGNBQWMsQ0FBQyxFQUFFLENBQUM7SUFDbkMsRUFBRSxDQUFDLFNBQVMsQ0FBQyxjQUFjLEVBQUUsRUFBRSxTQUFTLEVBQUUsSUFBSSxFQUFFLENBQUMsQ0FBQztBQUNwRCxDQUFDO0FBQ0QsSUFBSSxDQUFDLEVBQUUsQ0FBQyxVQUFVLENBQUMsY0FBYyxDQUFDLEVBQUUsQ0FBQztJQUNuQyxFQUFFLENBQUMsU0FBUyxDQUFDLGNBQWMsRUFBRSxFQUFFLFNBQVMsRUFBRSxJQUFJLEVBQUUsQ0FBQyxDQUFDO0FBQ3BELENBQUM7QUFFRCw4Q0FBOEM7QUFDOUMsU0FBUyxjQUFjLENBQUMsT0FBNEI7SUFDbEQsTUFBTSxXQUFXLEdBQVcsSUFBSSxJ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

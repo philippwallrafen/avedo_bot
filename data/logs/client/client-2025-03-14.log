@@ -62,3 +62,108 @@
 [2025-03-14T01:48:08.846Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Outbound
 [2025-03-14T01:48:08.847Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": false, "skill_ob": true }
 [2025-03-14T01:48:08.854Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:06:52.424Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 1
+[2025-03-14T10:06:52.425Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 2
+[2025-03-14T10:06:52.433Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:07:05.063Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-14T10:07:05.064Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 2
+[2025-03-14T10:07:05.069Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:07:10.597Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Inbound
+[2025-03-14T10:07:10.598Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": true, "skill_ob": false }
+[2025-03-14T10:07:10.603Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:07:12.499Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Outbound
+[2025-03-14T10:07:12.500Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": false, "skill_ob": true }
+[2025-03-14T10:07:12.505Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:07:14.422Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Inbound
+[2025-03-14T10:07:14.423Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": true, "skill_ob": false }
+[2025-03-14T10:07:14.427Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:07:16.014Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Outbound
+[2025-03-14T10:07:16.015Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": false, "skill_ob": true }
+[2025-03-14T10:07:16.019Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:07:29.589Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Mustermann, Max 📜 Neue Prio: Inbound
+[2025-03-14T10:07:29.590Z] [DEBUG] 📤 Sending data to server: { "surname": "mustermann", "name": "max", "skill_ib": true, "skill_ob": false }
+[2025-03-14T10:07:29.595Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:07:50.567Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 1
+[2025-03-14T10:07:50.568Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 2
+[2025-03-14T10:07:50.574Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:07:53.135Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 1
+[2025-03-14T10:07:53.136Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 2
+[2025-03-14T10:07:53.141Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:08:07.542Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 3
+[2025-03-14T10:08:07.543Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 4
+[2025-03-14T10:08:07.548Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:08:15.891Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Armstrong, Henry 📜 Neue Prio: 6
+[2025-03-14T10:08:15.891Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Meier, Hans 📜 Neue Prio: 7
+[2025-03-14T10:08:15.897Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:08:38.729Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 1
+[2025-03-14T10:08:38.729Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 2
+[2025-03-14T10:08:38.735Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:08:39.935Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-14T10:08:39.936Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Mustermann, Max 📜 Neue Prio: 3
+[2025-03-14T10:08:39.941Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:09:37.520Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 1
+[2025-03-14T10:09:37.522Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 2
+[2025-03-14T10:09:37.527Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T10:09:41.197Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Outbound
+[2025-03-14T10:09:41.197Z] [DEBUG] 📤 Sending data to server: { "surname": "hose", "name": "melissa", "skill_ib": false, "skill_ob": true }
+[2025-03-14T10:09:41.202Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T22:24:12.538Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-14T22:24:12.540Z] [DEBUG] 📤 Sending data to server: { "surname": "hose", "name": "melissa", "skill_ib": true, "skill_ob": false }
+[2025-03-14T22:24:12.541Z] [DEBUG] 📤 Sending data to server: [ { "surname": "hose", "name": "melissa", "skill_ib": true, "skill_ob": false } ]
+[2025-03-14T22:24:12.548Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T22:24:31.305Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 1
+[2025-03-14T22:24:31.307Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-14T22:24:31.308Z] [DEBUG] 📤 Sending data to server: [ { "surname": "schmidt", "name": "sabine", "priority": 1 }, { "surname": "hose", "name": "melissa", "priority": 2 } ]
+[2025-03-14T22:24:31.315Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T22:25:08.869Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 1
+[2025-03-14T22:25:08.870Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 2
+[2025-03-14T22:25:08.871Z] [DEBUG] 📤 Sending data to server: [ { "surname": "hose", "name": "melissa", "priority": 1 }, { "surname": "schmidt", "name": "sabine", "priority": 2 } ]
+[2025-03-14T22:25:08.877Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T22:25:34.272Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Outbound
+[2025-03-14T22:25:34.273Z] [DEBUG] 📤 Sending data to server: { "surname": "hose", "name": "melissa", "skill_ib": false, "skill_ob": true }
+[2025-03-14T22:25:34.273Z] [DEBUG] 📤 Sending data to server: [ { "surname": "hose", "name": "melissa", "skill_ib": false, "skill_ob": true } ]
+[2025-03-14T22:25:34.279Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T22:28:22.280Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Michael 📜 Neue Prio: 4
+[2025-03-14T22:28:22.281Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Kuckucksmilch, Jan 📜 Neue Prio: 5
+[2025-03-14T22:28:22.281Z] [DEBUG] 📤 Sending data to server: [ { "surname": "schmidt", "name": "michael", "priority": 4 }, { "surname": "kuckucksmilch", "name": "jan", "priority": 5 } ]
+[2025-03-14T22:28:22.287Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T22:36:27.441Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-14T22:36:27.442Z] [DEBUG] 📤 Sending data to server: { "surname": "hose", "name": "melissa", "skill_ib": true, "skill_ob": false }
+[2025-03-14T22:36:27.450Z] [INFO]  ✅ Server: Update erfolgreich
+[2025-03-14T22:38:11.870Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Outbound
+[2025-03-14T22:38:11.871Z] [DEBUG] 📤 Sending data to server: { "surname": "hose", "name": "melissa", "skill_ib": false, "skill_ob": true }
+[2025-03-14T22:38:11.872Z] [DEBUG] 📤 Sending data to server: [ { "surname": "hose", "name": "melissa", "skill_ib": false, "skill_ob": true } ]
+[2025-03-14T22:40:00.617Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-14T22:40:00.618Z] [DEBUG] 📤 Sending data to server: { "surname": "hose", "name": "melissa", "skill_ib": true, "skill_ob": false }
+[2025-03-14T22:40:00.619Z] [DEBUG] 📤 Sending data to server: [ { "surname": "hose", "name": "melissa", "skill_ib": true, "skill_ob": false } ]
+[2025-03-14T22:40:00.625Z] [SILLY] ✅ Server: Update erfolgreich
+[2025-03-14T22:40:44.613Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 1
+[2025-03-14T22:40:44.615Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-14T22:40:44.615Z] [DEBUG] 📤 Sending data to server: [ { "surname": "schmidt", "name": "sabine", "priority": 1 }, { "surname": "hose", "name": "melissa", "priority": 2 } ]
+[2025-03-14T22:40:44.622Z] [SILLY] ✅ Server: Update erfolgreich
+[2025-03-14T22:40:49.385Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 1
+[2025-03-14T22:40:49.386Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 2
+[2025-03-14T22:40:49.386Z] [DEBUG] 📤 Sending data to server: [ { "surname": "hose", "name": "melissa", "priority": 1 }, { "surname": "schmidt", "name": "sabine", "priority": 2 } ]
+[2025-03-14T22:40:49.393Z] [SILLY] ✅ Server: Update erfolgreich
+[2025-03-14T22:44:55.406Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Outbound
+[2025-03-14T22:44:55.407Z] [DEBUG] 📤 Sending data to server: { "surname": "hose", "name": "melissa", "skill_ib": false, "skill_ob": true }
+[2025-03-14T22:44:55.407Z] [DEBUG] 📤 Sending data to server: [ { "surname": "hose", "name": "melissa", "skill_ib": false, "skill_ob": true } ]
+[2025-03-14T22:44:55.414Z] [SILLY] ✅ Server: Update erfolgreich
+[2025-03-14T22:48:21.188Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 1
+[2025-03-14T22:48:21.190Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 2
+[2025-03-14T22:48:21.190Z] [DEBUG] 📤 Sending data to server: [ { "surname": "schmidt", "name": "sabine", "priority": 1 }, { "surname": "hose", "name": "melissa", "priority": 2 } ]
+[2025-03-14T22:48:21.197Z] [SILLY] ✅ Server: Update erfolgreich
+[2025-03-14T22:48:24.221Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Hose, Melissa 📜 Neue Prio: 1
+[2025-03-14T22:48:24.222Z] [DEBUG] 🔄 Detected priority change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: 2
+[2025-03-14T22:48:24.222Z] [DEBUG] 📤 Sending data to server: [ { "surname": "hose", "name": "melissa", "priority": 1 }, { "surname": "schmidt", "name": "sabine", "priority": 2 } ]
+[2025-03-14T22:48:24.229Z] [SILLY] ✅ Server: Update erfolgreich
+[2025-03-14T22:52:34.828Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Hose, Melissa 📜 Neue Prio: Inbound
+[2025-03-14T22:52:34.829Z] [DEBUG] 📤 Sending data to server: [ { "surname": "hose", "name": "melissa", "skill_ib": true, "skill_ob": false } ]
+[2025-03-14T22:52:34.836Z] [SILLY] ✅ Server: Update erfolgreich
+[2025-03-14T22:52:45.624Z] [DEBUG] 📤 Sending data to server: [ { "surname": "schmidt", "name": "sabine", "priority": 1 }, { "surname": "hose", "name": "melissa", "priority": 2 } ]
+[2025-03-14T22:52:45.631Z] [SILLY] ✅ Server: Update erfolgreich
+[2025-03-14T22:54:05.359Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: Outbound
+[2025-03-14T22:54:05.360Z] [DEBUG] 📤 Sending data to server: [ { "surname": "schmidt", "name": "sabine", "skill_ib": false, "skill_ob": true } ]
+[2025-03-14T22:54:05.367Z] [SILLY] ✅ Server: /agents/update-skills Update erfolgreich
+[2025-03-14T23:05:36.608Z] [DEBUG] 📤 Sending data to server: [ { "surname": "hose", "name": "melissa", "priority": 1 }, { "surname": "schmidt", "name": "sabine", "priority": 2 } ]
+[2025-03-14T23:05:36.614Z] [SILLY] ✅ Server: '/agents/priority' Update erfolgreich

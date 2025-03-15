@@ -7,11 +7,11 @@
 const config = {
   printWidth: 120,
   semi: true,
-  singleQuote: false,
+  singleQuote: true,
   tabWidth: 2,
-  embeddedLanguageFormatting: "off",
-  endOfLine: "lf",
-  overrides: [{ files: ["*.ejs"], options: { parser: "html" } }],
+  embeddedLanguageFormatting: 'off',
+  endOfLine: 'lf',
+  overrides: [{ files: ['*.ejs'], options: { parser: 'html' } }],
 };
 
 module.exports = config;

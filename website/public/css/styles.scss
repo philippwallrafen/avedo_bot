@@ -8,7 +8,7 @@
   --sidebar-bg-color: hsl(0, 45%, 45%);
   --sidebar-hover-bg-color: hsl(0, 33%, 64%);
   --text-color: hsl(0, 0%, 100%);
-  --font-family: "Poppins", sans-serif;
+  --font-family: 'Poppins', sans-serif;
   --sidebar-width: 15rem;
   --collapsed-sidebar-width: 3.6rem;
 }
@@ -160,7 +160,7 @@ body:not(:has(:target)) #dashboard {
 
 /* ============== Tab-Content : Dashboard ============== */
 
-[role="toolbar"] {
+[role='toolbar'] {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -222,7 +222,7 @@ button {
       }
     }
   }
-  li[data-valid="false"] {
+  li[data-valid='false'] {
     background: hsl(0, 58%, 18%);
   }
 }
@@ -247,7 +247,7 @@ button {
 #log-window {
   background-color: hsl(0, 0%, 0%);
   color: hsl(120, 100%, 50%);
-  font-family: "Cascadia Code", Courier, monospace;
+  font-family: 'Cascadia Code', Courier, monospace;
   padding: 1em;
   border: 1px solid #333;
   height: 80dvh;

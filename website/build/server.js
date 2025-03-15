@@ -1,48 +1,49 @@
 // ~/website/src/server.ts
-import path from "path";
-import express from "express";
-import expressLayouts from "express-ejs-layouts";
-import cors from "cors";
-import { log } from "./server-logger.js";
-import { router } from "./routes/index.js";
-import { globalErrorHandler } from "./utils/global-error-handler.js";
-const websitePath = path.join(process.cwd(), "website");
+import path from 'path';
+import express from 'express';
+import expressLayouts from 'express-ejs-layouts';
+import cors from 'cors';
+import { log } from './server-logger.js';
+import { router } from './routes/index.js';
+import { globalErrorHandler } from './utils/global-error-handler.js';
+const websitePath = path.join(process.cwd(), 'website');
 // ======================
 // Express & Middleware Setup
 // ======================
 const app = express();
-app.set("views", path.join(websitePath, "views"));
-app.set("view engine", "ejs");
+app.set('views', path.join(websitePath, 'views'));
+app.set('view engine', 'ejs');
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(websitePath, "public")));
-app.use("/build/client", express.static(path.join(websitePath, "build", "client")));
+app.use(express.static(path.join(websitePath, 'public')));
+app.use('/build/client', express.static(path.join(websitePath, 'build', 'client')));
 app.use(expressLayouts);
-app.set("layout", "layout");
+app.set('layout', 'layout');
 app.use(router);
 app.use(globalErrorHandler);
 // ======================
 // Server-Shutdown
 // ======================
 async function handleShutdown(signal) {
-    log("info", `⚠️  Received ${signal}, shutting down gracefully...`);
-    await log("info", `Server is shutting down due to ${signal}`);
-    server.close(() => {
-        log("info", "✅ Server shut down successfully.");
-        process.exit(0);
-    });
-    setTimeout(() => {
-        log("error", "❌ Forced shutdown due to timeout.");
-        process.exit(1);
-    }, 5000);
+  log('info', `⚠️  Received ${signal}, shutting down gracefully...`);
+  await log('info', `Server is shutting down due to ${signal}`);
+  server.close(() => {
+    log('info', '✅ Server shut down successfully.');
+    process.exit(0);
+  });
+  setTimeout(() => {
+    log('error', '❌ Forced shutdown due to timeout.');
+    process.exit(1);
+  }, 5000);
 }
 // System-Signale abfangen (z. B. CTRL+C lokal oder SIGTERM in Docker/K8s)
-process.on("SIGINT", handleShutdown);
-process.on("SIGTERM", handleShutdown);
+process.on('SIGINT', handleShutdown);
+process.on('SIGTERM', handleShutdown);
 // ======================
 // Server starten
 // ======================
 const PORT = 3000;
 const server = app.listen(PORT, async () => {
-    log("info", `🚀 Server läuft auf http://localhost:${PORT}`);
+  log('info', `🚀 Server läuft auf http://localhost:${PORT}`);
 });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2VydmVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vc3JjL3NlcnZlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSwwQkFBMEI7QUFFMUIsT0FBTyxJQUFJLE1BQU0sTUFBTSxDQUFDO0FBQ3hCLE9BQU8sT0FBTyxNQUFNLFNBQVMsQ0FBQztBQUM5QixPQUFPLGNBQWMsTUFBTSxxQkFBcUIsQ0FBQztBQUNqRCxPQUFPLElBQUksTUFBTSxNQUFNLENBQUM7QUFFeEIsT0FBTyxFQUFFLEdBQUcsRUFBRSxNQUFNLG9CQUFvQixDQUFDO0FBQ3pDLE9BQU8sRUFBRSxNQUFNLEVBQUUsTUFBTSxtQkFBbUIsQ0FBQztBQUMzQyxPQUFPLEVBQUUsa0JBQWtCLEVBQUUsTUFBTSxpQ0FBaUMsQ0FBQztBQUVyRSxNQUFNLFdBQVcsR0FBRyxJQUFJLENBQUMsSUFBSSxDQUFDLE9BQU8sQ0FBQyxHQUFHLEVBQUUsRUFBRSxTQUFTLENBQUMsQ0FBQztBQUV4RCx5QkFBeUI7QUFDekIsNkJBQTZCO0FBQzdCLHlCQUF5QjtBQUN6QixNQUFNLEdBQUcsR0FBRyxPQUFPLEVBQUUsQ0FBQztBQUV0QixHQUFHLENBQUMsR0FBRyxDQUFDLE9BQU8sRUFBRSxJQUFJLENBQUMsSUFBSSxDQUFDLFdBQVcsRUFBRSxPQUFPLENBQUMsQ0FBQyxDQUFDO0FBQ2xELEdBQUcsQ0FBQyxHQUFHLENBQUMsYUFBYSxFQUFFLEtBQUssQ0FBQyxDQUFDO0FBQzlCLEdBQUcsQ0FBQyxHQUFHLENBQUMsSUFBSSxFQUFFLENBQUMsQ0FBQztBQUNoQixHQUFHLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxJQUFJLEVBQUUsQ0FBQyxDQUFDO0FBQ3hCLEdBQUcsQ0FBQyxHQUFHLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLFdBQVcsRUFBRSxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUM7QUFDMUQsR0FBRyxDQUFDLEdBQUcsQ0FBQyxlQUFlLEVBQUUsT0FBTyxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLFdBQVcsRUFBRSxPQUFPLEVBQUUsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDO0FBQ3BGLEdBQUcsQ0FBQyxHQUFHLENBQUMsY0FBYyxDQUFDLENBQUM7QUFDeEIsR0FBRyxDQUFDLEdBQUcsQ0FBQyxRQUFRLEVBQUUsUUFBUSxDQUFDLENBQUM7QUFDNUIsR0FBRyxDQUFDLEdBQUcsQ0FBQyxNQUFNLENBQUMsQ0FBQztBQUNoQixHQUFHLENBQUMsR0FBRyxDQUFDLGtCQUFrQixDQUFDLENBQUM7QUFFNUIseUJBQXlCO0FBQ3pCLGtCQUFrQjtBQUNsQix5QkFBeUI7QUFDekIsS0FBSyxVQUFVLGNBQWMsQ0FBQyxNQUFjO0lBQzFDLEdBQUcsQ0FBQyxNQUFNLEVBQUUsZ0JBQWdCLE1BQU0sK0JBQStCLENBQUMsQ0FBQztJQUNuRSxNQUFNLEdBQUcsQ0FBQyxNQUFNLEVBQUUsa0NBQWtDLE1BQU0sRUFBRSxDQUFDLENBQUM7SUFFOUQsTUFBTSxDQUFDLEtBQUssQ0FBQyxHQUFHLEVBQUU7UUFDaEIsR0FBRyxDQUFDLE1BQU0sRUFBRSxrQ0FBa0MsQ0FBQyxDQUFDO1FBQ2hELE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDbEIsQ0FBQyxDQUFDLENBQUM7SUFFSCxVQUFVLENBQUMsR0FBRyxFQUFFO1FBQ2QsR0FBRyxDQUFDLE9BQU8sRUFBRSxtQ0FBbUMsQ0FBQyxDQUFDO1FBQ2xELE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDbEIsQ0FBQyxFQUFFLElBQUksQ0FBQyxDQUFDO0FBQ1gsQ0FBQztBQUVELDBFQUEwRTtBQUMxRSxPQUFPLENBQUMsRUFBRSxDQUFDLFFBQVEsRUFBRSxjQUFjLENBQUMsQ0FBQztBQUNyQyxPQUFPLENBQUMsRUFBRSxDQUFDLFNBQVMsRUFBRSxjQUFjLENBQUMsQ0FBQztBQUV0Qyx5QkFBeUI7QUFDekIsaUJBQWlCO0FBQ2pCLHlCQUF5QjtBQUN6QixNQUFNLElBQUksR0FBRyxJQUFJLENBQUM7QUFDbEIsTUFBTSxNQUFNLEdBQUcsR0FBRyxDQUFDLE1BQU0sQ0FBQyxJQUFJLEVBQUUsS0FBSyxJQUFJLEVBQUU7SUFDekMsR0FBRyxDQUFDLE1BQU0sRUFBRSx3Q0FBd0MsSUFBSSxFQUFFLENBQUMsQ0FBQztBQUM5RCxDQUFDLENBQUMsQ0FBQyJ9

@@ -1,4 +1,4 @@
-// ~/website/src/client/old-ass-functions.ts
+// // ~/website/src/client/old-ass-functions.ts
 
 // type LogEntry = string[];
 // const debugLogSkills: Map<string, LogEntry[]> = new Map();
@@ -17,10 +17,10 @@
 //   });
 // }
 
-/**
- * Aktualisiert die Priorität der Agenten und sendet die Änderungen an den Server.
- * @param {HTMLElement} list - Die Liste, die aktualisiert wurde.
- */
+// /**
+//  * Aktualisiert die Priorität der Agenten und sendet die Änderungen an den Server.
+//  * @param {HTMLElement} list - Die Liste, die aktualisiert wurde.
+//  */
 // async function OLDupdatePriorities(list: HTMLElement): Promise<void> {
 //   const liElements = list.querySelectorAll<HTMLLIElement>("li");
 //   if (liElements.length === 0) return;
@@ -95,9 +95,9 @@
 //   }
 // }
 
-/**
- * Protokolliert den Erfolg der Aktualisierung.
- */
+// /**
+//  * Protokolliert den Erfolg der Aktualisierung.
+//  */
 // function OLDlogSuccess(updated: AgentPriorityUpdate[]): void {
 //   const maxNameLength = Math.max(...updated.map(({ surname, name }) => surname.length + name.length + 3));
 //   let logMessage = `✅ %cServer: Prioritäten erfolgreich aktualisiert\n\n`;
@@ -112,9 +112,9 @@
 //   console.log(logMessage, ...logStyles);
 // }
 
-/**
- * Einheitliche Fehlerbehandlung für das Update.
- */
+// /**
+//  * Einheitliche Fehlerbehandlung für das Update.
+//  */
 // function OLDhandleUpdateError(updated: AgentPriorityUpdate[], error: unknown): void {
 //   if (error instanceof Error) {
 //     console.error(
@@ -132,15 +132,15 @@
 //   alert("Fehler beim Aktualisieren der Agenten-Prioritäten.");
 // }
 
-/*******************************
- * Skill-Änderungen Handhaben
- *******************************/
-/**
- * Aktualisiert die Skill-Daten eines Agenten im UI.
- * @param {HTMLElement} radio - Das angeklickte Radio-Element.
- * @param {string} surname - Nachname des Agenten.
- * @param {string} name - Vorname des Agenten.
- */
+// /*******************************
+//  * Skill-Änderungen Handhaben
+//  *******************************/
+// /**
+//  * Aktualisiert die Skill-Daten eines Agenten im UI.
+//  * @param {HTMLElement} radio - Das angeklickte Radio-Element.
+//  * @param {string} surname - Nachname des Agenten.
+//  * @param {string} name - Vorname des Agenten.
+//  */
 // async function OLDupdateSkills(radio: HTMLInputElement, surname: string, name: string): Promise<void> {
 //   const listItem = document.querySelector<HTMLLIElement>(`li[data-surname="${surname}"][data-name="${name}"]`);
 //   if (!listItem) return;
@@ -231,10 +231,10 @@
 //   });
 // }
 
-/**
- * Fügt einen Log-Eintrag in eine Map ein,
- * ohne überall das gleiche "if (!map.has(key)) ..." schreiben zu müssen
- */
+// /**
+//  * Fügt einen Log-Eintrag in eine Map ein,
+//  * ohne überall das gleiche "if (!map.has(key)) ..." schreiben zu müssen
+//  */
 // function debugLogPushEntry(logMap: Map<string, LogEntry[]>, key: string, entry: LogEntry) {
 //     if (!logMap.has(key)) {
 //       logMap.set(key, []);
@@ -263,3 +263,31 @@
 //       ColorStyles.updatedData,
 //     ];
 //   }
+
+// log("debug", [
+//   `🔄 %cDetected priority change:%c\n\n  👤 Agent: %c${capitalize(agent.surname ?? "")}, ${capitalize(
+//     agent.name ?? ""
+//   )} %c 📜 Neue Prio: %c${newPriority}`,
+//   ColorStyles.debugHeading,
+//   "",
+//   ColorStyles.agentName,
+//   "",
+//   ColorStyles.updatedData,
+// ]);
+
+// log("debug", [`%c📤 Sending data to server:\n`, ColorStyles.debugHeading, JSON.stringify(updatedSkills, null, 2)]);
+
+// log("debug", [
+//   `%c🔄 Detected radio change:%c\n\n  👤 Agent: %c${capitalize(agent.surname)}, ${capitalize(
+//     agent.name
+//   )}%c\n  📜 Neue Prio: %c${capitalize(selectedRadio.value)}`,
+//   ColorStyles.debugHeading,
+//   "",
+//   ColorStyles.agentName,
+//   "",
+//   ColorStyles.updatedData,
+// ]);
+
+// function capitalize(word: string): string {
+//   return word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase();
+// }

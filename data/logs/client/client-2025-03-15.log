@@ -1,0 +1,5 @@
+[2025-03-15T01:28:03.669Z] [DEBUG] 📤 Sending data to server: [ { "surname": "schmidt", "name": "sabine", "priority": 1 }, { "surname": "hose", "name": "melissa", "priority": 2 } ]
+[2025-03-15T01:28:03.675Z] [INFO]  ✅ Server: '/agents/priority'-Update erfolgreich
+[2025-03-15T01:28:05.332Z] [DEBUG] 🔄 Detected radio change: 👤 Agent: Schmidt, Sabine 📜 Neue Prio: Inbound
+[2025-03-15T01:28:05.333Z] [DEBUG] 📤 Sending data to server: [ { "surname": "schmidt", "name": "sabine", "skill_ib": true, "skill_ob": false } ]
+[2025-03-15T01:28:05.338Z] [INFO]  ✅ Server: '/agents/skills'-Update erfolgreich

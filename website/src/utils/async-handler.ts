@@ -1,6 +1,6 @@
 // ~/website/src/utils/async-handler.ts
 
-import { RequestHandler } from "express";
+import { RequestHandler } from 'express';
 
 export function asyncHandler<T extends object = object>(
   handler: RequestHandler<Record<string, string>, unknown, T>

@@ -371,3 +371,243 @@
 [2025-03-14T01:48:08.851Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
 [2025-03-14T01:51:54.884Z] [INFO]  Root route accessed
 [2025-03-14T02:00:28.980Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-14T10:06:21.661Z] [INFO]  🚀 Server läuft auf http://localhost:3000
+[2025-03-14T10:06:40.517Z] [INFO]  Root route accessed
+[2025-03-14T10:06:52.428Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'schmidt', name: 'sabine', priority: 1 }, { surname: 'mustermann', name: 'max', priority: 2 } ]
+[2025-03-14T10:06:52.428Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T10:06:52.428Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T10:06:52.429Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:06:52.429Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:06:52.429Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T10:07:05.066Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'mustermann', name: 'max', priority: 1 }, { surname: 'schmidt', name: 'sabine', priority: 2 } ]
+[2025-03-14T10:07:05.066Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:07:05.066Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:07:05.066Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T10:07:05.066Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T10:07:05.066Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T10:07:10.599Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'mustermann', name: 'max', skill_ib: true, skill_ob: false } ]
+[2025-03-14T10:07:10.599Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:07:10.599Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:07:10.600Z] [DEBUG] 🔄 Prüfe Agenten-Update: mustermann, max
+[2025-03-14T10:07:10.600Z] [DEBUG] ➝ Aktuell: skill_ib=false, skill_ob=true
+[2025-03-14T10:07:10.600Z] [DEBUG] ➝ Neu: skill_ib=true, skill_ob=false
+[2025-03-14T10:07:10.600Z] [INFO]  ✅ Aktualisiert: mustermann, max
+[2025-03-14T10:07:10.600Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T10:07:12.501Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'mustermann', name: 'max', skill_ib: false, skill_ob: true } ]
+[2025-03-14T10:07:12.501Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:07:12.501Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:07:12.501Z] [DEBUG] 🔄 Prüfe Agenten-Update: mustermann, max
+[2025-03-14T10:07:12.502Z] [DEBUG] ➝ Aktuell: skill_ib=true, skill_ob=false
+[2025-03-14T10:07:12.502Z] [DEBUG] ➝ Neu: skill_ib=false, skill_ob=true
+[2025-03-14T10:07:12.502Z] [INFO]  ✅ Aktualisiert: mustermann, max
+[2025-03-14T10:07:12.502Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T10:07:14.424Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'mustermann', name: 'max', skill_ib: true, skill_ob: false } ]
+[2025-03-14T10:07:14.424Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:07:14.424Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:07:14.424Z] [DEBUG] 🔄 Prüfe Agenten-Update: mustermann, max
+[2025-03-14T10:07:14.424Z] [DEBUG] ➝ Aktuell: skill_ib=false, skill_ob=true
+[2025-03-14T10:07:14.424Z] [DEBUG] ➝ Neu: skill_ib=true, skill_ob=false
+[2025-03-14T10:07:14.425Z] [INFO]  ✅ Aktualisiert: mustermann, max
+[2025-03-14T10:07:14.425Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T10:07:16.016Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'mustermann', name: 'max', skill_ib: false, skill_ob: true } ]
+[2025-03-14T10:07:16.016Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:07:16.016Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:07:16.016Z] [DEBUG] 🔄 Prüfe Agenten-Update: mustermann, max
+[2025-03-14T10:07:16.016Z] [DEBUG] ➝ Aktuell: skill_ib=true, skill_ob=false
+[2025-03-14T10:07:16.017Z] [DEBUG] ➝ Neu: skill_ib=false, skill_ob=true
+[2025-03-14T10:07:16.017Z] [INFO]  ✅ Aktualisiert: mustermann, max
+[2025-03-14T10:07:16.017Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T10:07:29.591Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'mustermann', name: 'max', skill_ib: true, skill_ob: false } ]
+[2025-03-14T10:07:29.591Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:07:29.591Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:07:29.592Z] [DEBUG] 🔄 Prüfe Agenten-Update: mustermann, max
+[2025-03-14T10:07:29.592Z] [DEBUG] ➝ Aktuell: skill_ib=false, skill_ob=true
+[2025-03-14T10:07:29.592Z] [DEBUG] ➝ Neu: skill_ib=true, skill_ob=false
+[2025-03-14T10:07:29.592Z] [INFO]  ✅ Aktualisiert: mustermann, max
+[2025-03-14T10:07:29.592Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T10:07:50.570Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'schmidt', name: 'sabine', priority: 1 }, { surname: 'mustermann', name: 'max', priority: 2 } ]
+[2025-03-14T10:07:50.570Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T10:07:50.570Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T10:07:50.570Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:07:50.571Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:07:50.571Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T10:07:53.137Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'mustermann', name: 'max', priority: 1 }, { surname: 'schmidt', name: 'sabine', priority: 2 } ]
+[2025-03-14T10:07:53.137Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:07:53.137Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:07:53.137Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T10:07:53.137Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T10:07:53.138Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T10:08:07.544Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', priority: 3 }, { surname: 'kuckucksmilch', name: 'jan', priority: 4 } ]
+[2025-03-14T10:08:07.545Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T10:08:07.545Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T10:08:07.545Z] [DEBUG] 🔎 Suche nach Agent: kuckucksmilch, jan
+[2025-03-14T10:08:07.545Z] [DEBUG] ✅ Gefundener Agent: kuckucksmilch, jan
+[2025-03-14T10:08:07.545Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T10:08:15.893Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'armstrong', name: 'henry', priority: 6 }, { surname: 'meier', name: 'hans', priority: 7 } ]
+[2025-03-14T10:08:15.893Z] [DEBUG] 🔎 Suche nach Agent: armstrong, henry
+[2025-03-14T10:08:15.893Z] [DEBUG] ✅ Gefundener Agent: armstrong, henry
+[2025-03-14T10:08:15.893Z] [DEBUG] 🔎 Suche nach Agent: meier, hans
+[2025-03-14T10:08:15.893Z] [DEBUG] ✅ Gefundener Agent: meier, hans
+[2025-03-14T10:08:15.893Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T10:08:38.731Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'schmidt', name: 'sabine', priority: 1 }, { surname: 'mustermann', name: 'max', priority: 2 } ]
+[2025-03-14T10:08:38.731Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T10:08:38.731Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T10:08:38.732Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:08:38.732Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:08:38.732Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T10:08:39.937Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', priority: 2 }, { surname: 'mustermann', name: 'max', priority: 3 } ]
+[2025-03-14T10:08:39.937Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T10:08:39.937Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T10:08:39.937Z] [DEBUG] 🔎 Suche nach Agent: mustermann, max
+[2025-03-14T10:08:39.937Z] [DEBUG] ✅ Gefundener Agent: mustermann, max
+[2025-03-14T10:08:39.937Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T10:09:37.523Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', priority: 1 }, { surname: 'schmidt', name: 'sabine', priority: 2 } ]
+[2025-03-14T10:09:37.523Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T10:09:37.523Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T10:09:37.523Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T10:09:37.524Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T10:09:37.524Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T10:09:41.199Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', skill_ib: false, skill_ob: true } ]
+[2025-03-14T10:09:41.199Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T10:09:41.199Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T10:09:41.199Z] [DEBUG] 🔄 Prüfe Agenten-Update: hose, melissa
+[2025-03-14T10:09:41.199Z] [DEBUG] ➝ Aktuell: skill_ib=true, skill_ob=false
+[2025-03-14T10:09:41.199Z] [DEBUG] ➝ Neu: skill_ib=false, skill_ob=true
+[2025-03-14T10:09:41.200Z] [INFO]  ✅ Aktualisiert: hose, melissa
+[2025-03-14T10:09:41.200Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T22:23:56.910Z] [INFO]  🚀 Server läuft auf http://localhost:3000
+[2025-03-14T22:24:05.814Z] [INFO]  Root route accessed
+[2025-03-14T22:24:12.543Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', skill_ib: true, skill_ob: false } ]
+[2025-03-14T22:24:12.543Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:24:12.544Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:24:12.544Z] [DEBUG] 🔄 Prüfe Agenten-Update: hose, melissa
+[2025-03-14T22:24:12.544Z] [DEBUG] ➝ Aktuell: skill_ib=false, skill_ob=true
+[2025-03-14T22:24:12.545Z] [DEBUG] ➝ Neu: skill_ib=true, skill_ob=false
+[2025-03-14T22:24:12.545Z] [INFO]  ✅ Aktualisiert: hose, melissa
+[2025-03-14T22:24:12.545Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T22:24:31.310Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'schmidt', name: 'sabine', priority: 1 }, { surname: 'hose', name: 'melissa', priority: 2 } ]
+[2025-03-14T22:24:31.310Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T22:24:31.310Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T22:24:31.311Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:24:31.311Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:24:31.311Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T22:25:08.872Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', priority: 1 }, { surname: 'schmidt', name: 'sabine', priority: 2 } ]
+[2025-03-14T22:25:08.872Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:25:08.873Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:25:08.873Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T22:25:08.873Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T22:25:08.873Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T22:25:34.275Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', skill_ib: false, skill_ob: true } ]
+[2025-03-14T22:25:34.275Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:25:34.275Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:25:34.275Z] [DEBUG] 🔄 Prüfe Agenten-Update: hose, melissa
+[2025-03-14T22:25:34.275Z] [DEBUG] ➝ Aktuell: skill_ib=true, skill_ob=false
+[2025-03-14T22:25:34.276Z] [DEBUG] ➝ Neu: skill_ib=false, skill_ob=true
+[2025-03-14T22:25:34.276Z] [INFO]  ✅ Aktualisiert: hose, melissa
+[2025-03-14T22:25:34.276Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T22:28:22.283Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'schmidt', name: 'michael', priority: 4 }, { surname: 'kuckucksmilch', name: 'jan', priority: 5 } ]
+[2025-03-14T22:28:22.283Z] [DEBUG] 🔎 Suche nach Agent: schmidt, michael
+[2025-03-14T22:28:22.283Z] [DEBUG] ✅ Gefundener Agent: schmidt, michael
+[2025-03-14T22:28:22.283Z] [DEBUG] 🔎 Suche nach Agent: kuckucksmilch, jan
+[2025-03-14T22:28:22.283Z] [DEBUG] ✅ Gefundener Agent: kuckucksmilch, jan
+[2025-03-14T22:28:22.283Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T22:36:19.789Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-14T22:36:24.234Z] [INFO]  🚀 Server läuft auf http://localhost:3000
+[2025-03-14T22:36:25.864Z] [INFO]  Root route accessed
+[2025-03-14T22:36:27.445Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', skill_ib: true, skill_ob: false } ]
+[2025-03-14T22:36:27.445Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:36:27.445Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:36:27.446Z] [DEBUG] 🔄 Prüfe Agenten-Update: hose, melissa
+[2025-03-14T22:36:27.446Z] [DEBUG] ➝ Aktuell: skill_ib=false, skill_ob=true
+[2025-03-14T22:36:27.446Z] [DEBUG] ➝ Neu: skill_ib=true, skill_ob=false
+[2025-03-14T22:36:27.446Z] [INFO]  ✅ Aktualisiert: hose, melissa
+[2025-03-14T22:36:27.446Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T22:38:04.288Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-14T22:38:08.207Z] [INFO]  🚀 Server läuft auf http://localhost:3000
+[2025-03-14T22:38:09.758Z] [INFO]  Root route accessed
+[2025-03-14T22:38:11.874Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', skill_ib: false, skill_ob: true } ]
+[2025-03-14T22:38:11.874Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:38:11.874Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:38:11.875Z] [DEBUG] 🔄 Prüfe Agenten-Update: hose, melissa
+[2025-03-14T22:38:11.875Z] [DEBUG] ➝ Aktuell: skill_ib=true, skill_ob=false
+[2025-03-14T22:38:11.875Z] [DEBUG] ➝ Neu: skill_ib=false, skill_ob=true
+[2025-03-14T22:38:11.875Z] [INFO]  ✅ Aktualisiert: hose, melissa
+[2025-03-14T22:38:11.876Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T22:39:51.757Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-14T22:39:56.261Z] [INFO]  🚀 Server läuft auf http://localhost:3000
+[2025-03-14T22:39:58.719Z] [INFO]  Root route accessed
+[2025-03-14T22:40:00.620Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', skill_ib: true, skill_ob: false } ]
+[2025-03-14T22:40:00.621Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:40:00.621Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:40:00.621Z] [DEBUG] 🔄 Prüfe Agenten-Update: hose, melissa
+[2025-03-14T22:40:00.621Z] [DEBUG] ➝ Aktuell: skill_ib=false, skill_ob=true
+[2025-03-14T22:40:00.622Z] [DEBUG] ➝ Neu: skill_ib=true, skill_ob=false
+[2025-03-14T22:40:00.622Z] [INFO]  ✅ Aktualisiert: hose, melissa
+[2025-03-14T22:40:00.622Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T22:40:44.617Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'schmidt', name: 'sabine', priority: 1 }, { surname: 'hose', name: 'melissa', priority: 2 } ]
+[2025-03-14T22:40:44.617Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T22:40:44.618Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T22:40:44.618Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:40:44.618Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:40:44.618Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T22:40:49.388Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', priority: 1 }, { surname: 'schmidt', name: 'sabine', priority: 2 } ]
+[2025-03-14T22:40:49.388Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:40:49.388Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:40:49.388Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T22:40:49.389Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T22:40:49.389Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T22:44:44.605Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-14T22:44:48.478Z] [INFO]  🚀 Server läuft auf http://localhost:3000
+[2025-03-14T22:44:54.071Z] [INFO]  Root route accessed
+[2025-03-14T22:44:55.409Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', skill_ib: false, skill_ob: true } ]
+[2025-03-14T22:44:55.409Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:44:55.410Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:44:55.410Z] [DEBUG] 🔄 Prüfe Agenten-Update: hose, melissa
+[2025-03-14T22:44:55.410Z] [DEBUG] ➝ Aktuell: skill_ib=true, skill_ob=false
+[2025-03-14T22:44:55.410Z] [DEBUG] ➝ Neu: skill_ib=false, skill_ob=true
+[2025-03-14T22:44:55.411Z] [INFO]  ✅ Aktualisiert: hose, melissa
+[2025-03-14T22:44:55.411Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T22:48:21.192Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'schmidt', name: 'sabine', priority: 1 }, { surname: 'hose', name: 'melissa', priority: 2 } ]
+[2025-03-14T22:48:21.192Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T22:48:21.192Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T22:48:21.193Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:48:21.193Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:48:21.193Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T22:48:24.224Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', priority: 1 }, { surname: 'schmidt', name: 'sabine', priority: 2 } ]
+[2025-03-14T22:48:24.224Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:48:24.224Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:48:24.225Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T22:48:24.225Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T22:48:24.225Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T22:52:27.860Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-14T22:52:31.937Z] [INFO]  🚀 Server läuft auf http://localhost:3000
+[2025-03-14T22:52:33.796Z] [INFO]  Root route accessed
+[2025-03-14T22:52:34.831Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'hose', name: 'melissa', skill_ib: true, skill_ob: false } ]
+[2025-03-14T22:52:34.831Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:52:34.832Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:52:34.832Z] [DEBUG] 🔄 Prüfe Agenten-Update: hose, melissa
+[2025-03-14T22:52:34.832Z] [DEBUG] ➝ Aktuell: skill_ib=false, skill_ob=true
+[2025-03-14T22:52:34.832Z] [DEBUG] ➝ Neu: skill_ib=true, skill_ob=false
+[2025-03-14T22:52:34.833Z] [INFO]  ✅ Aktualisiert: hose, melissa
+[2025-03-14T22:52:34.833Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T22:52:45.626Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'schmidt', name: 'sabine', priority: 1 }, { surname: 'hose', name: 'melissa', priority: 2 } ]
+[2025-03-14T22:52:45.626Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T22:52:45.627Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T22:52:45.627Z] [DEBUG] 🔎 Suche nach Agent: hose, melissa
+[2025-03-14T22:52:45.627Z] [DEBUG] ✅ Gefundener Agent: hose, melissa
+[2025-03-14T22:52:45.627Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 2
+[2025-03-14T22:53:54.389Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-14T22:53:58.134Z] [INFO]  🚀 Server läuft auf http://localhost:3000
+[2025-03-14T22:54:04.246Z] [INFO]  Root route accessed
+[2025-03-14T22:54:05.362Z] [DEBUG] 🔍 Erhaltene Agenten zur Aktualisierung: [ { surname: 'schmidt', name: 'sabine', skill_ib: false, skill_ob: true } ]
+[2025-03-14T22:54:05.362Z] [DEBUG] 🔎 Suche nach Agent: schmidt, sabine
+[2025-03-14T22:54:05.363Z] [DEBUG] ✅ Gefundener Agent: schmidt, sabine
+[2025-03-14T22:54:05.363Z] [DEBUG] 🔄 Prüfe Agenten-Update: schmidt, sabine
+[2025-03-14T22:54:05.363Z] [DEBUG] ➝ Aktuell: skill_ib=true, skill_ob=false
+[2025-03-14T22:54:05.363Z] [DEBUG] ➝ Neu: skill_ib=false, skill_ob=true
+[2025-03-14T22:54:05.364Z] [INFO]  ✅ Aktualisiert: schmidt, sabine
+[2025-03-14T22:54:05.364Z] [DEBUG] ✅ Erfolgreich aktualisierte Agenten: 1
+[2025-03-14T23:05:28.413Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
+[2025-03-14T23:05:32.507Z] [INFO]  🚀 Server läuft auf http://localhost:3000
+[2025-03-14T23:05:34.445Z] [INFO]  Root route accessed
+[2025-03-14T23:44:43.222Z] [INFO]  ⚠️ Received SIGINT, shutting down gracefully...
